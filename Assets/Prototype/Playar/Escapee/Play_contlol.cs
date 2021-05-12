@@ -16,12 +16,13 @@ public class Play_contlol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = new Quaternion(0,0,0,0);
-        var rot = targetObj.rotation;
-        rot.x = 0;
-        rot.z = 0;
-        transform.rotation = rot;
+
         if(key_contlol){
+            transform.rotation = new Quaternion(0,0,0,0);
+            var rot = targetObj.rotation;
+            rot.x = 0;
+            rot.z = 0;
+            transform.rotation = rot;
             var pos = key_move(transform.position);
             transform.position = pos;
         } 

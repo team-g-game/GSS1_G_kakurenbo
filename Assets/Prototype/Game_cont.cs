@@ -1,22 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Realtime;
+using Photon.Pun;
 
-public class Game_cont : MonoBehaviour
+public class Game_cont : MonoBehaviourPunCallbacks
 {
-    public List<GameObject> players;
-    public GameObject Demon;
     // Start is called before the first frame update
     void Start()
     {
-        
+        PhotonNetwork.ConnectUsingSettings();
     }
 
     // Update is called once per frame
     void Update()
     {
-        foreach (var a in players){
-            
-        }
+
+    }
+    public override void OnConnectedToMaster(){
+       // "room"という名前のルームに参加する（ルームが無ければ作成してから参加する）
+        PhotonNetwork.JoinOrCreateRoom("room", new RoomOptions(), TypedLobby.Default);
+
+    }
+    public override void OnJoinedRoom(){
+        game_start_up();
+    }
+    void game_start_up(){
+        GameObject players = PhotonNetwork.Instantiate("Play_3",Vector3.zero,Quaternion.identity,0);
     }
 }
