@@ -71,6 +71,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Cam_Obj: {fileID: 8129261677789164287}
   kyara_Obj: {fileID: 4853169220070208221}
+  jump_cool_time: 0
 --- !u!1 &4853169220070208221
 GameObject:
   m_ObjectHideFlags: 0
