@@ -28,7 +28,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
     void game_start_up(){
         GameObject players = PhotonNetwork.Instantiate("Demon",Vector3.zero,Quaternion.identity,0);
         //GameObject players = PhotonNetwork.Instantiate("Play_1",Vector3.zero,Quaternion.identity,0);
-        move move_Script = players.GetComponent<move>();
+        Demon_move move_Script = players.GetComponent<Demon_move>();
         move_Script.enabled = true;
     }
 }
