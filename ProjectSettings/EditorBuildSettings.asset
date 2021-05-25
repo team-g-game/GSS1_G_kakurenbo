@@ -6,9 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/marut_test/New Scene.unity
-    guid: 600bec2ca7c4d6a4992c5ca35d7357a4
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Prototype/titele/Title.unity
+    guid: 046671fbff044454687ea190b015a9ff
+  - enabled: 1
+    path: Assets/Prototype/taiki/kyara_taik.unity
+    guid: 9ba03df37f86e3549b5c9b0b34389921
   - enabled: 1
     path: Assets/Prototype/Prototype_var1.unity
     guid: dc50418704339414296b22006dc5dd5c
+  - enabled: 1
+    path: Assets/Prototype/rizarut/rizarut.unity
+    guid: ecd9f43e5c9f0a04f8b3b1198ac822a9
   m_configObjects: {}
