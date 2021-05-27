@@ -7,6 +7,7 @@ TagManager:
   - Bullet
   - bullt
   - menu
+  - hide_place
   layers:
   - Default
   - TransparentFX
