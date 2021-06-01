@@ -50,7 +50,6 @@ public class move : MonoBehaviour
         if(Input.GetKey(KeyCode.A)) pos -= kyara_Obj.transform.right * Time.deltaTime * move_speed;
         if(Input.GetKey(KeyCode.D)) pos += kyara_Obj.transform.right * Time.deltaTime * move_speed;
         if(pos.y <= 1.5f)pos.y = 1.5f;
-        if(Input.GetKey(KeyCode.Space) && pos.y <= 1.6f) pos.y = move_speed;
 
         kyara_Obj.transform.position = pos;
 
