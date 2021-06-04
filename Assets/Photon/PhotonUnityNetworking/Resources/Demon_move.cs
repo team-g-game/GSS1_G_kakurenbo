@@ -28,16 +28,19 @@ public class Demon_move : MonoBehaviour
         if(Input.GetKey(KeyCode.D)) this_pos += ply_obj.transform.right * Time.deltaTime * move_speed;
         if(Input.GetKey(KeyCode.S)) this_pos -= ply_obj.transform.forward * Time.deltaTime * move_speed;
         
-        transform.position = this_pos;
-        var kyara = ply_obj.transform.localPosition;
-        kyara.y = 0;
-        transform.position -= kyara;
-        
-        kyara = ply_obj.transform.localPosition;
-        kyara.z = 0;
-        kyara.x = 0;        
-        ply_obj.transform.localPosition = kyara;
-        
+        if (ply_obj.transform.localPosition.x == Vector3.zero.x &&ply_obj.transform.localPosition.z == Vector3.zero.x){
+            transform.position = this_pos;
+        }else{
+            var kyara = ply_obj.transform.position;
+            kyara.y = 0;
+            transform.position = kyara;
+
+            kyara = ply_obj.transform.localPosition;
+            kyara.z = 0;
+            kyara.x = 0;        
+            ply_obj.transform.localPosition = kyara;
+        }
+
         // マウスの移動量
         newAngle.y += Input.GetAxis("Mouse X") * DPS;
         newAngle.x -= Input.GetAxis("Mouse Y") * DPS;

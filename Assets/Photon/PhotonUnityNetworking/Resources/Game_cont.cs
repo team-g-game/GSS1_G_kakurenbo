@@ -26,8 +26,18 @@ public class Game_cont : MonoBehaviourPunCallbacks
         game_start_up();
     }
     void game_start_up(){
+        //逃げる側を動かす
+        main_play_samon();
+        //追いかける側を動かす
+        //Demon_move();
+    }
+    void main_play_samon(){
+        GameObject players = PhotonNetwork.Instantiate("Play_1",Vector3.zero,Quaternion.identity,0);
+        move move_Script = players.GetComponent<move>();
+        move_Script.enabled = true;
+    }
+    void Demon_samon(){
         GameObject players = PhotonNetwork.Instantiate("Demon",Vector3.zero,Quaternion.identity,0);
-        //GameObject players = PhotonNetwork.Instantiate("Play_1",Vector3.zero,Quaternion.identity,0);
         Demon_move move_Script = players.GetComponent<Demon_move>();
         move_Script.enabled = true;
     }
