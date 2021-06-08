@@ -2,15 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class hit : MonoBehaviour
+public class hide_sc : MonoBehaviour
 {
     // Start is called before the first frame update
-    public bool HideTrriger = false;
+    public bool HideTrriger = false;    //隠れることが可能な場所かどうか
+    public bool WatchTrriger = false;   //見ることが可能な場所かどうか
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "Play_1")
         {
             HideTrriger = true;
+            this.GetComponent<MeshRenderer>().enabled=true;//メッシュレンダーの表示
+        }
+        if (other.gameObject.name == "Cylinder")
+        {
+            this.GetComponent<TextMesh> ().text = "Watch";  //text meshのテキストを変更
+            WatchTrriger = true;
             this.GetComponent<MeshRenderer>().enabled=true;//メッシュレンダーの表示
         }
     }
@@ -21,6 +28,11 @@ public class hit : MonoBehaviour
         {
             HideTrriger = false;
             this.GetComponent<MeshRenderer>().enabled=false;//メッシュレンダーの非表示
+        }
+        if (pay.gameObject.name == "Cylinder")
+        {
+            WatchTrriger = false;
+            this.GetComponent<MeshRenderer>().enabled=false;//メッシュレンダーの表示
         }
     }
     void Start()
