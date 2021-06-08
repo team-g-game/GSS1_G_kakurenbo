@@ -29,7 +29,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
         //逃げる側を動かす
         main_play_samon();
         //追いかける側を動かす
-        //Demon_move();
+        //Demon_samon();
     }
     void main_play_samon(){
         GameObject players = PhotonNetwork.Instantiate("Play_1_obj",Vector3.zero,Quaternion.identity,0);

@@ -23,7 +23,8 @@ public class move : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {        
+
         var pos = transform.position; 
 
         if(Input.GetKey(KeyCode.W)) pos += kyara_Obj.transform.forward * Time.deltaTime * move_speed;
@@ -59,13 +60,43 @@ public class move : MonoBehaviour
         Cam_Obj.transform.RotateAround(targetPos, Vector3.up, newAngle.x);
         // カメラの垂直移動（※角度制限なし、必要が無ければコメントアウト）
         Cam_Obj.transform.RotateAround(targetPos, Cam_Obj.transform.right, newAngle.y);
-
-
+        //Ray();
+        OnDrawGizmos();
         kyara_Obj.transform.rotation = new Quaternion(0,0,0,0);
         var rot = Cam_Obj.transform.rotation;
         rot.x = 0;
         rot.z = 0;
         kyara_Obj.transform.rotation = rot;
+
+    }
+    void OnDrawGizmos(){
+        Ray ry = new Ray (kyara_Obj.transform.position , (kyara_Obj.transform.forward * -1) + Cam_Obj.transform.position); 
+        RaycastHit hit;
+        if (Physics.SphereCast(kyara_Obj.transform.localPosition,0.3f,(kyara_Obj.transform.forward * -1) + Cam_Obj.transform.localPosition,out hit,5f)){
+
+            Gizmos.DrawRay(kyara_Obj.transform.localPosition,kyara_Obj.transform.forward * -1 * hit.distance);
+            Gizmos.DrawWireSphere(kyara_Obj.transform.localPosition + (kyara_Obj.transform.forward * -1 )* hit.distance,1f);
+
+            var pos = Cam_Obj.transform.localPosition;
+            pos = kyara_Obj.transform.localPosition + (kyara_Obj.transform.forward * -1 )* hit.distance;
+            Cam_Obj.transform.localPosition = pos;
+        }else{
+            Gizmos.DrawRay(kyara_Obj.transform.localPosition, -(Cam_Obj.transform.forward * 5f));
+            Gizmos.DrawWireSphere(kyara_Obj.transform.localPosition + (kyara_Obj.transform.forward * -5f),1f);
+
+            Gizmos.DrawRay(kyara_Obj.transform.localPosition,kyara_Obj.transform.forward * -1 * hit.distance);
+            //Gizmos.DrawWireSphere(kyara_Obj.transform.localPosition + (kyara_Obj.transform.forward * -1 )* hit.distance,1f);
+
+            var pos = Cam_Obj.transform.localPosition;
+            pos = -(Cam_Obj.transform.forward * 5f);
+            Cam_Obj.transform.localPosition = pos;
+        }
+        Debug.Log(hit);
+    }
+    void Ray(){
+
+
+
     }
     /*
     void test(){        

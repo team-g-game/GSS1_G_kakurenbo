@@ -16,6 +16,9 @@ public class Demon_move : MonoBehaviour
         var this_pos = transform.position;
         this_pos.y = 3f;
         ply_obj.transform.position = this_pos;
+
+        Camera cam_comp = cam_obj.GetComponent<Camera>();
+        cam_comp.enabled = true;
     }
 
     // Update is called once per frame
