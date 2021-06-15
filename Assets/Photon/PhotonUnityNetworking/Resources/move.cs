@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class move : MonoBehaviour
 {
+    public Vector3 start_pos;
     public float move_speed;
     public float DPS;
     public GameObject Cam_Obj;
@@ -13,11 +14,7 @@ public class move : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        var pos = kyara_Obj.transform.position;
-        pos.y = 3;
-        pos.x = 10;
-        pos.z = 10;
-        kyara_Obj.transform.position = pos;
+        kyara_Obj.transform.position = start_pos;
 
         Camera cam_comp = Cam_Obj.GetComponent<Camera>();
         cam_comp.enabled = true;

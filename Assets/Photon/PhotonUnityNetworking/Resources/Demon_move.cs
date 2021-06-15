@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Demon_move : MonoBehaviour
 {
+    public Vector3 start_pos;
     public GameObject cam_obj;
     public GameObject ply_obj;
     public float move_speed;
@@ -13,9 +14,7 @@ public class Demon_move : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        var this_pos = transform.position;
-        this_pos.y = 3f;
-        ply_obj.transform.position = this_pos;
+        ply_obj.transform.position = start_pos;
 
         Camera cam_comp = cam_obj.GetComponent<Camera>();
         cam_comp.enabled = true;

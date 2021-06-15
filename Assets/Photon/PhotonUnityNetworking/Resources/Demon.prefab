@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 819629142894818576}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 10, y: 10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8730832371930414867}
@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81192c880ff18e244b58b3812f73e30b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  start_pos: {x: 5, y: 10, z: 0}
   cam_obj: {fileID: 2659302811045990020}
   ply_obj: {fileID: 8258624850119386637}
   move_speed: 10
@@ -61,7 +62,7 @@ SphereCollider:
   m_GameObject: {fileID: 819629142894818576}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 10
   m_Center: {x: 0, y: 0, z: 0}
