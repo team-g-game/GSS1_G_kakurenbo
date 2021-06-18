@@ -6,11 +6,13 @@ public class Catch_player : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private Camera demon_cam;
+    [SerializeField] private int rad = 20;
     private RaycastHit hit; //Raycastの情報を取得するための構造体
     Rect rect = new Rect(0, 0, 1, 1);
     void Start()
     {
-
+        var Col = this.GetComponent<SphereCollider>();
+        Col.radius = rad;
     }
 
     // Update is called once per frame

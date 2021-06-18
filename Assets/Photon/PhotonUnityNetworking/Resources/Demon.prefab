@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5123042809353837617}
   - component: {fileID: 5742557449249843122}
   - component: {fileID: -1433032799528902804}
+  - component: {fileID: 905247343815458443}
   m_Layer: 0
   m_Name: Demon
   m_TagString: Untagged
@@ -62,7 +63,7 @@ SphereCollider:
   m_GameObject: {fileID: 819629142894818576}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 10
   m_Center: {x: 0, y: 0, z: 0}
@@ -107,6 +108,20 @@ MonoBehaviour:
   m_SynchronizeRotation: 0
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &905247343815458443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819629142894818576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b5b5bf67c31c34eacbb5a628ef149d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  demon_cam: {fileID: 3518512768837173240}
+  rad: 30
 --- !u!1 &2659302811045990020
 GameObject:
   m_ObjectHideFlags: 0
