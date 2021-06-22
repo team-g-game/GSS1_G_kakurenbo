@@ -17,6 +17,8 @@ public class Demon_move : MonoBehaviour
         ply_obj.transform.position = start_pos;
 
         Camera cam_comp = cam_obj.GetComponent<Camera>();
+        AudioListener cam_lis = cam_obj.GetComponent<AudioListener>();
+        cam_lis.enabled =true;
         cam_comp.enabled = true;
     }
 

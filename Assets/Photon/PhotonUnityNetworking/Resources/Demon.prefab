@@ -205,7 +205,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2659302811045990020}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &7224547490329122483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,7 +221,7 @@ MonoBehaviour:
   m_SynchronizePosition: 0
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
-  m_UseLocal: 0
+  m_UseLocal: 1
 --- !u!1 &8258624850119386637
 GameObject:
   m_ObjectHideFlags: 0

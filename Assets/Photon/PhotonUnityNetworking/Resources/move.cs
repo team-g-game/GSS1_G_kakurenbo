@@ -17,6 +17,8 @@ public class move : MonoBehaviour
         kyara_Obj.transform.position = start_pos;
 
         Camera cam_comp = Cam_Obj.GetComponent<Camera>();
+        AudioListener cam_lis = Cam_Obj.GetComponent<AudioListener>();
+        cam_lis.enabled = true;
         cam_comp.enabled = true;
     }
 
