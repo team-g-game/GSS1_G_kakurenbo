@@ -9,7 +9,7 @@ public class Scene_mane_Script : MonoBehaviour
     private string room_scene_name = "kyara_taik";
     private string maci_scene_name = "Prototype_var1";
     private string rizarut_scene_name = "rizarut";
-    private int scene_num = 0;
+    public int scene_num = 0;
     public bool scene_chanz = false;
     public float sleep_time = 5f ;//秒
 

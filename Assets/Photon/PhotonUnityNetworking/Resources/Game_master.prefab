@@ -43,10 +43,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b71e60b882ed8c408f3627a36ce0c03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players:
-  - {fileID: 5732032840550335337, guid: 1d9dad4bf6a2629459499ad47f80a21d, type: 3}
-  - {fileID: 2368756383845098342, guid: 8735df6bd2aae8b42b7510e2b889b2d1, type: 3}
-  - {fileID: 7478102059362372175, guid: 8f1e4b2b2e45eae4cac7ae15ef0e239b, type: 3}
-  - {fileID: 1349794678439150829, guid: aa71412d86956cf40aa2a99e540f797b, type: 3}
-  - {fileID: 7234348075239963325, guid: fbe1e2eb950e3b54f8a82e0f595621fd, type: 3}
-  Demon: {fileID: 6767890665620220970, guid: 49cb453a4258d8340b8a0571ff89e671, type: 3}
+  scene_obj: {fileID: 6011533130394701276, guid: 2382b3e772fb54c428f509058f85e9e8, type: 3}

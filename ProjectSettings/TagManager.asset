@@ -8,6 +8,7 @@ TagManager:
   - bullt
   - menu
   - hide_place
+  - scene_mane
   layers:
   - Default
   - TransparentFX

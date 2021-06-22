@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3458823147349122296}
   m_Layer: 0
   m_Name: Scene_mane
-  m_TagString: Untagged
+  m_TagString: scene_mane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,3 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d4bc89fb1b2924ea7373345ead2852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scene_num: 0
+  scene_chanz: 0
+  sleep_time: 5
