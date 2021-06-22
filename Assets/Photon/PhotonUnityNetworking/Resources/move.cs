@@ -59,7 +59,24 @@ public class move : MonoBehaviour
         Cam_Obj.transform.RotateAround(targetPos, Vector3.up, newAngle.x);
         // カメラの垂直移動（※角度制限なし、必要が無ければコメントアウト）
         Cam_Obj.transform.RotateAround(targetPos, Cam_Obj.transform.right, newAngle.y);
-        //OnDrawGizmos();
+                
+        var diff = kyara_Obj.transform.position - Cam_Obj.transform.position;  //プレイヤーとカメラの距離を取得(Vector3)
+        var distance = diff.magnitude;  //Vector3の大きさ
+        var direction = -(diff.normalized);    //Vector3の向き
+        RaycastHit hit; //Raycastの情報を取得するための構造体
+
+        if(Physics.Raycast(kyara_Obj.transform.position, direction, out hit, distance))   //RaycastをPlayer方向に飛ばす
+        {
+            pos = kyara_Obj.transform.position + direction * hit.distance;
+            Cam_Obj.transform.position = pos;
+        }else{
+            var a = kyara_Obj.transform.position + direction * 5f;
+            
+            Cam_Obj.transform.position = a;
+        }
+        Cam_Obj.transform.LookAt(kyara_Obj.transform);
+        
+
         kyara_Obj.transform.rotation = new Quaternion(0,0,0,0);
         var rot = Cam_Obj.transform.rotation;
         rot.x = 0;
@@ -67,29 +84,4 @@ public class move : MonoBehaviour
         kyara_Obj.transform.rotation = rot;
 
     }
-    /*
-    void OnDrawGizmos(){
-        Ray ry = new Ray (kyara_Obj.transform.position , (kyara_Obj.transform.forward * -1) + Cam_Obj.transform.position); 
-        RaycastHit hit;
-        if (Physics.SphereCast(kyara_Obj.transform.position,1f,Cam_Obj.transform.position,out hit,5f)){
-
-            Gizmos.DrawRay(kyara_Obj.transform.position,kyara_Obj.transform.forward * -1 * hit.distance);
-            Gizmos.DrawWireSphere((kyara_Obj.transform.position + Cam_Obj.transform.position)* hit.distance,1f);
-
-            var pos = Cam_Obj.transform.localPosition;
-            pos = kyara_Obj.transform.position + (kyara_Obj.transform.forward * -1 )* hit.distance;
-            Cam_Obj.transform.localPosition = pos;
-        }else{
-            Gizmos.DrawRay(kyara_Obj.transform.position, Cam_Obj.transform.position);
-            Gizmos.DrawWireSphere(kyara_Obj.transform.position + Cam_Obj.transform.position,1f);
-
-            //Gizmos.DrawRay(kyara_Obj.transform.localPosition,kyara_Obj.transform.forward * -1 * hit.distance);
-            //Gizmos.DrawWireSphere(kyara_Obj.transform.localPosition + (kyara_Obj.transform.forward * -1 )* hit.distance,1f);
-
-            var pos = Cam_Obj.transform.localPosition;
-            pos = -(Cam_Obj.transform.forward * 5f);
-            Cam_Obj.transform.localPosition = pos;
-        }
-        Debug.Log(hit);
-    }*/
 }
