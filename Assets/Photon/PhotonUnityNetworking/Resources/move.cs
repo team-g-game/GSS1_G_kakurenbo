@@ -66,7 +66,11 @@ public class move : MonoBehaviour
         var distance = diff.magnitude;  //Vector3の大きさ
         var direction = -(diff.normalized);    //Vector3の向き
         RaycastHit hit; //Raycastの情報を取得するための構造体
-
+        if(direction.y > 0.9f){
+            direction.y = 0.9f;
+        }else if (direction.y < -0.7f){
+            direction.y = -0.7f;
+        }
         if(Physics.Raycast(kyara_Obj.transform.position, direction, out hit, distance))   //RaycastをPlayer方向に飛ばす
         {
             pos = kyara_Obj.transform.position + direction * hit.distance;
@@ -77,6 +81,8 @@ public class move : MonoBehaviour
             Cam_Obj.transform.position = a;
         }
         Cam_Obj.transform.LookAt(kyara_Obj.transform);
+
+        //Debug.Log(direction);
         
 
         kyara_Obj.transform.rotation = new Quaternion(0,0,0,0);
