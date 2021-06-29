@@ -18,6 +18,8 @@ public class Demon_move : MonoBehaviour
 
         Camera cam_comp = cam_obj.GetComponent<Camera>();
         AudioListener cam_lis = cam_obj.GetComponent<AudioListener>();
+        Catch_player ct_ple = this.GetComponent<Catch_player>();
+        ct_ple.enabled = true;
         cam_lis.enabled =true;
         cam_comp.enabled = true;
     }
