@@ -9,51 +9,75 @@ public class Game_cont : MonoBehaviourPunCallbacks
 {
     ExitGames.Client.Photon.Hashtable roomHash;
 
-    // Start is called before the first frame update
+    public List<string> playu_list;
+
+    string play_ID{get{return this.play_ID;}
+        set
+        {
+            this.play_ID = value;
+            Propeties_Hash_string(play_ID,value);
+        }
+    }
+    string play_name {get{return this.play_name;}
+        set
+        {
+            this.play_name = value;
+            Propeties_Hash_string(play_ID,value);
+        }
+    }
+    int haid_int{get{return haid_int;}
+        set
+        {
+            this.haid_int = value;
+            Propeties_Hash_int(play_ID,value);
+        }
+    }
+    bool Chat {get{return this.Chat;} 
+        set
+        {
+            this.Chat = value;
+            Propeties_Hash_bool(play_ID,value);
+        }
+    }
     void Start()
     {
         roomHash = new ExitGames.Client.Photon.Hashtable();
         PhotonNetwork.ConnectUsingSettings();
-
     }
-
-    // Update is called once per frame
     public override void OnConnectedToMaster(){
        // "room"という名前のルームに参加する（ルームが無ければ作成してから参加する）
         PhotonNetwork.JoinOrCreateRoom("room", new RoomOptions(), TypedLobby.Default);
-
     }
     public override void OnJoinedRoom(){
         game_start_up();
-        SetCustomProperties();
     }
-    public void SetCustomProperties()
-    {
-        Hashtable i = new Hashtable();
-        i.Add("aaaa",2);
-        i.Add("rect",10);
-        string[] str = new string[2];
-        str = new string[]{"aaaa","rect"};
-        // ハッシュに要素を追加(同じ名前があるとエラーになる)
-        roomHash["uunnnn"] = str;
-
-        // ハッシュに要素を追加、既に同じ名前のキーがあれば上書き
-        //roomHash["hoge"] = 1;
-
-        // ルームにハッシュを送信する
-        PhotonNetwork.CurrentRoom.SetCustomProperties(roomHash);
-    }
-
     public override void OnRoomPropertiesUpdate(ExitGames.Client.Photon.Hashtable a){
-        Debug.Log(a);
+        string b = a.ToString() + ":" + a.Values.ToString();
+        Debug.Log(b);
+
     }
     void Update()
     {
 
     }
-
-
-
+    public void Propeties_Hash_string(string name,string value)
+    {
+        roomHash[name] = value;
+        // ルームにハッシュを送信する   
+        PhotonNetwork.CurrentRoom.SetCustomProperties(roomHash);
+    }
+        public void Propeties_Hash_int(string name,int value)
+    {
+        roomHash[name] = value;
+        // ルームにハッシュを送信する        
+        PhotonNetwork.CurrentRoom.SetCustomProperties(roomHash);        
+    }
+    public void Propeties_Hash_bool(string name,bool value)
+    {
+        roomHash[name] = value;
+        // ルームにハッシュを送信する        
+        PhotonNetwork.CurrentRoom.SetCustomProperties(roomHash);        
+    }
     void game_start_up(){
         //逃げる側を動かす
         main_play_samon();
