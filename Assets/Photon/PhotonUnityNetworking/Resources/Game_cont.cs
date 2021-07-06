@@ -11,28 +11,28 @@ public class Game_cont : MonoBehaviourPunCallbacks
 
     public List<string> playu_list;
 
-    string play_ID{get{return this.play_ID;}
+    public string play_ID{get{return this.play_ID;}
         set
         {
             this.play_ID = value;
             Propeties_Hash_string(play_ID,value);
         }
     }
-    string play_name {get{return this.play_name;}
+    public string play_name {get{return this.play_name;}
         set
         {
             this.play_name = value;
             Propeties_Hash_string(play_ID,value);
         }
     }
-    int haid_int{get{return haid_int;}
+    public int haid_int{get{return haid_int;}
         set
         {
             this.haid_int = value;
             Propeties_Hash_int(play_ID,value);
         }
     }
-    bool Chat {get{return this.Chat;} 
+    public bool Chat {get{return this.Chat;} 
         set
         {
             this.Chat = value;
@@ -80,9 +80,9 @@ public class Game_cont : MonoBehaviourPunCallbacks
     }
     void game_start_up(){
         //逃げる側を動かす
-        main_play_samon();
+        //main_play_samon();
         //追いかける側を動かす
-        //Demon_samon();
+        Demon_samon();
     }
     void main_play_samon(){
         GameObject players = PhotonNetwork.Instantiate("Play_1_obj",Vector3.zero,Quaternion.identity,0);

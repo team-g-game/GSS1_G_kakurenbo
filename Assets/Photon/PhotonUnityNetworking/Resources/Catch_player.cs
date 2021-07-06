@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class Catch_player : MonoBehaviour
 {
@@ -9,10 +10,14 @@ public class Catch_player : MonoBehaviour
     [SerializeField] private int rad = 20;
     private RaycastHit hit; //Raycastの情報を取得するための構造体
     Rect rect = new Rect(0, 0, 1, 1);
+    GameObject game_manegyr;
+    Game_cont game_mane;
     void Start()
     {
         var Col = this.GetComponent<SphereCollider>();
         Col.radius = rad;
+        game_manegyr = GameObject.FindGameObjectWithTag("game_manegyr");
+        game_mane = game_manegyr.GetComponent<Game_cont>();
     }
 
     // Update is called once per frame
@@ -38,6 +43,8 @@ public class Catch_player : MonoBehaviour
                     if(hit.transform.gameObject == Target)  //軌道上にPlayerがいるとき
                     {
                         Debug.Log("見つけた");
+                        if(game_mane.Chat == false)game_mane.Chat = true;
+                        
                     }
                     else Debug.Log("見つけてない");
 
