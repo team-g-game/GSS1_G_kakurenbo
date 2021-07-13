@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1838894673272720886}
   - component: {fileID: 2637832802347049377}
   - component: {fileID: 4809109855883822117}
+  - component: {fileID: 908670781478128641}
   - component: {fileID: 5871667323781821838}
   m_Layer: 2
   m_Name: Treasure_Collider
@@ -83,7 +84,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 765931487781370622}
-  m_Text: 
+  m_Text: Get
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -97,6 +98,18 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
+--- !u!114 &908670781478128641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765931487781370622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 316fb881e9d8a174886b1eb17c330541, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &5871667323781821838
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -121,6 +134,7 @@ GameObject:
   - component: {fileID: 5460268339175304291}
   - component: {fileID: 8964730114144478150}
   - component: {fileID: 6597186054015735564}
+  - component: {fileID: 550390474569284123}
   m_Layer: 2
   m_Name: treasure
   m_TagString: Untagged
@@ -192,3 +206,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &550390474569284123
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4651397850640119513}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02, y: 0.025, z: 0.025}
+  m_Center: {x: 0, y: 0, z: 0}
