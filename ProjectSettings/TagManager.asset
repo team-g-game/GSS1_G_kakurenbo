@@ -9,6 +9,8 @@ TagManager:
   - menu
   - hide_place
   - scene_mane
+  - game_manegyr
+  - treehouse
   layers:
   - Default
   - TransparentFX

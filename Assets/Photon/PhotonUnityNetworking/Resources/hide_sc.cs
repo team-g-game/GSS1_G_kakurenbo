@@ -11,6 +11,7 @@ public class hide_sc : MonoBehaviour
     Vector3 Hide_before_pos;            //隠れる前のプレイヤーの位置
     GameObject Player_obj;              //プレイヤーの子オブジェクト
     GameObject Parent_Player_obj;       //プレイヤーの親オブジェクト
+    private int Hide_Place = 0;
 
     void OnTriggerEnter(Collider other)
     {
@@ -44,7 +45,9 @@ public class hide_sc : MonoBehaviour
     }
     void Start()
     {
-        
+        if (this.tag == "treehouse"){
+            Hide_Place = 1;
+        }
     }
 
     // Update is called once per frame
@@ -67,7 +70,16 @@ public class hide_sc : MonoBehaviour
                     Player_obj.GetComponent<BoxCollider>().enabled=false;           //コライダー消す
                     Player_obj.GetComponent<MeshRenderer>().enabled=false;          //プレイヤー見えなくする
                     Hide_before_pos = Parent_Player_obj.transform.position;         //プレイヤーの隠れる前の座標保持
-                    Parent_Player_obj.transform.position = this.transform.position; //プレイヤーを隠れる場所の座標に変更
+                    if (Hide_Place == 1){
+                        var pos = this.transform.position;
+                        pos.x += 20;
+                        pos.y += 35;
+                        pos.z += 5;
+                        Parent_Player_obj.transform.position = pos;
+                    }
+                    else if (Hide_Place == 0){
+                        Parent_Player_obj.transform.position = this.transform.position; //プレイヤーを隠れる場所の座標に変更
+                    }
                 }
                 else if(Hidestate == true)          //隠れているとき
                 {
