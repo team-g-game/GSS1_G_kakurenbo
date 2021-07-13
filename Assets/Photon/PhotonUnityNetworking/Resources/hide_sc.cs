@@ -5,13 +5,14 @@ using UnityEngine;
 public class hide_sc : MonoBehaviour
 {
     // Start is called before the first frame update
-    public bool HideTrriger = false;    //隠れることが可能な場所かどうか
-    public bool WatchTrriger = false;   //見ることが可能な場所かどうか
-    public bool Hidestate = false;      //隠れている状態かどうか
+    private bool HideTrriger = false;    //隠れることが可能な場所かどうか
+    private bool WatchTrriger = false;   //見ることが可能な場所かどうか
+    private bool Hidestate = false;      //隠れている状態かどうか  ここがネットワーク経由で変更されるとうれしい
     Vector3 Hide_before_pos;            //隠れる前のプレイヤーの位置
     GameObject Player_obj;              //プレイヤーの子オブジェクト
     GameObject Parent_Player_obj;       //プレイヤーの親オブジェクト
-    private int Hide_Place = 0;
+    private int Hide_Place = 0;         //アタッチしたものがどれか判別する
+    public bool Scapegoat_bool = false; //スケープゴート持ってるかどうか
 
     void OnTriggerEnter(Collider other)
     {
@@ -19,8 +20,11 @@ public class hide_sc : MonoBehaviour
         {
             HideTrriger = true;
             this.GetComponent<MeshRenderer>().enabled=true;//メッシュレンダーの表示
-            Player_obj = other.gameObject;                            
-            Parent_Player_obj = other.transform.parent.gameObject;
+            Player_obj = other.gameObject;                                  //Play_1
+            Parent_Player_obj = other.transform.parent.gameObject;          //Play_1の親
+
+
+            //ここでそのプレイヤーがスケープゴート持ってるかどうか持ってきたい
         }
         if (other.gameObject.name == "Cylinder")
         {
@@ -45,17 +49,16 @@ public class hide_sc : MonoBehaviour
     }
     void Start()
     {
-        if (this.tag == "treehouse"){
-            Hide_Place = 1;
-        }
+        if (this.tag == "treehouse"){Hide_Place = 1;}       //ツリーハウスだった時
     }
 
     // Update is called once per frame
     void Update()
     {
-        hide();
+        Hide();
+        Watch();
     }
-    void hide()
+    void Hide()     //プレイヤーが隠れる時
     {
         if (HideTrriger == true)
         {
@@ -70,14 +73,14 @@ public class hide_sc : MonoBehaviour
                     Player_obj.GetComponent<BoxCollider>().enabled=false;           //コライダー消す
                     Player_obj.GetComponent<MeshRenderer>().enabled=false;          //プレイヤー見えなくする
                     Hide_before_pos = Parent_Player_obj.transform.position;         //プレイヤーの隠れる前の座標保持
-                    if (Hide_Place == 1){
+                    if (Hide_Place == 1){                                           //ツリーハウスのときの座標変更
                         var pos = this.transform.position;
                         pos.x += 20;
                         pos.y += 35;
                         pos.z += 5;
                         Parent_Player_obj.transform.position = pos;
                     }
-                    else if (Hide_Place == 0){
+                    else if (Hide_Place == 0){                                      //そのほかの時の座標変更
                         Parent_Player_obj.transform.position = this.transform.position; //プレイヤーを隠れる場所の座標に変更
                     }
                 }
@@ -88,6 +91,29 @@ public class hide_sc : MonoBehaviour
                     Player_obj.GetComponent<BoxCollider>().enabled=true;            //コライダーつける
                     Player_obj.GetComponent<MeshRenderer>().enabled=true;           //プレイヤー見える
                     Parent_Player_obj.transform.position = Hide_before_pos;         //プレイヤーの位置を戻す
+                }
+            }
+        }
+    }
+
+    void Watch()        //鬼が見つけるとき
+    {
+        if (WatchTrriger == true)       //隠れている場所を見ることができる
+        {
+            if (Input.GetKeyDown(KeyCode.E))    //Eボタン押したとき
+            {
+                if (Hidestate == true){          //隠れているなら
+                    if (Scapegoat_bool == true){ //スケープゴート持ってるなら
+                        Debug.Log("いないよ");
+                    }
+                    else {
+                        Debug.Log("見つけた");                        
+                    }
+
+                }
+                else                            //いないなら
+                {
+                    Debug.Log("いないよ");
                 }
             }
         }
