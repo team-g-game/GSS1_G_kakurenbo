@@ -43,7 +43,7 @@ public class Catch_player : MonoBehaviour
                     if(hit.transform.gameObject == Target)  //軌道上にPlayerがいるとき
                     {
                         Debug.Log("見つけた");
-                        if(game_mane.Chat == false)game_mane.Chat = true;
+                        if(game_mane.Catch == false)game_mane.Catch = true;
                         
                     }
                     else Debug.Log("見つけてない");

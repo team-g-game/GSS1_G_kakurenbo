@@ -10,33 +10,37 @@ public class Game_cont : MonoBehaviourPunCallbacks
     ExitGames.Client.Photon.Hashtable roomHash;
 
     public List<string> playu_list;
+    private string _play_ID;
 
-    public string play_ID{get{return this.play_ID;}
+    public string play_ID{get{return this._play_ID;}
         set
         {
-            this.play_ID = value;
-            Propeties_Hash_string(play_ID,value);
+            this._play_ID = value;
+            Propeties_Hash_string("play_ID",_play_ID);
         }
     }
-    public string play_name {get{return this.play_name;}
+    private string _play_name;
+    public string play_name {get{return this._play_name;}
         set
         {
-            this.play_name = value;
-            Propeties_Hash_string(play_ID,value);
+            this._play_name = value;
+            Propeties_Hash_string("name",_play_name);
         }
     }
-    public int haid_int{get{return haid_int;}
+    private int _haid_int;
+    public int haid_int{get{return _haid_int;}
         set
         {
-            this.haid_int = value;
-            Propeties_Hash_int(play_ID,value);
+            this._haid_int = value;
+            Propeties_Hash_int("haid_int",_haid_int);
         }
     }
-    public bool Chat {get{return this.Chat;} 
+    private bool _Catch = false;
+    public bool Catch {get{return this._Catch;} 
         set
         {
-            this.Chat = value;
-            Propeties_Hash_bool(play_ID,value);
+            this._Catch = value;
+            Propeties_Hash_bool("Catch",_Catch);
         }
     }
     void Start()
