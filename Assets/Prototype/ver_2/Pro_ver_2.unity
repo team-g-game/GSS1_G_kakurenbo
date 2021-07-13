@@ -424,12 +424,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage
       objectReference: {fileID: 0}
-<<<<<<< HEAD
-    - target: {fileID: 6459454411372716711, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
-      propertyPath: m_EnableTreeColliders
-      value: 0
-      objectReference: {fileID: 0}
-=======
     - target: {fileID: 2454792193598081783, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_Layer
       value: 2
@@ -498,7 +492,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
->>>>>>> team_g_1_rep/master
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
 --- !u!1 &8179442972942788944 stripped
