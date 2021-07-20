@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Photon;
+using Photon.Realtime;
 public class move : MonoBehaviour
 {
     public Vector3 start_pos;
@@ -12,10 +14,15 @@ public class move : MonoBehaviour
     Vector3 targetPos;
     private Vector2 newAngle = new Vector2(0,0);
     private PhotonView view = null;
+    public string playe_id;
 
     void Awake(){
         view = GetComponent<PhotonView>();
+        
         if(view.IsMine){
+            
+            playe_id = PhotonNetwork.LocalPlayer.UserId;
+            //Debug.Log(playe_id);
             Camera cam_comp = Cam_Obj.GetComponent<Camera>();
             AudioListener cam_lis = Cam_Obj.GetComponent<AudioListener>();
             cam_lis.enabled = true;

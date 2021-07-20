@@ -43,7 +43,13 @@ public class Catch_player : MonoBehaviour
                     if(hit.transform.gameObject == Target)  //軌道上にPlayerがいるとき
                     {
                         Debug.Log("見つけた");
-                        if(game_mane.Catch == false)game_mane.Catch = true;
+                        //bool player = game_mane.players[Target.GetComponent<move>().playe_id].Catch;
+                        if(game_mane.players[Target.GetComponent<move>().playe_id].Catch == false)
+                        {
+                            game_mane.players[Target.GetComponent<move>().playe_id].Catch = true;
+                            Debug.Log(game_mane.players[Target.GetComponent<move>().playe_id].Catch);
+                        }
+
                         
                     }
                     else Debug.Log("見つけてない");

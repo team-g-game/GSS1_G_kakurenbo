@@ -14,6 +14,9 @@ public class Demon_move : MonoBehaviour
 
     private PhotonView view = null;
 
+    public string Player_name;
+    public string Player_id;
+
     void Awake(){
         view = GetComponent<PhotonView>();
         if(view.IsMine){
