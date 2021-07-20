@@ -31,15 +31,15 @@ public class Item_Get : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Hide();
+        Pick_Up();
     }
-    void Hide()     //プレイヤーが隠れる時
+    void Pick_Up()     //プレイヤーがアイテムを拾う時
     {
         if (ItemTrriger == true)
         {
-            if (Input.GetKeyDown(KeyCode.E))//Eキーを押したときの判定
+            if (Input.GetKeyDown(KeyCode.F))//Fキーを押したときの判定
             {
-                Debug.Log("ok");//隠れる場所にカメラ移動させる物を後で追加
+                Debug.Log("ok");//アイテムの挙動
             }
         }
     }
