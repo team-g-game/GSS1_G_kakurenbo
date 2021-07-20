@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Prototype/rizarut/rizarut.unity
     guid: ecd9f43e5c9f0a04f8b3b1198ac822a9
+  - enabled: 1
+    path: Assets/Scenes/title.unity
+    guid: f41f996d9f2e38c439fb67f7ea844242
+  - enabled: 1
+    path: Assets/Scenes/room choise.unity
+    guid: d78d0c573cc3be1428e04779ec28a643
   m_configObjects: {}
