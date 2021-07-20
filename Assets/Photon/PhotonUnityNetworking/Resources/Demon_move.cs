@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class Demon_move : MonoBehaviour
 {
@@ -11,17 +12,30 @@ public class Demon_move : MonoBehaviour
     public int DPS;
     private Vector2 newAngle = new Vector2(0,0);
 
+    private PhotonView view = null;
+
+    public string Player_name;
+    public string Player_id;
+
+    void Awake(){
+        view = GetComponent<PhotonView>();
+        if(view.IsMine){
+            Camera cam_comp = cam_obj.GetComponent<Camera>();
+            AudioListener cam_lis = cam_obj.GetComponent<AudioListener>();
+            Catch_player ct_ple = this.GetComponent<Catch_player>();
+            ct_ple.enabled = true;
+            cam_lis.enabled =true;
+            cam_comp.enabled = true;                    
+        }
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         ply_obj.transform.position = start_pos;
 
-        Camera cam_comp = cam_obj.GetComponent<Camera>();
-        AudioListener cam_lis = cam_obj.GetComponent<AudioListener>();
-        Catch_player ct_ple = this.GetComponent<Catch_player>();
-        ct_ple.enabled = true;
-        cam_lis.enabled =true;
-        cam_comp.enabled = true;
+
     }
 
     // Update is called once per frame
@@ -34,7 +48,7 @@ public class Demon_move : MonoBehaviour
         if(Input.GetKey(KeyCode.D)) this_pos += ply_obj.transform.right * Time.deltaTime * move_speed;
         if(Input.GetKey(KeyCode.S)) this_pos -= ply_obj.transform.forward * Time.deltaTime * move_speed;
         
-        if (ply_obj.transform.localPosition.x == Vector3.zero.x &&ply_obj.transform.localPosition.z == Vector3.zero.x){
+        if (ply_obj.transform.localPosition.x == Vector3.zero.x &&ply_obj.transform.localPosition.z == Vector3.zero.x && view.IsMine){
             transform.position = this_pos;
         }else{
             var kyara = ply_obj.transform.position;
@@ -61,6 +75,11 @@ public class Demon_move : MonoBehaviour
         this_rot.x = 0;
         this_rot.z = 0;
         ply_obj.transform.rotation = this_rot;
+        /*
+        this_rot = cam_obj.transform.rotation;
+        this_rot.z = 0;
+        cam_obj.transform.rotation = this_rot;
+        */
         cam_obj.transform.localPosition = new Vector3(0,ply_obj.transform.position.y + 0.8f,0);
     }
     
