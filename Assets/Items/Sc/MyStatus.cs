@@ -16,9 +16,9 @@ private void Start() {
         itemFlags.Add(item.GetItemName(), false);
     }
     //　とりあえず適当にアイテムを持っていることにする
-    itemFlags["FlashLight"] = true;
-    itemFlags["BroadSword"] = true;
-    itemFlags["HandGun"] = true;
+    itemFlags["木材"] = true;
+    itemFlags["ひも"] = true;
+    itemFlags["枝"] = true;
 }
  
 //　アイテムを所持しているかどうか
