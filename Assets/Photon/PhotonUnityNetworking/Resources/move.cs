@@ -15,6 +15,9 @@ public class move : MonoBehaviour
     private Vector2 newAngle = new Vector2(0,0);
     private PhotonView view = null;
     public string playe_id;
+    public static int MyPlayerViewId = 0;　//自分のViewIdを入れる
+    public static List<int> PlayerViewIdsList = new List<int>();    //プレイヤー全員のViewIdが入る
+
 
     void Awake(){
         view = GetComponent<PhotonView>();
@@ -26,9 +29,10 @@ public class move : MonoBehaviour
             Camera cam_comp = Cam_Obj.GetComponent<Camera>();
             AudioListener cam_lis = Cam_Obj.GetComponent<AudioListener>();
             cam_lis.enabled = true;
-            cam_comp.enabled = true;            
+            cam_comp.enabled = true; 
+            MyPlayerViewId = view.ViewID;
+            PlayerViewIdsList.Add(view.ViewID);
         }
-
     }
     // Start is called before the first frame update
     void Start()
@@ -109,5 +113,19 @@ public class move : MonoBehaviour
         }
 
 
+        if (Game_cont.JoinRoomFlag == true){
+            CreatePlayerIdsList();
+        }
+    }
+    
+    public static int GetViewId(){
+        return MyPlayerViewId;
+    }
+
+    void CreatePlayerIdsList(){
+        view = GetComponent<PhotonView>();
+        if (!(PlayerViewIdsList.Contains(view.ViewID))){
+            PlayerViewIdsList.Add(view.ViewID);
+        }
     }
 }
