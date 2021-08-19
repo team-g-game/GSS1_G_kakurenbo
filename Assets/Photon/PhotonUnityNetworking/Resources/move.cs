@@ -139,7 +139,8 @@ public class move : MonoBehaviour
     /// 送られてきたハッシュで隠れている場合に、プレイヤーを表示しないようにする
     /// </summary>
     void UpdateCharacterVisualTrriger(){
-        if (ScriptGameCont.GetPlayerInfo(MovePlayerViewId.ToString(), "HidePlace") == "0"){
+        if (ScriptGameCont.GetPlayerInfo(MovePlayerViewId.ToString(), "HidePlace") == ""){}
+        else if (ScriptGameCont.GetPlayerInfo(MovePlayerViewId.ToString(), "HidePlace") == "0"){
             hide_sc.VisualTrriger(kyara_Obj, true);
         }
         else{
