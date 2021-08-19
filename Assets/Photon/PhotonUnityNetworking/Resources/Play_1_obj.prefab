@@ -661,6 +661,8 @@ MonoBehaviour:
   Cam_Obj: {fileID: 8129261677789164287}
   kyara_Obj: {fileID: 4853169220070208221}
   playe_id: 
+  MovePlayerViewId: 0
+  GameManager: {fileID: 0}
 --- !u!114 &1604729414670256696
 MonoBehaviour:
   m_ObjectHideFlags: 0

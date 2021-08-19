@@ -17,6 +17,10 @@ public class move : MonoBehaviour
     public string playe_id;
     public static int MyPlayerViewId = 0;　//自分のViewIdを入れる
     public static List<int> PlayerViewIdsList = new List<int>();    //プレイヤー全員のViewIdが入る
+    public int MovePlayerViewId;
+    private bool CheckMovePlayerViewId = false;
+    public GameObject GameManager;  //Game_masterを入れる
+    private Game_cont ScriptGameCont;   //Game_contの関数使えるようにする
 
 
     void Awake(){
@@ -38,6 +42,8 @@ public class move : MonoBehaviour
     void Start()
     {
         kyara_Obj.transform.position = start_pos;
+        GameManager = GameObject.Find("Game_master");
+        ScriptGameCont = GameManager.GetComponent<Game_cont>();
     }
 
 
@@ -116,16 +122,28 @@ public class move : MonoBehaviour
         if (Game_cont.JoinRoomFlag == true){
             CreatePlayerIdsList();
         }
-    }
-    
-    public static int GetViewId(){
-        return MyPlayerViewId;
+        if (CheckMovePlayerViewId == false){
+            MovePlayerViewId = GetComponent<PhotonView>().ViewID;
+        }
+        UpdateCharacterVisualTrriger();
     }
 
     void CreatePlayerIdsList(){
         view = GetComponent<PhotonView>();
         if (!(PlayerViewIdsList.Contains(view.ViewID))){
             PlayerViewIdsList.Add(view.ViewID);
+        }
+    }
+    
+    /// <summary>
+    /// 送られてきたハッシュで隠れている場合に、プレイヤーを表示しないようにする
+    /// </summary>
+    void UpdateCharacterVisualTrriger(){
+        if (ScriptGameCont.GetPlayerInfo(MovePlayerViewId.ToString(), "HidePlace") == "0"){
+            hide_sc.VisualTrriger(kyara_Obj, true);
+        }
+        else{
+            hide_sc.VisualTrriger(kyara_Obj, false);
         }
     }
 }

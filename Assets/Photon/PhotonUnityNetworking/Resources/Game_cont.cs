@@ -160,7 +160,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
     /// PlayerInfoListの指定したプレイヤーの情報をオンラインハッシュに送る
     /// </summary>
     /// <param name="PlayerNum">プレイヤー番号</param>
-    void SendPlayerInfo(int PlayerNum){
+    public void SendPlayerInfo(int PlayerNum){
         string PlayerId = CreatePlayerKey(PlayerNum);
         string SendValue = CreatePlayerValue(PlayerNum);
         Propeties_Hash_string(PlayerId,SendValue);
@@ -174,7 +174,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
     /// <param name="PlayerNum">プレイヤー番号</param>
     /// <param name="ChangeElement">変えたい要素</param>
     /// <param name="ChangeContent">変わったあとの内容</param>
-    void ChangePlayerList(int PlayerNum, string ChangeElement, string ChangeContent){   //プレイヤー番号、変えたい要素、変わったあとの内容
+    public void ChangePlayerList(int PlayerNum, string ChangeElement, string ChangeContent){   //プレイヤー番号、変えたい要素、変わったあとの内容
         var example = PlayerInfoList[PlayerNum];
         if (ChangeElement == "CatchFlag"){
             example.PCatchFlag = System.Convert.ToBoolean(ChangeContent);
@@ -231,6 +231,44 @@ public class Game_cont : MonoBehaviourPunCallbacks
         return PlayerValue;
     }
 
+    /// <summary>
+    /// プレイヤー情報をViewIdで指定して、持ってくる。持ってきたい要素、HidePlace,CatchFlag
+    /// </summary>
+    /// <param name="PlayerViewId">持ってきたいプレイヤーのViewId</param>
+    /// <param name="GetElement">持ってきたい要素</param>
+    /// <returns></returns>
+    public string GetPlayerInfo(string PlayerViewId, string GetElement){
+        string Content = "";
+        for (int i = 0; i < PlayerInfoList.Count; ++i){
+            if (PlayerInfoList[i].PViewId.ToString() == PlayerViewId){
+                if (GetElement == "CatchFlag"){
+                    Content = PlayerInfoList[0].PCatchFlag.ToString();
+                }
+                else if(GetElement == "HidePlace"){
+                    Content = PlayerInfoList[0].PHidePlace.ToString();
+                }
+                else {
+                    Debug.Log("naiyo" + PlayerViewId);
+                }
+            }
+        }
+        return Content;
+    }
+
+    /// <summary>
+    /// プレイヤーのViewIdをから、PlayerInfoListのIndexを返す。
+    /// </summary>
+    /// <param name="PlayerViewId"></param>
+    /// <returns></returns>
+    public int GetPlayerInfoIndex(string PlayerViewId){
+        int Index = 0;
+        for (int i = 0; i < PlayerInfoList.Count; ++i){
+            if (PlayerViewId == PlayerInfoList[i].PViewId.ToString()){
+                Index = i;
+            }
+        }
+        return Index;
+    }
 
     /// <summary>
     /// string型のハッシュをオンラインに送信する
