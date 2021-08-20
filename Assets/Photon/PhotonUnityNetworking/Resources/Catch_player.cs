@@ -10,10 +10,14 @@ public class Catch_player : MonoBehaviour
     [SerializeField] private int rad = 20;
     private RaycastHit hit; //Raycastの情報を取得するための構造体
     Rect rect = new Rect(0, 0, 1, 1);
+    public GameObject GameManager;  //Game_masterを入れる
+    private Game_cont ScriptGameCont;   //Game_contの関数使えるようにする
     void Start()
     {
         var Col = this.GetComponent<SphereCollider>();
         Col.radius = rad;
+        GameManager = GameObject.Find("Game_master");
+        ScriptGameCont = GameManager.GetComponent<Game_cont>();
     }
 
     // Update is called once per frame
@@ -24,31 +28,36 @@ public class Catch_player : MonoBehaviour
 
     void OnTriggerStay(Collider hako)   //コライダーの中にいるとき呼び出される関数
     {
-        if (hako.gameObject.CompareTag("Player"))   //コライダーのtagがPlayerであるとき
-        {
-            GameObject Target = GameObject.Find($"{hako.name}");    //Playerの名前を取得
-            var diff = Target.transform.position - demon_cam.transform.position;  //プレイヤーと鬼の距離を取得(Vector3)
-            var distance = diff.magnitude;  //Vector3の大きさ
-            var direction = diff.normalized;    //Vector3の向き
-            var viewportPos = demon_cam.WorldToViewportPoint(Target.transform.position);
-
-            if(rect.Contains(viewportPos) && GetComponent<PhotonView>().IsMine)//自分が鬼なら見つけたlogを出す
+        if (Game_cont.DemonFlag == true && Game_cont.CreatePlayerListFlag == true){ //鬼である、かつ、プレイヤーリスト作った後
+            if (hako.gameObject.CompareTag("Player"))   //コライダーのtagがPlayerであるとき
             {
-                if(Physics.Raycast(demon_cam.transform.position, direction, out hit, distance))   //RaycastをPlayer方向に飛ばす
-                {
-                    if(hit.transform.gameObject == Target)  //軌道上にPlayerがいるとき
-                    {
-                        Debug.Log("見つけた");
-                    }
-                    else{
-                        Debug.Log("見つけてない");
-                    }                         
-                }
-            }
-            else{
-                Debug.Log("画面外だよ");
-            }
+                GameObject Target = GameObject.Find($"{hako.name}");    //Playerの名前を取得
+                var diff = Target.transform.position - demon_cam.transform.position;  //プレイヤーと鬼の距離を取得(Vector3)
+                var distance = diff.magnitude;  //Vector3の大きさ
+                var direction = diff.normalized;    //Vector3の向き
+                var viewportPos = demon_cam.WorldToViewportPoint(Target.transform.position);
 
+                if(rect.Contains(viewportPos) && GetComponent<PhotonView>().IsMine)//自分が鬼なら見つけたlogを出す
+                {
+                    if(Physics.Raycast(demon_cam.transform.position, direction, out hit, distance))   //RaycastをPlayer方向に飛ばす
+                    {
+                        if(hit.transform.gameObject == Target)  //軌道上にPlayerがいるとき
+                        {
+                            Debug.Log("見つけた");
+                            PhotonView View = hako.transform.parent.gameObject.GetComponent<PhotonView>();
+                            ScriptGameCont.UpdatePlayerInfoAndHash(View.ViewID.ToString(), "CatchFlag", "true");
+                            ScriptGameCont.UpdatePlayerInfoAndHash(View.ViewID.ToString(),"HidePlace", "100");
+                        }
+                        else{
+                            Debug.Log("見つけてない");
+                        }                         
+                    }
+                }
+                else{
+                    Debug.Log("画面外だよ");
+                }
+
+            }
         }
     }
 }

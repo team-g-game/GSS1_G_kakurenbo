@@ -21,6 +21,7 @@ public class move : MonoBehaviour
     private bool CheckMovePlayerViewId = false;
     public GameObject GameManager;  //Game_masterを入れる
     private Game_cont ScriptGameCont;   //Game_contの関数使えるようにする
+    private bool VisualFlag = true;
 
 
     void Awake(){
@@ -141,10 +142,20 @@ public class move : MonoBehaviour
     void UpdateCharacterVisualTrriger(){
         if (ScriptGameCont.GetPlayerInfo(MovePlayerViewId.ToString(), "HidePlace") == ""){}
         else if (ScriptGameCont.GetPlayerInfo(MovePlayerViewId.ToString(), "HidePlace") == "0"){
-            hide_sc.VisualTrriger(kyara_Obj, true);
+            if (VisualFlag == true){
+                hide_sc.VisualTrriger(kyara_Obj, true);
+                VisualFlag = false;
+            }
         }
-        else{
+        else if (ScriptGameCont.GetPlayerInfo(MovePlayerViewId.ToString(), "HidePlace") == "100"){
             hide_sc.VisualTrriger(kyara_Obj, false);
+            kyara_Obj.GetComponent<MeshRenderer>().enabled=true;           //プレイヤー見える
+        }
+        else {
+            if (VisualFlag == false){
+                hide_sc.VisualTrriger(kyara_Obj, false);
+                VisualFlag = true;
+            }
         }
     }
 }

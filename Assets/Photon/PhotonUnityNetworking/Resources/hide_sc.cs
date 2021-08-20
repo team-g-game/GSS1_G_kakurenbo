@@ -112,7 +112,16 @@ public class hide_sc : MonoBehaviour
                         Debug.Log("いないよ");
                     }
                     else {
-                        Debug.Log("見つけた");                        
+                        for (int i = 0; i < ScriptGameCont.GetPlayerInfoListCount(); ++i){
+                            if (HidePlaceNum.ToString() == ScriptGameCont.GetPlayerInfoFromIndex(i, "HidePlace")){
+                                Debug.Log("見つけた");
+                                string PlayerViewId = ScriptGameCont.GetPlayerViewIdFromListByIndex(i).ToString();
+                                ScriptGameCont.UpdatePlayerInfoAndHash(PlayerViewId,"CatchFlag", "true");
+                                ScriptGameCont.UpdatePlayerInfoAndHash(PlayerViewId,"HidePlace", "100");
+                                Debug.Log(ScriptGameCont.GetPlayerInfo(PlayerViewId,"CatchFlag"));
+                                Debug.Log(ScriptGameCont.GetPlayerInfo(PlayerViewId,"HidePlace"));
+                            }
+                        }
                     }
 
                 }
@@ -130,7 +139,7 @@ public class hide_sc : MonoBehaviour
     /// <param name="HidePlaceNumber">隠れる場所の識別番号</param>
     void UpdateHidePlaceNumber(int HidePlaceNumber){
         View = Parent_Player_obj.GetComponent<PhotonView>();
-        int Index = ScriptGameCont.GetPlayerInfoIndex(View.ViewID.ToString());
+        int Index = ScriptGameCont.GetPlayerInfoIndexFromViewId(View.ViewID.ToString());
         ScriptGameCont.ChangePlayerList(Index, "HidePlace", HidePlaceNumber.ToString());
         ScriptGameCont.SendPlayerInfo(Index);
         string place = ScriptGameCont.GetPlayerInfo(View.ViewID.ToString(), "HidePlace");

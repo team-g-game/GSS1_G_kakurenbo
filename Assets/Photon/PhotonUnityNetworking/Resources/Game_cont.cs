@@ -25,6 +25,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
     List<PlayerInfo> PlayerInfoList = new List<PlayerInfo>();   //プレイヤーの全情報が入ってる
     public static bool JoinRoomFlag = false;    //ルームに参加したタイミングを判定
     public static bool DemonFlag = false;       //鬼側のフラグ
+    public static bool CreatePlayerListFlag = false;    //プレイヤーリストを生成したタイミングを判定
 
     void Start()
     {
@@ -157,10 +158,40 @@ public class Game_cont : MonoBehaviourPunCallbacks
     /// 全プレイヤーの情報リストを作成
     /// </summary>
     void CreatePlayerList(){
-        for (int i = 1; i < move.PlayerViewIdsList.Count; ++i){
+        CreatePlayerListFlag = true;
+        if (DemonFlag == false){
+            for (int i = 1; i < move.PlayerViewIdsList.Count; ++i){
             Player2 = new PlayerInfo(move.PlayerViewIdsList[i], 0, false);
             PlayerInfoList.Add(Player2);
+            }
         }
+        else {
+            for (int i = 0; i < move.PlayerViewIdsList.Count; ++i){
+            Player2 = new PlayerInfo(move.PlayerViewIdsList[i], 0, false);
+            PlayerInfoList.Add(Player2);
+            } 
+        }
+    }
+
+    /// <summary>
+    /// ただプレイヤー情報リストの長さを取りたい。
+    /// </summary>
+    /// <returns></returns>
+    public int GetPlayerInfoListCount(){
+        int Count = 0;
+        Count = PlayerInfoList.Count;
+        return Count;
+    }
+
+    /// <summary>
+    /// PlayerInfoListのインデックスからViewIdを取る。
+    /// </summary>
+    /// <param name="PlayerInfoListIndex">取りたいプレイヤーのインデックス</param>
+    /// <returns></returns>
+    public int GetPlayerViewIdFromListByIndex(int PlayerInfoListIndex){
+        int ViewId = 0;
+        ViewId = PlayerInfoList[PlayerInfoListIndex].PViewId;
+        return ViewId;
     }
 
     /// <summary>
@@ -210,11 +241,31 @@ public class Game_cont : MonoBehaviourPunCallbacks
     }
 
     /// <summary>
+    /// プレイヤー情報をインデックス指定で持ってくる
+    /// </summary>
+    /// <param name="PlayerInfoListIndex">持ってきたいプレイヤーのインデックス</param>
+    /// <param name="GetElement">持ってきたい要素、HidePlace,CatchFlag</param>
+    /// <returns></returns>
+    public string GetPlayerInfoFromIndex(int PlayerInfoListIndex, string GetElement){
+        string Content = "";
+        if (GetElement == "CatchFlag"){
+            Content = PlayerInfoList[PlayerInfoListIndex].PCatchFlag.ToString();
+        }
+        else if(GetElement == "HidePlace"){
+            Content = PlayerInfoList[PlayerInfoListIndex].PHidePlace.ToString();
+        }
+        else {
+            Debug.Log("naiyo" + PlayerInfoListIndex + GetElement);
+        }
+        return Content;
+    }
+
+    /// <summary>
     /// プレイヤーのViewIdをから、PlayerInfoListのIndexを返す。
     /// </summary>
     /// <param name="PlayerViewId"></param>
     /// <returns></returns>
-    public int GetPlayerInfoIndex(string PlayerViewId){
+    public int GetPlayerInfoIndexFromViewId(string PlayerViewId){
         int Index = 0;
         for (int i = 0; i < PlayerInfoList.Count; ++i){
             if (PlayerViewId == PlayerInfoList[i].PViewId.ToString()){
@@ -222,6 +273,26 @@ public class Game_cont : MonoBehaviourPunCallbacks
             }
         }
         return Index;
+    }
+
+    /// <summary>
+    /// プレイヤーのViewIdを指定して、情報の更新と送信をする
+    /// </summary>
+    /// <param name="PlayerViewId">プレイヤーのViewId</param>
+    /// <param name="UpdateElement">更新したい要素、HidePlace,CatchFlag</param>
+    /// <param name="UpdateContet">更新内容</param>
+    public void UpdatePlayerInfoAndHash(string PlayerViewId, string UpdateElement, string UpdateContet){
+        int Index = GetPlayerInfoIndexFromViewId(PlayerViewId);
+        if (UpdateElement == "HidePlace"){
+            ChangePlayerList(Index, "HidePlace", UpdateContet);
+        }
+        else if (UpdateElement == "CatchFlag"){
+            ChangePlayerList(Index, "CatchFlag", UpdateContet);
+        }
+        else {
+            Debug.Log("更新できてない" + PlayerViewId + UpdateElement);
+        }
+        SendPlayerInfo(Index);
     }
 
     /// <summary>
