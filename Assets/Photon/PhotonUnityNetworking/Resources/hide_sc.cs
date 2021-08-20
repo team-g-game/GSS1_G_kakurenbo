@@ -8,7 +8,7 @@ public class hide_sc : MonoBehaviour
     // Start is called before the first frame update
     private bool HideTrriger = false;    //隠れることが可能な場所かどうか
     private bool WatchTrriger = false;   //見ることが可能な場所かどうか
-    public bool Hidestate = false;      //隠れている状態かどうか  ここがネットワーク経由で変更されるとうれしい
+    private bool Hidestate = false;      //隠れている状態かどうか  ここがネットワーク経由で変更されるとうれしい
     Vector3 Hide_before_pos;            //隠れる前のプレイヤーの位置
     GameObject Player_obj;              //プレイヤーの子オブジェクト
     GameObject Parent_Player_obj;       //プレイヤーの親オブジェクト
@@ -24,10 +24,13 @@ public class hide_sc : MonoBehaviour
     {
         if (other.gameObject.name == "Play_1")
         {
-            HideTrriger = true;
-            this.GetComponent<MeshRenderer>().enabled=true;//メッシュレンダーの表示
             Player_obj = other.gameObject;                                  //Play_1
             Parent_Player_obj = other.transform.parent.gameObject;          //Play_1の親
+            View = Parent_Player_obj.GetComponent<PhotonView>();
+            if (View.IsMine){           //自分のときだけ実行するようにしないといけない
+                HideTrriger = true;
+                this.GetComponent<MeshRenderer>().enabled=true;//メッシュレンダーの表示
+            }
 
 
             //ここでそのプレイヤーがスケープゴート持ってるかどうか持ってきたい
@@ -62,8 +65,12 @@ public class hide_sc : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Hide();
-        Watch();
+        if (Game_cont.DemonFlag == false){
+            Hide();
+        }
+        else {
+            Watch();
+        } 
     }
     void Hide()     //プレイヤーが隠れる時
     {
@@ -107,27 +114,23 @@ public class hide_sc : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))    //Eボタン押したとき
             {
-                if (Hidestate == true){          //隠れているなら
-                    if (Scapegoat_bool == true){ //スケープゴート持ってるなら
-                        Debug.Log("いないよ");
-                    }
-                    else {
-                        for (int i = 0; i < ScriptGameCont.GetPlayerInfoListCount(); ++i){
-                            if (HidePlaceNum.ToString() == ScriptGameCont.GetPlayerInfoFromIndex(i, "HidePlace")){
-                                Debug.Log("見つけた");
-                                string PlayerViewId = ScriptGameCont.GetPlayerViewIdFromListByIndex(i).ToString();
-                                ScriptGameCont.UpdatePlayerInfoAndHash(PlayerViewId,"CatchFlag", "true");
-                                ScriptGameCont.UpdatePlayerInfoAndHash(PlayerViewId,"HidePlace", "100");
-                                Debug.Log(ScriptGameCont.GetPlayerInfo(PlayerViewId,"CatchFlag"));
-                                Debug.Log(ScriptGameCont.GetPlayerInfo(PlayerViewId,"HidePlace"));
-                            }
+                if (Scapegoat_bool == true){ //スケープゴート持ってるなら
+                    Debug.Log("いないよスケープ");
+                }
+                else {
+                    for (int i = 0; i < ScriptGameCont.GetPlayerInfoListCount(); ++i){
+                        if (HidePlaceNum.ToString() == ScriptGameCont.GetPlayerInfoFromIndex(i, "HidePlace")){
+                            Debug.Log("見つけた");
+                            string PlayerViewId = ScriptGameCont.GetPlayerViewIdFromListByIndex(i).ToString();
+                            ScriptGameCont.UpdatePlayerInfoAndHash(PlayerViewId,"CatchFlag", "true");
+                            ScriptGameCont.UpdatePlayerInfoAndHash(PlayerViewId,"HidePlace", "100");
+                            Debug.Log(ScriptGameCont.GetPlayerInfo(PlayerViewId,"CatchFlag"));
+                            Debug.Log(ScriptGameCont.GetPlayerInfo(PlayerViewId,"HidePlace"));
+                        }
+                        else{
+                            Debug.Log("いないよ人数分");
                         }
                     }
-
-                }
-                else                            //いないなら
-                {
-                    Debug.Log("いないよ");
                 }
             }
         }
