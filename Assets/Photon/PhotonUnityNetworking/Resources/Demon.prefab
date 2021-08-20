@@ -54,6 +54,8 @@ MonoBehaviour:
   ply_obj: {fileID: 8258624850119386637}
   move_speed: 10
   DPS: 2
+  Player_name: 
+  Player_id: 
 --- !u!135 &5123042809353837617
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -122,6 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   demon_cam: {fileID: 3518512768837173240}
   rad: 30
+  GameManager: {fileID: 7997567491265549792, guid: 92fbceea1728d8949ba5d67bccb17e6d, type: 3}
 --- !u!1 &2659302811045990020
 GameObject:
   m_ObjectHideFlags: 0

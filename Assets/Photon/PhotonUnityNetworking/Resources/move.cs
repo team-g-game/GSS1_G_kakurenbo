@@ -15,6 +15,14 @@ public class move : MonoBehaviour
     private Vector2 newAngle = new Vector2(0,0);
     private PhotonView view = null;
     public string playe_id;
+    public static int MyPlayerViewId = 0;　//自分のViewIdを入れる
+    public static List<int> PlayerViewIdsList = new List<int>();    //プレイヤー全員のViewIdが入る
+    public int MovePlayerViewId;
+    private bool CheckMovePlayerViewId = false;
+    public GameObject GameManager;  //Game_masterを入れる
+    private Game_cont ScriptGameCont;   //Game_contの関数使えるようにする
+    private bool VisualFlag = true;
+
 
     void Awake(){
         view = GetComponent<PhotonView>();
@@ -26,14 +34,17 @@ public class move : MonoBehaviour
             Camera cam_comp = Cam_Obj.GetComponent<Camera>();
             AudioListener cam_lis = Cam_Obj.GetComponent<AudioListener>();
             cam_lis.enabled = true;
-            cam_comp.enabled = true;            
+            cam_comp.enabled = true; 
+            MyPlayerViewId = view.ViewID;
+            PlayerViewIdsList.Add(view.ViewID);
         }
-
     }
     // Start is called before the first frame update
     void Start()
     {
         kyara_Obj.transform.position = start_pos;
+        GameManager = GameObject.Find("Game_master");
+        ScriptGameCont = GameManager.GetComponent<Game_cont>();
     }
 
 
@@ -109,5 +120,42 @@ public class move : MonoBehaviour
         }
 
 
+        if (Game_cont.JoinRoomFlag == true){
+            CreatePlayerIdsList();
+        }
+        if (CheckMovePlayerViewId == false){
+            MovePlayerViewId = GetComponent<PhotonView>().ViewID;
+        }
+        UpdateCharacterVisualTrriger();
+    }
+
+    void CreatePlayerIdsList(){
+        view = GetComponent<PhotonView>();
+        if (!(PlayerViewIdsList.Contains(view.ViewID))){
+            PlayerViewIdsList.Add(view.ViewID);
+        }
+    }
+    
+    /// <summary>
+    /// 送られてきたハッシュで隠れている場合に、プレイヤーを表示しないようにする
+    /// </summary>
+    void UpdateCharacterVisualTrriger(){
+        if (ScriptGameCont.GetPlayerInfo(MovePlayerViewId.ToString(), "HidePlace") == ""){}
+        else if (ScriptGameCont.GetPlayerInfo(MovePlayerViewId.ToString(), "HidePlace") == "0"){
+            if (VisualFlag == true){
+                hide_sc.VisualTrriger(kyara_Obj, true);
+                VisualFlag = false;
+            }
+        }
+        else if (ScriptGameCont.GetPlayerInfo(MovePlayerViewId.ToString(), "HidePlace") == "100"){
+            hide_sc.VisualTrriger(kyara_Obj, false);
+            kyara_Obj.GetComponent<MeshRenderer>().enabled=true;           //プレイヤー見える
+        }
+        else {
+            if (VisualFlag == false){
+                hide_sc.VisualTrriger(kyara_Obj, false);
+                VisualFlag = true;
+            }
+        }
     }
 }

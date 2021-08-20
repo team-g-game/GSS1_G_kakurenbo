@@ -496,6 +496,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92fbceea1728d8949ba5d67bccb17e6d, type: 3}
+--- !u!1 &1925719479 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7997567491265549792, guid: 92fbceea1728d8949ba5d67bccb17e6d, type: 3}
+  m_PrefabInstance: {fileID: 1925719478}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8179442972942788943
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -503,6 +508,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1693532266352270883, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 1925719479}
+    - target: {fileID: 1693532266352270883, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: HidePlaceNum
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1771570614743238988, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -571,9 +584,53 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1796638181343592762, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 1925719479}
+    - target: {fileID: 1796638181343592762, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: HidePlaceNum
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1805682897720069725, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 1925719479}
+    - target: {fileID: 1805682897720069725, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: HidePlaceNum
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454792193598081783, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_Name
+      value: sigemi_collider(2)
+      objectReference: {fileID: 0}
     - target: {fileID: 2454792193598081783, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_Layer
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3484966933766490312, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 1925719479}
+    - target: {fileID: 3484966933766490312, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: HidePlaceNum
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3484966933766490319, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_Name
+      value: Treehouse_Collide(2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3961862802616007265, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 1925719479}
+    - target: {fileID: 3961862802616007265, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: HidePlaceNum
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155373873113046384, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_Name
+      value: sigemi_collider(4)
       objectReference: {fileID: 0}
     - target: {fileID: 4155373873113046384, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_Layer
@@ -581,6 +638,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4638852741795717706, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4638852741795717708, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 1925719479}
+    - target: {fileID: 4638852741795717708, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: HidePlaceNum
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4761501709110016052, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
@@ -594,6 +659,14 @@ PrefabInstance:
     - target: {fileID: 5164821517525037745, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_Layer
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6457520407871771201, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 1925719479}
+    - target: {fileID: 6457520407871771201, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: HidePlaceNum
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7074765907278528665, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -631,6 +704,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1.72
       objectReference: {fileID: 0}
+    - target: {fileID: 7910132792387231325, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 1925719479}
+    - target: {fileID: 7910132792387231325, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: HidePlaceNum
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8022733356151173706, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.32
@@ -663,9 +744,33 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 8431655081547752095, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: Hidestate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8431655081547752095, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 1925719479}
+    - target: {fileID: 8431655081547752095, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: HidePlaceNum
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8605054144185187015, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_Name
+      value: sigemi_collider(3)
+      objectReference: {fileID: 0}
     - target: {fileID: 8605054144185187015, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_Layer
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8917783967868961104, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 1925719479}
+    - target: {fileID: 8917783967868961104, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: HidePlaceNum
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9057222047540998682, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_RootOrder
