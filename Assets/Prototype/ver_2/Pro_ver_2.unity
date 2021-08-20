@@ -381,6 +381,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1693532266352270883, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 1925719479}
+    - target: {fileID: 1693532266352270883, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: HidePlaceNum
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1771570614743238988, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -449,6 +457,22 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1796638181343592762, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 1925719479}
+    - target: {fileID: 1796638181343592762, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: HidePlaceNum
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1805682897720069725, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 1925719479}
+    - target: {fileID: 1805682897720069725, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: HidePlaceNum
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2454792193598081783, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_Name
       value: sigemi_collider(2)
@@ -508,6 +532,14 @@ PrefabInstance:
     - target: {fileID: 5164821517525037745, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_Layer
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6457520407871771201, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 1925719479}
+    - target: {fileID: 6457520407871771201, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: HidePlaceNum
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7074765907278528665, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_LocalPosition.y
