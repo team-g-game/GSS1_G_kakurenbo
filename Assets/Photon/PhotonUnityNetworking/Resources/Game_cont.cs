@@ -108,9 +108,9 @@ public class Game_cont : MonoBehaviourPunCallbacks
 
     void game_start_up(){
         //逃げる側を動かす
-        //main_play_samon();
+        main_play_samon();
         //追いかける側を動かす
-        Demon_samon();
+        //Demon_samon();
 
     }
     void main_play_samon(){
