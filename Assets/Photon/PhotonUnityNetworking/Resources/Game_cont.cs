@@ -26,7 +26,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
     public static bool JoinRoomFlag = false;    //ルームに参加したタイミングを判定
     public static bool DemonFlag = false;       //鬼側のフラグ
     public static bool CreatePlayerListFlag = false;    //プレイヤーリストを生成したタイミングを判定
-    public static int DemonJoinedTime;
+    public static int DemonJoinedTime = 0;
     public static bool GameStartFlag = false;   //ゲームスタートタイミング
     public static int CurrentTime;
     public static bool GameEndFlag = false;
@@ -53,11 +53,19 @@ public class Game_cont : MonoBehaviourPunCallbacks
         if (DemonFlag == true){
             DemonJoinedTime = PhotonNetwork.ServerTimestamp;
             Propeties_Hash_string("DemonJoinedTime", DemonJoinedTime.ToString());
-        }   
+        }
+        if (DemonJoinedTime == 0){
+            object DemonTime = GetRoomProperty("DemonJoinedTime");
+            if (DemonTime == null){}
+            else {
+                DemonJoinedTime = int.Parse((string)DemonTime);
+                Debug.Log(DemonJoinedTime);
+            }
+        }
     }
     public override void OnRoomPropertiesUpdate(ExitGames.Client.Photon.Hashtable SentHash){
         for (int i = 0; i < PlayerInfoList.Count; ++i){
-            Debug.Log(SentHash);
+            
             string value = (string)SentHash[PlayerInfoList[i].PViewId.ToString()];
             if (value == null){ //これないとエラー出るから気を付けて
                 Debug.Log("nullなんよそれ");
@@ -78,6 +86,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
             DemonJoinedTime = int.Parse(DTime);
             DemonJoinedFlag = true;
         }
+        Debug.Log(SentHash);
     }
     void Update()
     {
@@ -90,7 +99,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
             Debug.Log(move.PlayerViewIdsList.Count);
         }
         if (Input.GetKeyDown(KeyCode.G)){   //これもテスト
-            Debug.Log(CreatePlayerValue(0) + CreatePlayerValue(1));
+            Debug.Log(GetRoomProperty("DemonJoinedTime"));
         }
         if (CreatePlayerListFlag == true){
             GameEnd();
@@ -413,5 +422,21 @@ public class Game_cont : MonoBehaviourPunCallbacks
         roomHash[name] = value;
         // ルームにハッシュを送信する        
         PhotonNetwork.CurrentRoom.SetCustomProperties(roomHash);        
+    }
+
+    /// <summary>
+    /// カスタムプロパティから指定したキーのバリューを持ってくる。なにもないときは、"Null"がかえる
+    /// </summary>
+    /// <param name="Key">持ってきたいバリューのキー</param>
+    /// <returns></returns>
+    public object GetRoomProperty(string Key){
+        object ValueObj = PhotonNetwork.CurrentRoom.CustomProperties[Key];
+        if (ValueObj == null){
+            Debug.Log("ぬるなんよそれ");
+            return ValueObj;
+        }
+        else {
+            return ValueObj;
+        }
     }
 }
