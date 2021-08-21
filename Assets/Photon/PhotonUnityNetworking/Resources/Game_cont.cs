@@ -60,6 +60,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
             else {
                 DemonJoinedTime = int.Parse((string)DemonTime);
                 Debug.Log(DemonJoinedTime);
+                DemonJoinedFlag = true;
             }
         }
     }
