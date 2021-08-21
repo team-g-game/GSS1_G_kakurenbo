@@ -48,12 +48,12 @@ public class Game_cont : MonoBehaviourPunCallbacks
     }
     public override void OnRoomPropertiesUpdate(ExitGames.Client.Photon.Hashtable a){
         for (int i = 0; i < PlayerInfoList.Count; ++i){
+            Debug.Log(a);
             string value = (string)a[PlayerInfoList[i].PViewId.ToString()];
             if (value == null){ //これないとエラー出るから気を付けて
                 Debug.Log("nullなんよそれ");
-                break;
             }
-            if (value == CreatePlayerValue(i)){
+            else if (value == CreatePlayerValue(i)){
                 Debug.Log("同じやつ来てる");
             }
             else if (value != CreatePlayerValue(i)){
@@ -71,6 +71,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
         }
         if (Input.GetKeyDown(KeyCode.C)){   //プレイヤーのリストを作るタイミングで押す
             CreatePlayerList();
+            Debug.Log(move.PlayerViewIdsList.Count);
         }
         if (Input.GetKeyDown(KeyCode.G)){   //これもテスト
             Debug.Log(CreatePlayerValue(0) + CreatePlayerValue(1));
@@ -224,18 +225,15 @@ public class Game_cont : MonoBehaviourPunCallbacks
     /// <returns></returns>
     public string GetPlayerInfo(string PlayerViewId, string GetElement){
         string Content = "";
-        for (int i = 0; i < PlayerInfoList.Count; ++i){
-            if (PlayerInfoList[i].PViewId.ToString() == PlayerViewId){
-                if (GetElement == "CatchFlag"){
-                    Content = PlayerInfoList[0].PCatchFlag.ToString();
-                }
-                else if(GetElement == "HidePlace"){
-                    Content = PlayerInfoList[0].PHidePlace.ToString();
-                }
-                else {
-                    Debug.Log("naiyo" + PlayerViewId);
-                }
-            }
+        int Index = GetPlayerInfoIndexFromViewId(PlayerViewId);
+        if (GetElement == "CatchFlag"){
+            Content = PlayerInfoList[Index].PCatchFlag.ToString();
+        }
+        else if(GetElement == "HidePlace"){
+            Content = PlayerInfoList[Index].PHidePlace.ToString();
+        }
+        else {
+            Debug.Log("naiyo" + PlayerViewId);
         }
         return Content;
     }

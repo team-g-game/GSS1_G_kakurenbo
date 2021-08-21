@@ -67,6 +67,9 @@ public class move : MonoBehaviour
             transform.position = kyara;
 
             kyara = kyara_Obj.transform.localPosition;
+            if (kyara.y < 0.9){
+                kyara.y = 1;
+            }
             kyara.z = 0;
             kyara.x = 0;        
             kyara_Obj.transform.localPosition = kyara;
@@ -126,9 +129,14 @@ public class move : MonoBehaviour
         if (CheckMovePlayerViewId == false){
             MovePlayerViewId = GetComponent<PhotonView>().ViewID;
         }
-        UpdateCharacterVisualTrriger();
+        if (Game_cont.CreatePlayerListFlag == true){
+            UpdateCharacterVisualTrriger();
+        }
     }
 
+    /// <summary>
+    /// プレイヤーのViewIdリストを作成。
+    /// </summary>
     void CreatePlayerIdsList(){
         view = GetComponent<PhotonView>();
         if (!(PlayerViewIdsList.Contains(view.ViewID))){
@@ -140,18 +148,18 @@ public class move : MonoBehaviour
     /// 送られてきたハッシュで隠れている場合に、プレイヤーを表示しないようにする
     /// </summary>
     void UpdateCharacterVisualTrriger(){
-        if (ScriptGameCont.GetPlayerInfo(MovePlayerViewId.ToString(), "HidePlace") == ""){}
-        else if (ScriptGameCont.GetPlayerInfo(MovePlayerViewId.ToString(), "HidePlace") == "0"){
+        int HideP = int.Parse(ScriptGameCont.GetPlayerInfo(MovePlayerViewId.ToString(), "HidePlace"));
+        if (HideP == 0){
             if (VisualFlag == true){
                 hide_sc.VisualTrriger(kyara_Obj, true);
                 VisualFlag = false;
             }
         }
-        else if (ScriptGameCont.GetPlayerInfo(MovePlayerViewId.ToString(), "HidePlace") == "100"){
+        else if (HideP == 100){
             hide_sc.VisualTrriger(kyara_Obj, false);
             kyara_Obj.GetComponent<MeshRenderer>().enabled=true;           //プレイヤー見える
         }
-        else {
+        else if (HideP < 100 && HideP > 0){
             if (VisualFlag == false){
                 hide_sc.VisualTrriger(kyara_Obj, false);
                 VisualFlag = true;
