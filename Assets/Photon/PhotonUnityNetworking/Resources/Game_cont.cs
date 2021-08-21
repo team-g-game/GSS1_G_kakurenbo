@@ -26,6 +26,11 @@ public class Game_cont : MonoBehaviourPunCallbacks
     public static bool JoinRoomFlag = false;    //ルームに参加したタイミングを判定
     public static bool DemonFlag = false;       //鬼側のフラグ
     public static bool CreatePlayerListFlag = false;    //プレイヤーリストを生成したタイミングを判定
+    public static int DemonJoinedTime;
+    public static bool GameStartFlag = false;   //ゲームスタートタイミング
+    public static int CurrentTime;
+    public static bool GameEndFlag = false;
+    private bool StartCount = false;
 
     void Start()
     {
@@ -44,12 +49,15 @@ public class Game_cont : MonoBehaviourPunCallbacks
         string id =PhotonNetwork.LocalPlayer.UserId;
         Propeties_Hash_string("player_id",PhotonNetwork.LocalPlayer.UserId);
         JoinRoomFlag = true;
-        
+        if (DemonFlag == true){
+            DemonJoinedTime = PhotonNetwork.ServerTimestamp;
+            Propeties_Hash_string("DemonJoinedTime", DemonJoinedTime.ToString());
+        }   
     }
-    public override void OnRoomPropertiesUpdate(ExitGames.Client.Photon.Hashtable a){
+    public override void OnRoomPropertiesUpdate(ExitGames.Client.Photon.Hashtable SentHash){
         for (int i = 0; i < PlayerInfoList.Count; ++i){
-            Debug.Log(a);
-            string value = (string)a[PlayerInfoList[i].PViewId.ToString()];
+            Debug.Log(SentHash);
+            string value = (string)SentHash[PlayerInfoList[i].PViewId.ToString()];
             if (value == null){ //これないとエラー出るから気を付けて
                 Debug.Log("nullなんよそれ");
             }
@@ -62,12 +70,18 @@ public class Game_cont : MonoBehaviourPunCallbacks
             }
             Debug.Log("何回");
         }
+        Debug.Log("nannkai");
+        string DTime = (string)SentHash["DemonJoinedTime"];
+        if (DTime == null){}
+        else {
+            DemonJoinedTime = int.Parse(DTime);
+        }
     }
     void Update()
     {
         CheckMyViewId();
-        if (Input.GetKeyDown(KeyCode.F)){   //これはテスト
-            SendPlayerInfo(0);
+        if (Input.GetKeyDown(KeyCode.F)){   //無理やりスタート
+            GameStartFlag = true;
         }
         if (Input.GetKeyDown(KeyCode.C)){   //プレイヤーのリストを作るタイミングで押す
             CreatePlayerList();
@@ -76,13 +90,27 @@ public class Game_cont : MonoBehaviourPunCallbacks
         if (Input.GetKeyDown(KeyCode.G)){   //これもテスト
             Debug.Log(CreatePlayerValue(0) + CreatePlayerValue(1));
         }
+        if (CreatePlayerListFlag == true){
+            GameEnd();
+        }
+        if (JoinRoomFlag == true){
+            CurrentTime = PhotonNetwork.ServerTimestamp;
+        }
+        //Debug.Log(CurrentTime - DemonJoiedTime);
+        GameStart();
+        if (GameStartFlag == true){
+            if (StartCount == false){
+                CreatePlayerList();
+                StartCount = true;
+            }
+        }
     }
 
     void game_start_up(){
         //逃げる側を動かす
-        main_play_samon();
+        //main_play_samon();
         //追いかける側を動かす
-        //Demon_samon();
+        Demon_samon();
 
     }
     void main_play_samon(){
@@ -159,7 +187,6 @@ public class Game_cont : MonoBehaviourPunCallbacks
     /// 全プレイヤーの情報リストを作成
     /// </summary>
     void CreatePlayerList(){
-        CreatePlayerListFlag = true;
         if (DemonFlag == false){
             for (int i = 1; i < move.PlayerViewIdsList.Count; ++i){
             Player2 = new PlayerInfo(move.PlayerViewIdsList[i], 0, false);
@@ -172,6 +199,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
             PlayerInfoList.Add(Player2);
             } 
         }
+        CreatePlayerListFlag = true;
     }
 
     /// <summary>
@@ -278,19 +306,69 @@ public class Game_cont : MonoBehaviourPunCallbacks
     /// </summary>
     /// <param name="PlayerViewId">プレイヤーのViewId</param>
     /// <param name="UpdateElement">更新したい要素、HidePlace,CatchFlag</param>
-    /// <param name="UpdateContet">更新内容</param>
-    public void UpdatePlayerInfoAndHash(string PlayerViewId, string UpdateElement, string UpdateContet){
+    /// <param name="UpdateContent">更新内容</param>
+    public void UpdatePlayerInfoAndHash(string PlayerViewId, string UpdateElement, string UpdateContent){
         int Index = GetPlayerInfoIndexFromViewId(PlayerViewId);
         if (UpdateElement == "HidePlace"){
-            ChangePlayerList(Index, "HidePlace", UpdateContet);
+            ChangePlayerList(Index, "HidePlace", UpdateContent);
         }
         else if (UpdateElement == "CatchFlag"){
-            ChangePlayerList(Index, "CatchFlag", UpdateContet);
+            ChangePlayerList(Index, "CatchFlag", UpdateContent);
         }
         else {
             Debug.Log("更新できてない" + PlayerViewId + UpdateElement);
         }
         SendPlayerInfo(Index);
+    }
+
+    /// <summary>
+    /// PlayerInfoListのIndex指定して、情報の更新だけする。
+    /// </summary>
+    /// <param name="PlayerInfoListIndex">プレイヤーのインデックス</param>
+    /// <param name="UpdateElement">更新したい要素、HidePlace,CatchFlag</param>
+    /// <param name="UpdateContent">更新内容</param>
+    public void UpdatePlayerInfoListByIndex(int PlayerInfoListIndex, string UpdateElement, string UpdateContent){
+        if (UpdateElement == "HidePlace"){
+            ChangePlayerList(PlayerInfoListIndex, "HidePlace", UpdateContent);
+        }
+        else if (UpdateElement == "CatchFlag"){
+            ChangePlayerList(PlayerInfoListIndex, "CatchFlag", UpdateContent);
+        }
+        else {
+            Debug.Log("更新できてない" + PlayerInfoListIndex + UpdateElement);
+        }
+    }
+
+    /// <summary>
+    /// ゲームスタート
+    /// </summary>
+    void GameStart(){
+        if (GameStartFlag == false){
+            if (CurrentTime - DemonJoinedTime > 60000){
+                GameStartFlag = true;
+            }
+            if (GameStartFlag == true){
+                Debug.Log("ゲームスタート");
+            }
+        }
+    }
+
+    /// <summary>
+    /// ゲーム終了
+    /// </summary>
+    void GameEnd(){
+        if (GameEndFlag == false){
+            for (int i = 0; i < PlayerInfoList.Count; ++i){
+                if (PlayerInfoList[i].PCatchFlag == false){
+                    break;
+                }
+                else {
+                    Debug.Log("ゲーム終了");
+                    GameEndFlag = true;
+                }
+            }
+        }
+
     }
 
     /// <summary>
@@ -311,9 +389,19 @@ public class Game_cont : MonoBehaviourPunCallbacks
     }
     public void Propeties_Hash_int(string name,int value)
     {
-        roomHash[name] = value;
-        // ルームにハッシュを送信する        
-        PhotonNetwork.CurrentRoom.SetCustomProperties(roomHash);        
+        if (roomHash[name] == null){
+            roomHash[name] = value;
+            // ルームにハッシュを送信する        
+            PhotonNetwork.CurrentRoom.SetCustomProperties(roomHash);  
+        }
+        else if ((int)roomHash[name] == value){
+            Debug.Log("同じの送ってる" + value);
+        }
+        else {
+            roomHash[name] = value;
+            // ルームにハッシュを送信する        
+            PhotonNetwork.CurrentRoom.SetCustomProperties(roomHash);  
+        }
     }
     public void Propeties_Hash_bool(string name,bool value)
     {

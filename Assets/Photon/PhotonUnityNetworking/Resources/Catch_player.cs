@@ -43,10 +43,19 @@ public class Catch_player : MonoBehaviour
                     {
                         if(hit.transform.gameObject == Target)  //軌道上にPlayerがいるとき
                         {
-                            Debug.Log("見つけた");
+                            
                             PhotonView View = hako.transform.parent.gameObject.GetComponent<PhotonView>();
-                            ScriptGameCont.UpdatePlayerInfoAndHash(View.ViewID.ToString(), "CatchFlag", "true");
-                            ScriptGameCont.UpdatePlayerInfoAndHash(View.ViewID.ToString(),"HidePlace", "100");
+                            string CViewId = View.ViewID.ToString();
+                            if ((string)ScriptGameCont.GetPlayerInfo(CViewId, "CatchFlag") == "False"){
+                                int Index = ScriptGameCont.GetPlayerInfoIndexFromViewId(CViewId);
+                                ScriptGameCont.UpdatePlayerInfoListByIndex(Index, "CatchFlag", "true");
+                                ScriptGameCont.UpdatePlayerInfoListByIndex(Index, "HidePlace", "100");
+                                ScriptGameCont.SendPlayerInfo(Index);
+                                Debug.Log("見つけた");
+                            }
+                            else {
+                                Debug.Log("nannkaokasii");
+                            }
                         }
                         else{
                             Debug.Log("見つけてない");
