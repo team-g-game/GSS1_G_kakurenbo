@@ -31,6 +31,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
     public static int CurrentTime;
     public static bool GameEndFlag = false;
     private bool StartCount = false;
+    public static bool DemonJoinedFlag = false;
 
     void Start()
     {
@@ -75,6 +76,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
         if (DTime == null){}
         else {
             DemonJoinedTime = int.Parse(DTime);
+            DemonJoinedFlag = true;
         }
     }
     void Update()
@@ -343,14 +345,17 @@ public class Game_cont : MonoBehaviourPunCallbacks
     /// ゲームスタート
     /// </summary>
     void GameStart(){
-        if (GameStartFlag == false){
-            if (CurrentTime - DemonJoinedTime > 60000){
-                GameStartFlag = true;
-            }
-            if (GameStartFlag == true){
-                Debug.Log("ゲームスタート");
-            }
+        if (DemonJoinedFlag == true){
+            if (GameStartFlag == false){
+                if (CurrentTime - DemonJoinedTime > 60000){
+                    GameStartFlag = true;
+                }
+                if (GameStartFlag == true){
+                    Debug.Log("ゲームスタート");
+                }
+            }            
         }
+
     }
 
     /// <summary>
