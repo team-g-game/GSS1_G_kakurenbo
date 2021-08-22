@@ -28,7 +28,7 @@ public class Catch_player : MonoBehaviour
 
     void OnTriggerStay(Collider hako)   //コライダーの中にいるとき呼び出される関数
     {
-        if ( Game_cont.DemonCatchStartFlag == true){
+        if (Game_cont.DemonCatchStartFlag == true){
             if (Game_cont.DemonFlag == true && Game_cont.CreatePlayerListFlag == true){ //鬼である、かつ、プレイヤーリスト作った後
                 if (hako.gameObject.CompareTag("Player"))   //コライダーのtagがPlayerであるとき
                 {

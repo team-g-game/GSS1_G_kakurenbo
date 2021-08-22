@@ -32,11 +32,19 @@ public class Game_cont : MonoBehaviourPunCallbacks
     public static bool GameEndFlag = false;
     private bool StartCount = false;
     public static bool DemonJoinedFlag = false;
-    public bool DemonCatchStartFlag = false;
+    public static bool DemonCatchStartFlag = false;
     public static int decision = 0;// 0なら鬼の勝ち
 
     void Start()
     {
+        JoinRoomFlag = false;
+        DemonFlag = false;
+        CreatePlayerListFlag = false;
+        GameStartFlag = false;
+        GameEndFlag = false;
+        DemonJoinedFlag = false;
+        DemonCatchStartFlag = false;
+        decision = 0;
         roomHash = new ExitGames.Client.Photon.Hashtable();
         PhotonNetwork.ConnectUsingSettings();
     }
