@@ -8,7 +8,7 @@ public class hide_sc : MonoBehaviour
     // Start is called before the first frame update
     private bool HideTrriger = false;    //隠れることが可能な場所かどうか
     private bool WatchTrriger = false;   //見ることが可能な場所かどうか
-    private bool Hidestate = false;      //隠れている状態かどうか  ここがネットワーク経由で変更されるとうれしい
+    public static bool Hidestate = false;      //隠れている状態かどうか  ここがネットワーク経由で変更されるとうれしい
     Vector3 Hide_before_pos;            //隠れる前のプレイヤーの位置
     GameObject Player_obj;              //プレイヤーの子オブジェクト
     GameObject Parent_Player_obj;       //プレイヤーの親オブジェクト
@@ -18,6 +18,7 @@ public class hide_sc : MonoBehaviour
     private PhotonView View = null;
     public GameObject GameManager;  //Game_masterを入れる
     private Game_cont ScriptGameCont;   //Game_contの関数使えるようにする
+    private  Vector3 SetPosition;   //隠れたときのポジション
     
 
     void OnTriggerEnter(Collider other)
@@ -78,8 +79,6 @@ public class hide_sc : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))//Eキーを押したときの判定
             {
-                Debug.Log("ok");//隠れる場所にカメラ移動させる物を後で追加
-                Debug.Log($"{Parent_Player_obj.name}");
                 if (Hidestate == false)             //隠れていないとき
                 {
                     UpdateHidePlaceNumber(HidePlaceNum);
@@ -87,14 +86,15 @@ public class hide_sc : MonoBehaviour
                     VisualTrriger(Player_obj, false);
                     Hide_before_pos = Parent_Player_obj.transform.position;         //プレイヤーの隠れる前の座標保持
                     if (Hide_Place == 1){                                           //ツリーハウスのときの座標変更
-                        var pos = this.transform.position;
-                        pos.x += 20;
-                        pos.y += 35;
-                        pos.z += 5;
-                        Parent_Player_obj.transform.position = pos;
+                        SetPosition = this.transform.position;
+                        SetPosition.x += 20;
+                        SetPosition.y += 35;
+                        SetPosition.z += 5;
+                        Parent_Player_obj.transform.position = SetPosition;
                     }
                     else if (Hide_Place == 0){                                      //そのほかの時の座標変更
-                        Parent_Player_obj.transform.position = this.transform.position; //プレイヤーを隠れる場所の座標に変更
+                        SetPosition = this.transform.position;
+                        Parent_Player_obj.transform.position = SetPosition;  //プレイヤーを隠れる場所の座標に変更
                     }
                 }
                 else if(Hidestate == true)          //隠れているとき
