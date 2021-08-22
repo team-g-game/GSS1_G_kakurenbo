@@ -33,6 +33,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
     private bool StartCount = false;
     public static bool DemonJoinedFlag = false;
     public static bool DemonCatchStartFlag = false;
+    public static int decision = 0;// 0なら鬼の勝ち
 
     void Start()
     {
@@ -106,6 +107,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
         if (CreatePlayerListFlag == true){
             GameEnd();
         }
+        if  (Input.GetKeyDown(KeyCode.L))GameEndFlag = true;//矯正ゲーム終了 
         if (JoinRoomFlag == true){
             CurrentTime = PhotonNetwork.ServerTimestamp;
         }
@@ -143,6 +145,16 @@ public class Game_cont : MonoBehaviourPunCallbacks
         Demon_move move_Script = players.GetComponent<Demon_move>();
         move_Script.enabled = true;
         DemonFlag = true;
+    }
+
+    void win_or_loss_decision(){
+        bool p_loss = true;
+        foreach(var a in PlayerInfoList){
+            if(!a.PCatchFlag)p_loss = false;
+        }
+        if(p_loss)decision = 0;
+        else decision = 1;
+        
     }
 
 
@@ -391,6 +403,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
                 }
                 else {
                     Debug.Log("ゲーム終了");
+                    win_or_loss_decision();
                     GameEndFlag = true;
                 }
             }
