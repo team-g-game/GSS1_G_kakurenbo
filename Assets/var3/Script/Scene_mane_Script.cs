@@ -10,12 +10,11 @@ using Photon.Pun;
 public class Scene_mane_Script : MonoBehaviour
 {
     private string title_scene_name = "title";
-    private string maci_scene_name = "Prototype_var1";
-    private string rizarut_scene_name = "rizarut";
-    
+    private string new_rizarut_scene_naem = "result";
     private string game_stage = "Pro_ver_2";
     public int scene_num = 0;
     public bool scene_chanz = false;
+    public static int SelectPD;
 
     // Start is called before the first frame update
     void Awake(){
@@ -31,12 +30,12 @@ public class Scene_mane_Script : MonoBehaviour
         if (scene_chanz){
             scene_chanz = false;
             if (scene_num == 0) SceneManager.LoadScene(title_scene_name);
-            //if (scene_num == 1) SceneManager.LoadScene(maci_scene_name);
-            if (scene_num == 2) SceneManager.LoadScene(rizarut_scene_name);
+            if (scene_num == 2) SceneManager.LoadScene(new_rizarut_scene_naem);
             if (scene_num == 1) SceneManager.LoadScene(game_stage);
         }
     }
     public void title_clikc(){
+        SelectPD = Title_button_choise.SelectPAndD;
         scene_num = 1;
         scene_chanz = true;
     }

@@ -26,13 +26,13 @@ public class Game_cont : MonoBehaviourPunCallbacks
     public static bool JoinRoomFlag = false;    //ルームに参加したタイミングを判定
     public static bool DemonFlag = false;       //鬼側のフラグ
     public static bool CreatePlayerListFlag = false;    //プレイヤーリストを生成したタイミングを判定
-    public static int DemonJoinedTime = 0;
+    public int DemonJoinedTime = 0;
     public static bool GameStartFlag = false;   //ゲームスタートタイミング
-    public static int CurrentTime;
+    public int CurrentTime;
     public static bool GameEndFlag = false;
     private bool StartCount = false;
     public static bool DemonJoinedFlag = false;
-    public static bool DemonCatchStartFlag = false;
+    public bool DemonCatchStartFlag = false;
     public static int decision = 0;// 0なら鬼の勝ち
 
     void Start()
@@ -104,10 +104,9 @@ public class Game_cont : MonoBehaviourPunCallbacks
         if (Input.GetKeyDown(KeyCode.G)){   //これもテスト
             Debug.Log(GetRoomProperty("DemonJoinedTime"));
         }
-        if (CreatePlayerListFlag == true){
+        if (CreatePlayerListFlag == true && Input.GetKeyDown(KeyCode.L)){
             GameEnd();
         }
-        if  (Input.GetKeyDown(KeyCode.L))GameEndFlag = true;//矯正ゲーム終了 
         if (JoinRoomFlag == true){
             CurrentTime = PhotonNetwork.ServerTimestamp;
         }
@@ -125,7 +124,8 @@ public class Game_cont : MonoBehaviourPunCallbacks
     }
 
     void game_start_up(){
-        if (Title_button_choise.SelectPAndD == 0){
+        int player_int_num = Scene_mane_Script.SelectPD;
+        if (player_int_num == 0){
             //逃げる側を動かす
             main_play_samon();            
         }
@@ -154,6 +154,8 @@ public class Game_cont : MonoBehaviourPunCallbacks
         }
         if(p_loss)decision = 0;
         else decision = 1;
+        GameObject.FindWithTag("scene_mane").GetComponent<Scene_mane_Script>().scene_num = 2;
+        GameObject.FindWithTag("scene_mane").GetComponent<Scene_mane_Script>().scene_chanz = true;
         
     }
 
@@ -397,13 +399,14 @@ public class Game_cont : MonoBehaviourPunCallbacks
     /// </summary>
     void GameEnd(){
         if (GameEndFlag == false){
+            win_or_loss_decision();
             for (int i = 0; i < PlayerInfoList.Count; ++i){
                 if (PlayerInfoList[i].PCatchFlag == false){
                     break;
                 }
                 else {
                     Debug.Log("ゲーム終了");
-                    win_or_loss_decision();
+                    
                     GameEndFlag = true;
                 }
             }
