@@ -225,10 +225,10 @@ public class move : MonoBehaviour
     }
     public void left_click(){
         play_num ++;
-        if(camera_chac.Count - 1 < play_num) play_num = 0;
+        if(camera_chac.Count <= play_num) play_num = 0;
     }
     public void Rifht_Click(){
         play_num = play_num - 1;
-        if(play_num < 0) play_num = 0;
+        if(play_num < 0) play_num = camera_chac.Count;
     }
 }
