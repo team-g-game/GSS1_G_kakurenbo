@@ -112,7 +112,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
         if (Input.GetKeyDown(KeyCode.G)){   //これもテスト
             Debug.Log(GetRoomProperty("DemonJoinedTime"));
         }
-        if (CreatePlayerListFlag == true && Input.GetKeyDown(KeyCode.L)){
+        if (Input.GetKeyDown(KeyCode.L)){
             GameEnd();
         }
         if (JoinRoomFlag == true){
@@ -406,7 +406,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
     /// ゲーム終了
     /// </summary>
     void GameEnd(){
-        if (GameEndFlag == false){
+        if (GameEndFlag == false && CreatePlayerListFlag){
             win_or_loss_decision();
             for (int i = 0; i < PlayerInfoList.Count; ++i){
                 if (PlayerInfoList[i].PCatchFlag == false){

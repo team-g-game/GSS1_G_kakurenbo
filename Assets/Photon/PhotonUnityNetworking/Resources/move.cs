@@ -15,8 +15,8 @@ public class move : MonoBehaviour
     private Vector2 newAngle = new Vector2(0,0);
     private PhotonView view = null;
     public string playe_id;
-    public static int MyPlayerViewId = 0;　//自分のViewIdを入れる
-    public static List<int> PlayerViewIdsList = new List<int>();    //プレイヤー全員のViewIdが入る
+    public static int MyPlayerViewId;　//自分のViewIdを入れる
+    public static List<int> PlayerViewIdsList;    //プレイヤー全員のViewIdが入る
     public int MovePlayerViewId;
     private bool CheckMovePlayerViewId = false;
     public GameObject GameManager;  //Game_masterを入れる
@@ -32,9 +32,7 @@ public class move : MonoBehaviour
 
 
     void Awake(){
-        MyPlayerViewId = 0;
-        PlayerViewIdsList = new List<int>();     
-           
+
         view = GetComponent<PhotonView>();
         
         if(view.IsMine){
@@ -53,7 +51,9 @@ public class move : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        MyPlayerViewId = 0;
+        PlayerViewIdsList = new List<int>();     
+           
         kyara_Obj.transform.position = start_pos;
         GameManager = GameObject.Find("Game_master");
         ScriptGameCont = GameManager.GetComponent<Game_cont>();
