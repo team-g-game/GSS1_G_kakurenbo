@@ -16,7 +16,7 @@ public class move : MonoBehaviour
     private PhotonView view = null;
     public string playe_id;
     public static int MyPlayerViewId;　//自分のViewIdを入れる
-    public static List<int> PlayerViewIdsList;    //プレイヤー全員のViewIdが入る
+    public static List<int> PlayerViewIdsList = new List<int>();    //プレイヤー全員のViewIdが入る
     public int MovePlayerViewId;
     private bool CheckMovePlayerViewId = false;
     public GameObject GameManager;  //Game_masterを入れる
@@ -32,12 +32,10 @@ public class move : MonoBehaviour
 
 
     void Awake(){
-        MyPlayerViewId = 0;
-        PlayerViewIdsList = new List<int>();     
         view = GetComponent<PhotonView>();
         
         if(view.IsMine){
-            
+            MyPlayerViewId = 0;
             playe_id = PhotonNetwork.LocalPlayer.UserId;
             //Debug.Log(playe_id);
             
@@ -73,7 +71,10 @@ public class move : MonoBehaviour
                     sinndaato.SetActive(true);
                     if(camera_chac.Count == 0){
                         foreach(GameObject i in GameObject.FindGameObjectsWithTag("Player")){
-                            if(i.GetComponent<PhotonView>().ViewID != MyPlayerViewId)camera_chac.Add(i);
+                            if(i.GetComponent<PhotonView>().ViewID == MyPlayerViewId){}
+                            else{
+                                camera_chac.Add(i);
+                                }
                         }   
                     }
                         Cam_Obj.GetComponent<Camera>().enabled = false;

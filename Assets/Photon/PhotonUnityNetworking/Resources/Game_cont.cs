@@ -163,6 +163,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
         }
         if(p_loss)decision = 0;
         else decision = 1;
+        move.PlayerViewIdsList.Clear();
         GameObject.FindWithTag("scene_mane").GetComponent<Scene_mane_Script>().scene_num = 2;
         GameObject.FindWithTag("scene_mane").GetComponent<Scene_mane_Script>().scene_chanz = true;
         
