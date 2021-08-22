@@ -23,17 +23,17 @@ public class Game_cont : MonoBehaviourPunCallbacks
     PlayerInfo Myself;  //入った本人の情報
     PlayerInfo Player2; //ほかのプレイヤーの情報を作るために作ったけど要らない気がしてきた
     List<PlayerInfo> PlayerInfoList = new List<PlayerInfo>();   //プレイヤーの全情報が入ってる
-    public static bool JoinRoomFlag = false;    //ルームに参加したタイミングを判定
-    public static bool DemonFlag = false;       //鬼側のフラグ
-    public static bool CreatePlayerListFlag = false;    //プレイヤーリストを生成したタイミングを判定
+    public static bool JoinRoomFlag;    //ルームに参加したタイミングを判定
+    public static bool DemonFlag;       //鬼側のフラグ
+    public static bool CreatePlayerListFlag;    //プレイヤーリストを生成したタイミングを判定
     public int DemonJoinedTime = 0;
-    public static bool GameStartFlag = false;   //ゲームスタートタイミング
+    public static bool GameStartFlag;   //ゲームスタートタイミング
     public int CurrentTime;
-    public static bool GameEndFlag = false;
+    public static bool GameEndFlag;
     private bool StartCount = false;
-    public static bool DemonJoinedFlag = false;
-    public static bool DemonCatchStartFlag = false;
-    public static int decision = 0;// 0なら鬼の勝ち
+    public static bool DemonJoinedFlag;
+    public static bool DemonCatchStartFlag;
+    public static int decision;// 0なら鬼の勝ち
 
     void Start()
     {
@@ -45,6 +45,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
         DemonJoinedFlag = false;
         DemonCatchStartFlag = false;
         decision = 0;
+        
         roomHash = new ExitGames.Client.Photon.Hashtable();
         PhotonNetwork.ConnectUsingSettings();
     }
