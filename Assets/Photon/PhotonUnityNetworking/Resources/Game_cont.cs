@@ -123,7 +123,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
     }
 
     void game_start_up(){
-        if (Title_button_choise.SelectPAndD == 1){
+        if (Title_button_choise.SelectPAndD == 0){
             //逃げる側を動かす
             main_play_samon();            
         }
