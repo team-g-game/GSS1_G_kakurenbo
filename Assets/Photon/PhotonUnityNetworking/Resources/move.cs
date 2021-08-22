@@ -68,15 +68,18 @@ public class move : MonoBehaviour
         var pos = transform.position; 
 
         if (view.IsMine && !hide_sc.Hidestate){
-            if (Game_cont.GameStartFlag == true){
+            if (Game_cont.CreatePlayerListFlag && Game_cont.GameStartFlag == true){
                 if (ScriptGameCont.GetPlayerInfo(MyPlayerViewId.ToString(), "CatchFlag") == "True"){     
                     sinndaato.SetActive(true);
                     if(camera_chac.Count == 0){
                         foreach(GameObject i in GameObject.FindGameObjectsWithTag("player")){
                             if(i.GetComponent<PhotonView>().ViewID != MyPlayerViewId)camera_chac.Add(i);
+                        }   
                     }
+                        Cam_Obj.GetComponent<Camera>().enabled = false;
+                        foreach(var _ in camera_chac)_.GetComponent<Camera>().enabled =false;
+                        camera_chac[play_num].GetComponent<Camera>().enabled = true;                
                 }
-            }
                 else {
                     if(Input.GetKey(KeyCode.W)) pos += kyara_Obj.transform.forward * Time.deltaTime * move_speed;
                     if(Input.GetKey(KeyCode.S)) pos -= kyara_Obj.transform.forward * Time.deltaTime * move_speed;
@@ -151,12 +154,6 @@ public class move : MonoBehaviour
             rot.z = 0;
             kyara_Obj.transform.rotation = rot;            
 
-        }
-
-        if(ScriptGameCont.GetPlayerInfo(MyPlayerViewId.ToString(), "CatchFlag") == "True"&&Game_cont.CreatePlayerListFlag){
-            Cam_Obj.GetComponent<Camera>().enabled = false;
-            foreach(var _ in camera_chac)_.GetComponent<Camera>().enabled =false;
-            camera_chac[play_num].GetComponent<Camera>().enabled = true;                
         }
         
         if (Game_cont.JoinRoomFlag == true){
