@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 652061}
   - component: {fileID: 652060}
   - component: {fileID: 652063}
+  - component: {fileID: 652064}
   m_Layer: 5
   m_Name: "\u60AA\u30AC\u30AD"
   m_TagString: Untagged
@@ -207,9 +208,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 652063}
-        m_TargetAssemblyTypeName: Title_button_choise2, Assembly-CSharp
-        m_MethodName: Click
+      - m_Target: {fileID: 652064}
+        m_TargetAssemblyTypeName: Title_button_choise, Assembly-CSharp
+        m_MethodName: Click_warugi
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -267,6 +268,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de564c972dd5d0f47ae574c0c53c4a62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &652064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2c6b363f1a110a4ca79bb8bb7bf0913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &125569803
@@ -367,7 +380,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 125569805}
         m_TargetAssemblyTypeName: Title_button_choise, Assembly-CSharp
-        m_MethodName: Click
+        m_MethodName: Click_Demon
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
