@@ -43,10 +43,16 @@ public class Demon_move : MonoBehaviour
     {
         var this_pos = transform.position;
 
-        if(Input.GetKey(KeyCode.W)) this_pos += ply_obj.transform.forward * Time.deltaTime * move_speed;
-        if(Input.GetKey(KeyCode.A)) this_pos -= ply_obj.transform.right * Time.deltaTime * move_speed;
-        if(Input.GetKey(KeyCode.D)) this_pos += ply_obj.transform.right * Time.deltaTime * move_speed;
-        if(Input.GetKey(KeyCode.S)) this_pos -= ply_obj.transform.forward * Time.deltaTime * move_speed;
+        if (view.IsMine){
+            if (Game_cont.GameStartFlag == true){
+                if (Game_cont.GameEndFlag == false){
+                    if(Input.GetKey(KeyCode.W)) this_pos += ply_obj.transform.forward * Time.deltaTime * move_speed;
+                    if(Input.GetKey(KeyCode.A)) this_pos -= ply_obj.transform.right * Time.deltaTime * move_speed;
+                    if(Input.GetKey(KeyCode.D)) this_pos += ply_obj.transform.right * Time.deltaTime * move_speed;
+                    if(Input.GetKey(KeyCode.S)) this_pos -= ply_obj.transform.forward * Time.deltaTime * move_speed;
+                }
+            }
+        }
         
         if (ply_obj.transform.localPosition.x == Vector3.zero.x &&ply_obj.transform.localPosition.z == Vector3.zero.x && view.IsMine){
             transform.position = this_pos;

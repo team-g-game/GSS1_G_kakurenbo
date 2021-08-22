@@ -68,7 +68,6 @@ public class move : MonoBehaviour
                     if(Input.GetKey(KeyCode.D)) pos += kyara_Obj.transform.right * Time.deltaTime * move_speed;            
                 }                 
             }
-           
         }
 
 
