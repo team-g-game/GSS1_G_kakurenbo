@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Prototype/ver_2/Pro_ver_2.unity
     guid: 023821a10c2dde94c9eb3481e6de0e01
+  - enabled: 1
+    path: Assets/var3/scne/result/result.unity
+    guid: 96445fb07aa294c4e9543666efb18eaf
   m_configObjects: {}
