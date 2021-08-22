@@ -72,7 +72,7 @@ public class move : MonoBehaviour
                 if (ScriptGameCont.GetPlayerInfo(MyPlayerViewId.ToString(), "CatchFlag") == "True"){     
                     sinndaato.SetActive(true);
                     if(camera_chac.Count == 0){
-                        foreach(GameObject i in GameObject.FindGameObjectsWithTag("player")){
+                        foreach(GameObject i in GameObject.FindGameObjectsWithTag("Player")){
                             if(i.GetComponent<PhotonView>().ViewID != MyPlayerViewId)camera_chac.Add(i);
                         }   
                     }
