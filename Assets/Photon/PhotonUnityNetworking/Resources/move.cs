@@ -24,7 +24,7 @@ public class move : MonoBehaviour
     private bool VisualFlag = true;
     private List<Vector3> StartPosList = new List<Vector3>();   //スタート位置一覧
     private Vector3 StartPosition;  //プレイヤーのスタート位置が入る
-    public static bool SetToStartPositionFlag = false;  //スタートの位置にプレイヤーを設定したかどうか
+    public bool SetToStartPositionFlag = false;  //スタートの位置にプレイヤーを設定したかどうか
 
     public List<GameObject> camera_chac = new List<GameObject>();
     private int play_num = 0;
@@ -32,6 +32,9 @@ public class move : MonoBehaviour
 
 
     void Awake(){
+        MyPlayerViewId = 0;
+        PlayerViewIdsList = new List<int>();     
+           
         view = GetComponent<PhotonView>();
         
         if(view.IsMine){
@@ -50,6 +53,7 @@ public class move : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         kyara_Obj.transform.position = start_pos;
         GameManager = GameObject.Find("Game_master");
         ScriptGameCont = GameManager.GetComponent<Game_cont>();

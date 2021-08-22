@@ -59,6 +59,7 @@ public class hide_sc : MonoBehaviour
     }
     void Start()
     {
+        Hidestate = false;
         if (this.tag == "treehouse"){Hide_Place = 1;}       //ツリーハウスだった時
         ScriptGameCont = GameManager.GetComponent<Game_cont>();
     }
