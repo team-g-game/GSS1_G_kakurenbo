@@ -10,15 +10,12 @@ using Photon.Pun;
 public class Scene_mane_Script : MonoBehaviour
 {
     private string title_scene_name = "title";
-    private string room_choise = "room choise";
-    private string room_scene_name = "kyara_taik";
     private string maci_scene_name = "Prototype_var1";
     private string rizarut_scene_name = "rizarut";
     
     private string game_stage = "Pro_ver_2";
     public int scene_num = 0;
     public bool scene_chanz = false;
-    public float sleep_time = 0f ;//秒
 
     // Start is called before the first frame update
     void Awake(){
@@ -26,43 +23,21 @@ public class Scene_mane_Script : MonoBehaviour
     }
     void Start()
     {
-        Connect("v1.0");
-    }
-    private void Connect(string varsion){
-        if(PhotonNetwork.IsConnected == false){
-            PhotonNetwork.GameVersion = varsion;
-            PhotonNetwork.ConnectUsingSettings();
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        sleep_time -= Time.deltaTime;
         if (scene_chanz){
             scene_chanz = false;
             if (scene_num == 0) SceneManager.LoadScene(title_scene_name);
-            if (scene_num == 1) SceneManager.LoadScene(room_choise);
-            if (scene_num == 2) SceneManager.LoadScene(room_scene_name);
-            if (scene_num == 3) SceneManager.LoadScene(maci_scene_name);
-            if (scene_num == 4) SceneManager.LoadScene(rizarut_scene_name);
-            if (scene_num == 5) SceneManager.LoadScene(game_stage);
-        }
-        
-        if (Input.GetMouseButton(1)&&sleep_time <=0){
-            sleep_time = 5f;
-            if (scene_num == 3) scene_num = 1;
-            else scene_num +=1;
-            scene_chanz = true;
-
+            //if (scene_num == 1) SceneManager.LoadScene(maci_scene_name);
+            if (scene_num == 2) SceneManager.LoadScene(rizarut_scene_name);
+            if (scene_num == 1) SceneManager.LoadScene(game_stage);
         }
     }
     public void title_clikc(){
-        
-        scene_num = 5;
-        scene_chanz=true;
-        
-
+        scene_num = 1;
+        scene_chanz = true;
     }
 }
