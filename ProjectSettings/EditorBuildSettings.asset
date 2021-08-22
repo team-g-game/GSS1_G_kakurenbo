@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Prototype/rizarut/rizarut.unity
     guid: ecd9f43e5c9f0a04f8b3b1198ac822a9
+  - enabled: 1
+    path: Assets/Prototype/ver_2/Pro_ver_2.unity
+    guid: 023821a10c2dde94c9eb3481e6de0e01
   m_configObjects: {}
