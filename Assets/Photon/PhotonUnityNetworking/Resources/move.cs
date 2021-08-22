@@ -22,6 +22,9 @@ public class move : MonoBehaviour
     public GameObject GameManager;  //Game_masterを入れる
     private Game_cont ScriptGameCont;   //Game_contの関数使えるようにする
     private bool VisualFlag = true;
+    private List<Vector3> StartPosList = new List<Vector3>();   //スタート位置一覧
+    private Vector3 StartPosition;  //プレイヤーのスタート位置が入る
+    public static bool SetToStartPositionFlag = false;  //スタートの位置にプレイヤーを設定したかどうか
 
 
     void Awake(){
@@ -45,6 +48,7 @@ public class move : MonoBehaviour
         kyara_Obj.transform.position = start_pos;
         GameManager = GameObject.Find("Game_master");
         ScriptGameCont = GameManager.GetComponent<Game_cont>();
+        StartPosSetting();
     }
 
 
@@ -55,13 +59,16 @@ public class move : MonoBehaviour
         var pos = transform.position; 
 
         if (view.IsMine){
-            if (ScriptGameCont.GetPlayerInfo(MyPlayerViewId.ToString(), "CatchFlag") == "True"){}
-            else {
-                if(Input.GetKey(KeyCode.W)) pos += kyara_Obj.transform.forward * Time.deltaTime * move_speed;
-                if(Input.GetKey(KeyCode.S)) pos -= kyara_Obj.transform.forward * Time.deltaTime * move_speed;
-                if(Input.GetKey(KeyCode.A)) pos -= kyara_Obj.transform.right * Time.deltaTime * move_speed;
-                if(Input.GetKey(KeyCode.D)) pos += kyara_Obj.transform.right * Time.deltaTime * move_speed;            
-            }            
+            if (Game_cont.GameStartFlag == true){
+                if (ScriptGameCont.GetPlayerInfo(MyPlayerViewId.ToString(), "CatchFlag") == "True"){}
+                else {
+                    if(Input.GetKey(KeyCode.W)) pos += kyara_Obj.transform.forward * Time.deltaTime * move_speed;
+                    if(Input.GetKey(KeyCode.S)) pos -= kyara_Obj.transform.forward * Time.deltaTime * move_speed;
+                    if(Input.GetKey(KeyCode.A)) pos -= kyara_Obj.transform.right * Time.deltaTime * move_speed;
+                    if(Input.GetKey(KeyCode.D)) pos += kyara_Obj.transform.right * Time.deltaTime * move_speed;            
+                }                 
+            }
+           
         }
 
 
@@ -140,6 +147,7 @@ public class move : MonoBehaviour
         if (Game_cont.CreatePlayerListFlag == true){
             UpdateCharacterVisualTrriger();
         }
+        SetToStartPosition();
     }
 
     /// <summary>
@@ -172,6 +180,33 @@ public class move : MonoBehaviour
                 hide_sc.VisualTrriger(kyara_Obj, false);
                 VisualFlag = true;
             }
+        }
+    }
+
+    void StartPosSetting(){
+        StartPosList.Add(new Vector3(-90, 12, 94));
+        StartPosList.Add(new Vector3(95, 12, 95));
+        StartPosList.Add(new Vector3(110, 12, -122));
+        StartPosList.Add(new Vector3(-128, 12, -126));
+        StartPosList.Add(new Vector3(46, 12, -117));
+    }
+
+    void SetToStartPosition(){
+        if (Game_cont.CreatePlayerListFlag == true){
+            PlayerViewIdsList.Sort();
+            for (int i = 0; i < PlayerViewIdsList.Count; ++i){
+                if(MyPlayerViewId == PlayerViewIdsList[i]){
+                    StartPosition = StartPosList[i];
+                }
+            }
+        }
+        if(view.IsMine == true){
+            if (Game_cont.GameStartFlag == true){
+                if (SetToStartPositionFlag == false){
+                    kyara_Obj.transform.position = StartPosition;
+                    SetToStartPositionFlag = true;
+                }
+            }            
         }
     }
 }

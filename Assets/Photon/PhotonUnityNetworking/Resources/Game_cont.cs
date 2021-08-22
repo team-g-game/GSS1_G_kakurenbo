@@ -116,6 +116,9 @@ public class Game_cont : MonoBehaviourPunCallbacks
                 StartCount = true;
             }
         }
+        else {
+            Debug.Log("待機中");
+        }
     }
 
     void game_start_up(){
