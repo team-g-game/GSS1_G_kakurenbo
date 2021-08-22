@@ -217,14 +217,12 @@ public class move : MonoBehaviour
                     StartPosition = StartPosList[i];
                 }
             }
-        }
-        if(view.IsMine == true){
-            if (Game_cont.GameStartFlag == true){
+            if (view.IsMine == true){
                 if (SetToStartPositionFlag == false){
                     kyara_Obj.transform.position = StartPosition;
                     SetToStartPositionFlag = true;
-                }
-            }            
+                }           
+            }
         }
     }
     public void left_click(){
