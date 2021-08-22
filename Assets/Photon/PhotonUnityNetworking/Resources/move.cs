@@ -26,6 +26,10 @@ public class move : MonoBehaviour
     private Vector3 StartPosition;  //プレイヤーのスタート位置が入る
     public static bool SetToStartPositionFlag = false;  //スタートの位置にプレイヤーを設定したかどうか
 
+    public List<GameObject> camera_chac = new List<GameObject>();
+    private int play_num = 0;
+    public GameObject sinndaato;
+
 
     void Awake(){
         view = GetComponent<PhotonView>();
@@ -34,6 +38,7 @@ public class move : MonoBehaviour
             
             playe_id = PhotonNetwork.LocalPlayer.UserId;
             //Debug.Log(playe_id);
+            
             Camera cam_comp = Cam_Obj.GetComponent<Camera>();
             AudioListener cam_lis = Cam_Obj.GetComponent<AudioListener>();
             cam_lis.enabled = true;
@@ -58,9 +63,16 @@ public class move : MonoBehaviour
 
         var pos = transform.position; 
 
-        if (view.IsMine){
+        if (view.IsMine && !hide_sc.Hidestate){
             if (Game_cont.GameStartFlag == true){
-                if (ScriptGameCont.GetPlayerInfo(MyPlayerViewId.ToString(), "CatchFlag") == "True"){}
+                if (ScriptGameCont.GetPlayerInfo(MyPlayerViewId.ToString(), "CatchFlag") == "True"){     
+                    sinndaato.SetActive(true);
+                    if(camera_chac.Count == 0){
+                        foreach(GameObject i in GameObject.FindGameObjectsWithTag("player")){
+                            if(i.GetComponent<PhotonView>().ViewID != MyPlayerViewId)camera_chac.Add(i);
+                    }
+                }
+            }
                 else {
                     if(Input.GetKey(KeyCode.W)) pos += kyara_Obj.transform.forward * Time.deltaTime * move_speed;
                     if(Input.GetKey(KeyCode.S)) pos -= kyara_Obj.transform.forward * Time.deltaTime * move_speed;
@@ -89,7 +101,7 @@ public class move : MonoBehaviour
             kyara_Obj.transform.localPosition = kyara;
         }        
         
-        if(view.IsMine){
+        if(view.IsMine && ScriptGameCont.GetPlayerInfo(MyPlayerViewId.ToString(), "CatchFlag") != "True"){
             targetPos = kyara_Obj.transform.position;
 
             // マウスの移動量
@@ -134,6 +146,10 @@ public class move : MonoBehaviour
             rot.x = 0;
             rot.z = 0;
             kyara_Obj.transform.rotation = rot;            
+        }else{
+            Cam_Obj.GetComponent<Camera>().enabled = false;
+            foreach(var _ in camera_chac)_.GetComponent<Camera>().enabled =false;
+            camera_chac[play_num].GetComponent<Camera>().enabled = true;
         }
 
 
@@ -207,5 +223,13 @@ public class move : MonoBehaviour
                 }
             }            
         }
+    }
+    public void left_click(){
+        play_num ++;
+        if(camera_chac.Count < play_num) play_num = 0;
+    }
+    public void Rifht_Click(){
+        play_num --;
+        if(play_num < 0) play_num = 0;
     }
 }
