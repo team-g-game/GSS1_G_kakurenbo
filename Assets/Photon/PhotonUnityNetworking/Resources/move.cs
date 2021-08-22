@@ -32,7 +32,8 @@ public class move : MonoBehaviour
 
 
     void Awake(){
-
+        MyPlayerViewId = 0;
+        PlayerViewIdsList = new List<int>();     
         view = GetComponent<PhotonView>();
         
         if(view.IsMine){
@@ -51,8 +52,7 @@ public class move : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MyPlayerViewId = 0;
-        PlayerViewIdsList = new List<int>();     
+
            
         kyara_Obj.transform.position = start_pos;
         GameManager = GameObject.Find("Game_master");
@@ -153,7 +153,7 @@ public class move : MonoBehaviour
 
         }
 
-        if(ScriptGameCont.GetPlayerInfo(MyPlayerViewId.ToString(), "CatchFlag") == "True"){
+        if(ScriptGameCont.GetPlayerInfo(MyPlayerViewId.ToString(), "CatchFlag") == "True"&&Game_cont.CreatePlayerListFlag){
             Cam_Obj.GetComponent<Camera>().enabled = false;
             foreach(var _ in camera_chac)_.GetComponent<Camera>().enabled =false;
             camera_chac[play_num].GetComponent<Camera>().enabled = true;                
