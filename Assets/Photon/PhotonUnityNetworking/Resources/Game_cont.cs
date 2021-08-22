@@ -122,10 +122,16 @@ public class Game_cont : MonoBehaviourPunCallbacks
     }
 
     void game_start_up(){
-        //逃げる側を動かす
-        main_play_samon();
-        //追いかける側を動かす
-        //Demon_samon();
+        if (Title_button_choise.SelectPAndD == 0){
+            //逃げる側を動かす
+            main_play_samon();            
+        }
+        else {
+            //追いかける側を動かす
+            Demon_samon();            
+        }
+
+
 
     }
     void main_play_samon(){
