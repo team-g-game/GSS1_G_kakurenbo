@@ -32,6 +32,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
     public static bool GameEndFlag = false;
     private bool StartCount = false;
     public static bool DemonJoinedFlag = false;
+    public static bool DemonCatchStartFlag = false;
 
     void Start()
     {
@@ -122,7 +123,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
     }
 
     void game_start_up(){
-        if (Title_button_choise.SelectPAndD == 0){
+        if (Title_button_choise.SelectPAndD == 1){
             //逃げる側を動かす
             main_play_samon();            
         }
@@ -130,10 +131,8 @@ public class Game_cont : MonoBehaviourPunCallbacks
             //追いかける側を動かす
             Demon_samon();            
         }
-
-
-
     }
+
     void main_play_samon(){
         GameObject players = PhotonNetwork.Instantiate("Play_1_obj",Vector3.zero,Quaternion.identity,0);
         move move_Script = players.GetComponent<move>();
@@ -372,9 +371,13 @@ public class Game_cont : MonoBehaviourPunCallbacks
                 if (GameStartFlag == true){
                     Debug.Log("ゲームスタート");
                 }
-            }            
+            }
+            if (DemonCatchStartFlag == false){
+                if (CurrentTime - DemonJoinedTime > 62000){
+                    DemonCatchStartFlag = true;
+                }                
+            }
         }
-
     }
 
     /// <summary>

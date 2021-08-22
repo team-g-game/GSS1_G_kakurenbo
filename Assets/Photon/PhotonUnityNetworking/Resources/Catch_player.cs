@@ -28,44 +28,46 @@ public class Catch_player : MonoBehaviour
 
     void OnTriggerStay(Collider hako)   //コライダーの中にいるとき呼び出される関数
     {
-        if (Game_cont.DemonFlag == true && Game_cont.CreatePlayerListFlag == true){ //鬼である、かつ、プレイヤーリスト作った後
-            if (hako.gameObject.CompareTag("Player"))   //コライダーのtagがPlayerであるとき
-            {
-                GameObject Target = GameObject.Find($"{hako.name}");    //Playerの名前を取得
-                var diff = Target.transform.position - demon_cam.transform.position;  //プレイヤーと鬼の距離を取得(Vector3)
-                var distance = diff.magnitude;  //Vector3の大きさ
-                var direction = diff.normalized;    //Vector3の向き
-                var viewportPos = demon_cam.WorldToViewportPoint(Target.transform.position);
-
-                if(rect.Contains(viewportPos) && GetComponent<PhotonView>().IsMine)//自分が鬼なら見つけたlogを出す
+        if ( Game_cont.DemonCatchStartFlag == true){
+            if (Game_cont.DemonFlag == true && Game_cont.CreatePlayerListFlag == true){ //鬼である、かつ、プレイヤーリスト作った後
+                if (hako.gameObject.CompareTag("Player"))   //コライダーのtagがPlayerであるとき
                 {
-                    if(Physics.Raycast(demon_cam.transform.position, direction, out hit, distance))   //RaycastをPlayer方向に飛ばす
-                    {
-                        if(hit.transform.gameObject == Target)  //軌道上にPlayerがいるとき
-                        {
-                            
-                            PhotonView View = hako.transform.parent.gameObject.GetComponent<PhotonView>();
-                            string CViewId = View.ViewID.ToString();
-                            if ((string)ScriptGameCont.GetPlayerInfo(CViewId, "CatchFlag") == "False"){
-                                int Index = ScriptGameCont.GetPlayerInfoIndexFromViewId(CViewId);
-                                ScriptGameCont.UpdatePlayerInfoListByIndex(Index, "CatchFlag", "true");
-                                ScriptGameCont.UpdatePlayerInfoListByIndex(Index, "HidePlace", "100");
-                                ScriptGameCont.SendPlayerInfo(Index);
-                                Debug.Log("見つけた");
-                            }
-                            else {
-                                Debug.Log("nannkaokasii");
-                            }
-                        }
-                        else{
-                            Debug.Log("見つけてない");
-                        }                         
-                    }
-                }
-                else{
-                    Debug.Log("画面外だよ");
-                }
+                    GameObject Target = GameObject.Find($"{hako.name}");    //Playerの名前を取得
+                    var diff = Target.transform.position - demon_cam.transform.position;  //プレイヤーと鬼の距離を取得(Vector3)
+                    var distance = diff.magnitude;  //Vector3の大きさ
+                    var direction = diff.normalized;    //Vector3の向き
+                    var viewportPos = demon_cam.WorldToViewportPoint(Target.transform.position);
 
+                    if(rect.Contains(viewportPos) && GetComponent<PhotonView>().IsMine)//自分が鬼なら見つけたlogを出す
+                    {
+                        if(Physics.Raycast(demon_cam.transform.position, direction, out hit, distance))   //RaycastをPlayer方向に飛ばす
+                        {
+                            if(hit.transform.gameObject == Target)  //軌道上にPlayerがいるとき
+                            {
+                                
+                                PhotonView View = hako.transform.parent.gameObject.GetComponent<PhotonView>();
+                                string CViewId = View.ViewID.ToString();
+                                if ((string)ScriptGameCont.GetPlayerInfo(CViewId, "CatchFlag") == "False"){
+                                    int Index = ScriptGameCont.GetPlayerInfoIndexFromViewId(CViewId);
+                                    ScriptGameCont.UpdatePlayerInfoListByIndex(Index, "CatchFlag", "true");
+                                    ScriptGameCont.UpdatePlayerInfoListByIndex(Index, "HidePlace", "100");
+                                    ScriptGameCont.SendPlayerInfo(Index);
+                                    Debug.Log("見つけた");
+                                }
+                                else {
+                                    Debug.Log("nannkaokasii");
+                                }
+                            }
+                            else{
+                                Debug.Log("見つけてない");
+                            }                         
+                        }
+                    }
+                    else{
+                        Debug.Log("画面外だよ");
+                    }
+
+                }
             }
         }
     }
