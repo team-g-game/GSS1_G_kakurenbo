@@ -101,7 +101,7 @@ public class move : MonoBehaviour
             kyara_Obj.transform.localPosition = kyara;
         }        
         
-        if(view.IsMine && ScriptGameCont.GetPlayerInfo(MyPlayerViewId.ToString(), "CatchFlag") != "True"){
+        if(view.IsMine){
             targetPos = kyara_Obj.transform.position;
 
             // マウスの移動量
@@ -146,13 +146,15 @@ public class move : MonoBehaviour
             rot.x = 0;
             rot.z = 0;
             kyara_Obj.transform.rotation = rot;            
-        }else{
-            Cam_Obj.GetComponent<Camera>().enabled = false;
-            foreach(var _ in camera_chac)_.GetComponent<Camera>().enabled =false;
-            camera_chac[play_num].GetComponent<Camera>().enabled = true;
+
         }
 
-
+        if(ScriptGameCont.GetPlayerInfo(MyPlayerViewId.ToString(), "CatchFlag") == "True"){
+            Cam_Obj.GetComponent<Camera>().enabled = false;
+            foreach(var _ in camera_chac)_.GetComponent<Camera>().enabled =false;
+            camera_chac[play_num].GetComponent<Camera>().enabled = true;                
+        }
+        
         if (Game_cont.JoinRoomFlag == true){
             CreatePlayerIdsList();
         }
