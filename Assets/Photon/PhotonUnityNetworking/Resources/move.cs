@@ -75,8 +75,8 @@ public class move : MonoBehaviour
                         }   
                     }
                         Cam_Obj.GetComponent<Camera>().enabled = false;
-                        foreach(var _ in camera_chac)_.GetComponent<Camera>().enabled =false;
-                        camera_chac[play_num].GetComponent<Camera>().enabled = true;                
+                        foreach(var _ in camera_chac)_.GetComponent<move>().Cam_Obj.GetComponent<Camera>().enabled =false;
+                        camera_chac[play_num].GetComponent<move>().Cam_Obj.GetComponent<Camera>().enabled = true;                
                 }
                 else {
                     if(Input.GetKey(KeyCode.W)) pos += kyara_Obj.transform.forward * Time.deltaTime * move_speed;
