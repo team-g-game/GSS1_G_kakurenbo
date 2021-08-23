@@ -9,24 +9,24 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/var3/scne/title.unity
+    path: Assets/GameScene/Scene/title.unity
     guid: f41f996d9f2e38c439fb67f7ea844242
   - enabled: 1
-    path: Assets/var3/scne/room choise.unity
+    path: Assets/Prototype/var3/scne/room choise.unity
     guid: d78d0c573cc3be1428e04779ec28a643
   - enabled: 1
-    path: Assets/Prototype/taiki/kyara_taik.unity
+    path: Assets/Prototype/Scene/kyara_taik.unity
     guid: 9ba03df37f86e3549b5c9b0b34389921
   - enabled: 1
-    path: Assets/Prototype/Prototype_var1.unity
+    path: Assets/Prototype/Scene/Prototype_var1.unity
     guid: dc50418704339414296b22006dc5dd5c
   - enabled: 1
-    path: Assets/Prototype/rizarut/rizarut.unity
+    path: Assets/Prototype/Scene/rizarut.unity
     guid: ecd9f43e5c9f0a04f8b3b1198ac822a9
   - enabled: 1
-    path: Assets/Prototype/ver_2/Pro_ver_2.unity
+    path: Assets/GameScene/Scene/Pro_ver_2.unity
     guid: 023821a10c2dde94c9eb3481e6de0e01
   - enabled: 1
-    path: Assets/var3/scne/result/result.unity
+    path: Assets/GameScene/Scene/result.unity
     guid: 96445fb07aa294c4e9543666efb18eaf
   m_configObjects: {}
