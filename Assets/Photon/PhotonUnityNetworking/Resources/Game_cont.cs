@@ -26,13 +26,13 @@ public class Game_cont : MonoBehaviourPunCallbacks
     public static bool JoinRoomFlag;    //ルームに参加したタイミングを判定
     public static bool DemonFlag;       //鬼側のフラグ
     public static bool CreatePlayerListFlag;    //プレイヤーリストを生成したタイミングを判定
-    public int DemonJoinedTime = 0;
+    public int DemonJoinedTime = 0;     //鬼がルームに入ってきた時間
     public static bool GameStartFlag;   //ゲームスタートタイミング
-    public int CurrentTime;
-    public static bool GameEndFlag;
-    private bool StartCount = false;
-    public static bool DemonJoinedFlag;
-    public static bool DemonCatchStartFlag;
+    public int CurrentTime;             //ルームの現在時刻
+    public static bool GameEndFlag;     //ゲーム終了フラグ
+    private bool StartCount = false;    //CreatPlayerListを一回だけ実行するためにある
+    public static bool DemonJoinedFlag; //鬼が入ってきたかどうか判定
+    public static bool DemonCatchStartFlag; //鬼が捕まえた判定をスタートする
     public static int decision;// 0なら鬼の勝ち
 
     void Start()
