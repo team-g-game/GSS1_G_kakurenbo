@@ -32,7 +32,7 @@ public class Catch_player : MonoBehaviour
             if (Game_cont.DemonFlag == true && Game_cont.CreatePlayerListFlag == true){ //鬼である、かつ、プレイヤーリスト作った後
                 if (hako.gameObject.CompareTag("Player"))   //コライダーのtagがPlayerであるとき
                 {
-                    GameObject Target = GameObject.Find($"{hako.name}");    //Playerの名前を取得
+                    GameObject Target = hako.gameObject;
                     var diff = Target.transform.position - demon_cam.transform.position;  //プレイヤーと鬼の距離を取得(Vector3)
                     var distance = diff.magnitude;  //Vector3の大きさ
                     var direction = diff.normalized;    //Vector3の向き
