@@ -16,6 +16,8 @@ public class Scene_mane_Script : MonoBehaviour
     public bool scene_chanz = false;
     public static int SelectPD;
 
+    public AudioClip ButtonSE;
+
     // Start is called before the first frame update
     void Awake(){
         DontDestroyOnLoad(gameObject);
@@ -39,6 +41,7 @@ public class Scene_mane_Script : MonoBehaviour
         }
     }
     public void title_clikc(){
+        AudioSource.PlayClipAtPoint( ButtonSE, transform.position);  // 効果音を鳴らす
         SelectPD = Title_button_choise.SelectPAndD;
         scene_num = 1;
         scene_chanz = true;
