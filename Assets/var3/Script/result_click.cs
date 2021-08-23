@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class result_click : MonoBehaviour
 {
@@ -18,12 +19,8 @@ public class result_click : MonoBehaviour
     {
         
     }
-    public void re_click(){
-        GameObject.FindWithTag("scene_mane").GetComponent<Scene_mane_Script>().scene_num = 1;
-        GameObject.FindWithTag("scene_mane").GetComponent<Scene_mane_Script>().scene_chanz = true;
-    }
+
     public void exit(){
-        GameObject.FindWithTag("scene_mane").GetComponent<Scene_mane_Script>().scene_num = 0;
-        GameObject.FindWithTag("scene_mane").GetComponent<Scene_mane_Script>().scene_chanz = true;
+      SceneManager.LoadScene ("title");
     }
 }

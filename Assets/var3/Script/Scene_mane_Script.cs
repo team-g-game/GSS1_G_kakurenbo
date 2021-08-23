@@ -30,7 +30,10 @@ public class Scene_mane_Script : MonoBehaviour
         if (scene_chanz){
             scene_chanz = false;
             if (scene_num == 0) SceneManager.LoadScene(title_scene_name);
-            if (scene_num == 2) SceneManager.LoadScene(new_rizarut_scene_naem);
+            if (scene_num == 2) {
+                SceneManager.LoadScene(new_rizarut_scene_naem);
+                SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetActiveScene());
+            }
             if (scene_num == 1) SceneManager.LoadScene(game_stage);
         }
     }
@@ -39,4 +42,5 @@ public class Scene_mane_Script : MonoBehaviour
         scene_num = 1;
         scene_chanz = true;
     }
+
 }
