@@ -33,8 +33,6 @@ public class Scene_mane_Script : MonoBehaviour
             if (scene_num == 2) {
                 SceneManager.LoadScene(new_rizarut_scene_naem);
                 SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetActiveScene());
-                GameObject PhotonMono = GameObject.Find("PhotonMono");
-                SceneManager.MoveGameObjectToScene(PhotonMono, SceneManager.GetActiveScene());
                 
             }
             if (scene_num == 1) SceneManager.LoadScene(game_stage);
