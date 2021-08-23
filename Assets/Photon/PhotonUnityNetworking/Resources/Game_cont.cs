@@ -119,6 +119,11 @@ public class Game_cont : MonoBehaviourPunCallbacks
         if (JoinRoomFlag == true){
             CurrentTime = PhotonNetwork.ServerTimestamp;
         }
+        if (DemonJoinedFlag == true){
+            if (CurrentTime - DemonJoinedTime > 240000){
+                GameEnd();
+            }
+        }
         //Debug.Log(CurrentTime - DemonJoiedTime);
         GameStart();
         if (GameStartFlag == true){
