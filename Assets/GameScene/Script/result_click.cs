@@ -21,7 +21,6 @@ public class result_click : MonoBehaviour
     }
 
     public void exit(){
-      UnityEditor.EditorApplication.isPlaying = false; //Unity内での終了
-      Application.Quit(); //ゲームを終了する
+      SceneManager.LoadScene ("title");
     }
 }
