@@ -55,6 +55,7 @@ public class Catch_player : MonoBehaviour
                                         ScriptGameCont.UpdatePlayerInfoListByIndex(Index, "HidePlace", "100");
                                         ScriptGameCont.SendPlayerInfo(Index);
                                         Debug.Log("見つけた");
+                                        ScriptGameCont.CatchPlayerFlag = true;
                                     }
                                     else {
                                         Debug.Log("nannkaokasii");

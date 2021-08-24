@@ -34,6 +34,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
     public static bool DemonJoinedFlag; //鬼が入ってきたかどうか判定
     public static bool DemonCatchStartFlag; //鬼が捕まえた判定をスタートする
     public static int decision;// 0なら鬼の勝ち
+    public bool CatchPlayerFlag = false;
 
     void Start()
     {

@@ -127,6 +127,7 @@ public class hide_sc : MonoBehaviour
                             ScriptGameCont.UpdatePlayerInfoAndHash(PlayerViewId,"HidePlace", "100");
                             Debug.Log(ScriptGameCont.GetPlayerInfo(PlayerViewId,"CatchFlag"));
                             Debug.Log(ScriptGameCont.GetPlayerInfo(PlayerViewId,"HidePlace"));
+                            ScriptGameCont.CatchPlayerFlag = true;
                         }
                         else{
                             Debug.Log("いないよ人数分");
