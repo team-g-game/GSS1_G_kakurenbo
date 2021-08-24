@@ -17,8 +17,10 @@ public class Demon_move : MonoBehaviour
     public string Player_name;
     public string Player_id;
 
+    public Canvas main_canvas;
     void Awake(){
         view = GetComponent<PhotonView>();
+        main_canvas.enabled = view.IsMine;
         if(view.IsMine){
             Camera cam_comp = cam_obj.GetComponent<Camera>();
             AudioListener cam_lis = cam_obj.GetComponent<AudioListener>();

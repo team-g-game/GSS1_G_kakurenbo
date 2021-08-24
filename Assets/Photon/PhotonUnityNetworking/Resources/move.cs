@@ -30,10 +30,12 @@ public class move : MonoBehaviour
     private int play_num = 0;
     public GameObject sinndaato;
 
+    public Canvas main_canvas;
+
 
     void Awake(){
         view = GetComponent<PhotonView>();
-        
+        main_canvas.enabled = view.IsMine;
         if(view.IsMine){
             MyPlayerViewId = 0;
             playe_id = PhotonNetwork.LocalPlayer.UserId;

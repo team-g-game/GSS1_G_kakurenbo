@@ -876,10 +876,11 @@ MonoBehaviour:
   kyara_Obj: {fileID: 4853169220070208221}
   playe_id: 
   MovePlayerViewId: 0
-  GameManager: {fileID: 0}
+  GameManager: {fileID: 7997567491265549792, guid: 92fbceea1728d8949ba5d67bccb17e6d, type: 3}
   SetToStartPositionFlag: 0
   camera_chac: []
   sinndaato: {fileID: 5916616540990638275}
+  main_canvas: {fileID: 8931259453637732325}
 --- !u!114 &1604729414670256696
 MonoBehaviour:
   m_ObjectHideFlags: 0

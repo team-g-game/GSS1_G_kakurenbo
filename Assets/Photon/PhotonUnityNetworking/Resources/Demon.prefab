@@ -236,6 +236,7 @@ MonoBehaviour:
   DPS: 2
   Player_name: 
   Player_id: 
+  main_canvas: {fileID: 1236231153407032420}
 --- !u!135 &5123042809353837617
 SphereCollider:
   m_ObjectHideFlags: 0
