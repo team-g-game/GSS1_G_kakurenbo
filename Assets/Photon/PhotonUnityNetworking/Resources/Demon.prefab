@@ -155,7 +155,7 @@ MonoBehaviour:
   start_pos: {x: 5, y: 10, z: 0}
   cam_obj: {fileID: 2659302811045990020}
   ply_obj: {fileID: 8258624850119386637}
-  move_speed: 10
+  move_speed: 25
   DPS: 2
   Player_name: 
   Player_id: 
@@ -228,7 +228,6 @@ MonoBehaviour:
   demon_cam: {fileID: 3518512768837173240}
   rad: 30
   GameManager: {fileID: 7997567491265549792, guid: 92fbceea1728d8949ba5d67bccb17e6d, type: 3}
-  CatchPlayerFlag: 0
 --- !u!82 &-2891497456730109997
 AudioSource:
   m_ObjectHideFlags: 0
@@ -689,6 +688,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayTimeMinute: 0
   DisplayTimeSeconds: 2
+  GameManager: {fileID: 0}
 --- !u!1 &7821716491473912174
 GameObject:
   m_ObjectHideFlags: 0
