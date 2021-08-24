@@ -32,20 +32,22 @@ public class CatchText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ScriptGameCont.CatchPlayerFlag == true){
-            totalTime = Minute * 60 + Seconds;
-            totalTime -= Time.deltaTime;
+        if (Game_cont.DemonFlag == true){
+            if (ScriptGameCont.CatchPlayerFlag == true){
+                totalTime = Minute * 60 + Seconds;
+                totalTime -= Time.deltaTime;
 
-            Minute = (int)totalTime / 60;
-            Seconds = totalTime - Minute * 60;
-            if (totalTime <= 0f){
-                Catch.enabled = false;
-                ScriptGameCont.CatchPlayerFlag = false;
-                Minute = DisplayTimeMinute;
-                Seconds = DisplayTimeSeconds;
-            }
-            else{
-                Catch.enabled = true;
+                Minute = (int)totalTime / 60;
+                Seconds = totalTime - Minute * 60;
+                if (totalTime <= 0f){
+                    Catch.enabled = false;
+                    ScriptGameCont.CatchPlayerFlag = false;
+                    Minute = DisplayTimeMinute;
+                    Seconds = DisplayTimeSeconds;
+                }
+                else{
+                    Catch.enabled = true;
+                }
             }
         }
     }

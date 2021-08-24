@@ -115,17 +115,16 @@ public class Game_cont : MonoBehaviourPunCallbacks
             Debug.Log(GetRoomProperty("DemonJoinedTime"));
         }
         if (Input.GetKeyDown(KeyCode.L)){
-            GameEnd();
+            win_or_loss_decision();
         }
         if (JoinRoomFlag == true){
             CurrentTime = PhotonNetwork.ServerTimestamp;
         }
         if (DemonJoinedFlag == true){
             if (CurrentTime - DemonJoinedTime > 240000){
-                GameEnd();
+                win_or_loss_decision();
             }
         }
-        //Debug.Log(CurrentTime - DemonJoiedTime);
         GameStart();
         if (GameStartFlag == true){
             if (StartCount == false){
@@ -136,6 +135,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
         else {
             Debug.Log("待機中");
         }
+        GameEnd();
     }
 
     void game_start_up(){
@@ -415,15 +415,15 @@ public class Game_cont : MonoBehaviourPunCallbacks
     /// </summary>
     void GameEnd(){
         if (GameEndFlag == false && CreatePlayerListFlag){
-            win_or_loss_decision();
             for (int i = 0; i < PlayerInfoList.Count; ++i){
-                if (PlayerInfoList[i].PCatchFlag == false){
-                    break;
-                }
-                else {
-                    Debug.Log("ゲーム終了");
-                    
-                    GameEndFlag = true;
+                if (PlayerInfoList[i].PCatchFlag == true){
+                    int PlayerCount = 0;
+                    PlayerCount += 1;
+                    if (PlayerCount == PlayerInfoList.Count){
+                        Debug.Log("ゲーム終了");
+                        
+                        GameEndFlag = true;                        
+                    }
                 }
             }
         }
