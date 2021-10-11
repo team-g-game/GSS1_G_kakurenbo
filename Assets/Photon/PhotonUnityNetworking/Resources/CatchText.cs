@@ -32,7 +32,7 @@ public class CatchText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Game_cont.DemonFlag == true){
+        if (ScriptGameCont.DemonFlag == true){
             if (ScriptGameCont.CatchPlayerFlag == true){
                 totalTime = Minute * 60 + Seconds;
                 totalTime -= Time.deltaTime;

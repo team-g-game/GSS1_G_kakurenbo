@@ -67,27 +67,41 @@ public class move : MonoBehaviour
 
         var pos = transform.position; 
 
-        if (view.IsMine && !hide_sc.Hidestate){
-            if (Game_cont.CreatePlayerListFlag && Game_cont.GameStartFlag == true){
-                if (ScriptGameCont.GetPlayerInfo(MyPlayerViewId.ToString(), "CatchFlag") == "True"){     
-                    sinndaato.SetActive(true);
-                    if(camera_chac.Count == 0){
-                        foreach(int i in PlayerViewIdsList){
-                            if(i != MyPlayerViewId) camera_chac.Add(PhotonView.Find(i).gameObject);
-                        }   
+        switch (Game_cont.Game_Status){
+            case Game_cont.Status.before:{         
+                break;
+            }
+            case Game_cont.Status.play:{
+                if (view.IsMine){
+                    if (ScriptGameCont.GetPlayerInfoFromIndex(0, "HidePlace") == "0"){
+                        if (Game_cont.CreatePlayerListFlag){
+                            if (ScriptGameCont.GetPlayerInfo(MyPlayerViewId.ToString(), "CatchFlag") == "True"){     
+                                sinndaato.SetActive(true);
+                                if(camera_chac.Count == 0){
+                                    foreach(int i in PlayerViewIdsList){
+                                        if(i != MyPlayerViewId) camera_chac.Add(PhotonView.Find(i).gameObject);
+                                    }   
+                                }
+                                    Cam_Obj.GetComponent<Camera>().enabled = false;
+                                    foreach(var _ in camera_chac)_.GetComponent<move>().Cam_Obj.GetComponent<Camera>().enabled =false;
+                                    camera_chac[play_num].GetComponent<move>().Cam_Obj.GetComponent<Camera>().enabled = true;                
+                            }
+                            else {
+                                if(Input.GetKey(KeyCode.W)) pos += kyara_Obj.transform.forward * Time.deltaTime * move_speed;
+                                if(Input.GetKey(KeyCode.S)) pos -= kyara_Obj.transform.forward * Time.deltaTime * move_speed;
+                                if(Input.GetKey(KeyCode.A)) pos -= kyara_Obj.transform.right * Time.deltaTime * move_speed;
+                                if(Input.GetKey(KeyCode.D)) pos += kyara_Obj.transform.right * Time.deltaTime * move_speed;            
+                            }                 
+                        }
                     }
-                        Cam_Obj.GetComponent<Camera>().enabled = false;
-                        foreach(var _ in camera_chac)_.GetComponent<move>().Cam_Obj.GetComponent<Camera>().enabled =false;
-                        camera_chac[play_num].GetComponent<move>().Cam_Obj.GetComponent<Camera>().enabled = true;                
                 }
-                else {
-                    if(Input.GetKey(KeyCode.W)) pos += kyara_Obj.transform.forward * Time.deltaTime * move_speed;
-                    if(Input.GetKey(KeyCode.S)) pos -= kyara_Obj.transform.forward * Time.deltaTime * move_speed;
-                    if(Input.GetKey(KeyCode.A)) pos -= kyara_Obj.transform.right * Time.deltaTime * move_speed;
-                    if(Input.GetKey(KeyCode.D)) pos += kyara_Obj.transform.right * Time.deltaTime * move_speed;            
-                }                 
+                break;
+            }
+            case Game_cont.Status.after:{
+                break;
             }
         }
+
 
 
 

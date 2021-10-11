@@ -36,8 +36,19 @@ public class Item_Get : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        switch (Game_cont.Game_Status){
+            case Game_cont.Status.before:{         
+                FirstChangeTreasureChestList();
+                break;
+            }
+            case Game_cont.Status.play:{
+                break;
+            }
+            case Game_cont.Status.after:{
+                break;
+            }
+        }
         Pick_Up();
-        FirstChangeTreasureChestList();
     }
     void Pick_Up()     //プレイヤーがアイテムを拾う時
     {

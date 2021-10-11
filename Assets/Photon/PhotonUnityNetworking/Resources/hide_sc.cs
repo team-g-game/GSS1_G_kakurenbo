@@ -8,7 +8,7 @@ public class hide_sc : MonoBehaviour
     // Start is called before the first frame update
     private bool HideTrriger = false;    //隠れることが可能な場所かどうか
     private bool WatchTrriger = false;   //見ることが可能な場所かどうか
-    public static bool Hidestate;      //隠れている状態かどうか  ここがネットワーク経由で変更されるとうれしい
+    public bool Hidestate;      //隠れている状態かどうか  ここがネットワーク経由で変更されるとうれしい
     Vector3 Hide_before_pos;            //隠れる前のプレイヤーの位置
     GameObject Player_obj;              //プレイヤーの子オブジェクト
     GameObject Parent_Player_obj;       //プレイヤーの親オブジェクト
@@ -67,12 +67,23 @@ public class hide_sc : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Game_cont.DemonFlag == false){
-            Hide();
+        switch (Game_cont.Game_Status){
+            case Game_cont.Status.before:{         
+                break;
+            }
+            case Game_cont.Status.play:{
+                if (ScriptGameCont.DemonFlag == true){
+                    Watch();
+                }
+                else {
+                    Hide();
+                } 
+                break;
+            }
+            case Game_cont.Status.after:{
+                break;
+            }
         }
-        else {
-            Watch();
-        } 
     }
     void Hide()     //プレイヤーが隠れる時
     {

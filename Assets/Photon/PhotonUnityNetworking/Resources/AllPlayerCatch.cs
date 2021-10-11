@@ -21,7 +21,7 @@ public class AllPlayerCatch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Game_cont.DemonFlag == true){
+        if (ScriptGameCont.DemonFlag == true){
             if (Game_cont.GameEndFlag == true){
                 AllCatch.enabled = true;
             }

@@ -45,16 +45,21 @@ public class Demon_move : MonoBehaviour
     {
         var this_pos = transform.position;
 
-        
-
-        if (view.IsMine){
-            if (Game_cont.GameStartFlag == true){
-                if (Game_cont.GameEndFlag == false){
+        switch (Game_cont.Game_Status){
+            case Game_cont.Status.before:{         
+                break;
+            }
+            case Game_cont.Status.play:{
+                if (view.IsMine){
                     if(Input.GetKey(KeyCode.W)) this_pos += ply_obj.transform.forward * Time.deltaTime * move_speed;
                     if(Input.GetKey(KeyCode.A)) this_pos -= ply_obj.transform.right * Time.deltaTime * move_speed;
                     if(Input.GetKey(KeyCode.D)) this_pos += ply_obj.transform.right * Time.deltaTime * move_speed;
                     if(Input.GetKey(KeyCode.S)) this_pos -= ply_obj.transform.forward * Time.deltaTime * move_speed;
                 }
+                break;
+            }
+            case Game_cont.Status.after:{
+                break;
             }
         }
         
