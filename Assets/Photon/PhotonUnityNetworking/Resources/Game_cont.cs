@@ -426,6 +426,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
                     int PlayerCount = 0;
                     PlayerCount += 1;
                     if (PlayerCount == PlayerInfoList.Count){
+                        win_or_loss_decision();
                         Debug.Log("ゲーム終了");
                         
                         Game_Status = Status.after;                       
