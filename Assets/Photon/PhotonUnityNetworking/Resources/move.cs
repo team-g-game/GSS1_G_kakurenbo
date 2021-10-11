@@ -73,7 +73,7 @@ public class move : MonoBehaviour
             case Game_cont.Status.play:{
                 if (view.IsMine){
                     if (ScriptGameCont.GetPlayerInfoFromIndex(0, "HidePlace") == "0"){
-                        if (Game_cont.CreatePlayerListFlag){
+                        if (ScriptGameCont.CreatePlayerListFlag){
                             if (ScriptGameCont.GetPlayerInfo(MyPlayerViewId.ToString(), "CatchFlag") == "True"){     
                                 sinndaato.SetActive(true);
                                 if(camera_chac.Count == 0){
@@ -167,7 +167,7 @@ public class move : MonoBehaviour
         if (CheckMovePlayerViewId == false){
             MovePlayerViewId = GetComponent<PhotonView>().ViewID;
         }
-        if (Game_cont.CreatePlayerListFlag == true){
+        if (ScriptGameCont.CreatePlayerListFlag == true){
             UpdateCharacterVisualTrriger();
         }
         SetToStartPosition();
@@ -215,7 +215,7 @@ public class move : MonoBehaviour
     }
 
     void SetToStartPosition(){
-        if (Game_cont.CreatePlayerListFlag == true){
+        if (ScriptGameCont.CreatePlayerListFlag == true){
             PlayerViewIdsList.Sort();
             for (int i = 0; i < PlayerViewIdsList.Count; ++i){
                 if(MyPlayerViewId == PlayerViewIdsList[i]){
