@@ -30,6 +30,7 @@ public class Item_Get : MonoBehaviour
     }
     void Start()
     {
+        GameManager = GameObject.Find("Game_master");
         ScriptGameCont = GameManager.GetComponent<Game_cont>();
     }
 
