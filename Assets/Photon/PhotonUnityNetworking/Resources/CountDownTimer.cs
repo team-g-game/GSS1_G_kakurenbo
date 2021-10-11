@@ -24,7 +24,7 @@ public class CountDownTimer : MonoBehaviour {
 	}
 
 	void Update () {
-		if (Game_cont.GameStartFlag == true){
+		if (Game_cont.Game_Status == Game_cont.Status.play){
 			//　制限時間が0秒以下なら何もしない
 			if (totalTime <= 0f) {
 				return;
@@ -45,6 +45,8 @@ public class CountDownTimer : MonoBehaviour {
 			//　制限時間以下になったらコンソールに『制限時間終了』という文字列を表示する
 			if(totalTime <= 0f) {
 				Debug.Log("制限時間終了");
+				GameObject.Find("Game_master").GetComponent<Game_cont>().win_or_loss_decision();
+
 			}
 		}
 	}

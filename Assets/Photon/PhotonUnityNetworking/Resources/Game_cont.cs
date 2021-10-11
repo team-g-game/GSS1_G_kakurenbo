@@ -186,7 +186,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
         DemonFlag = true;
     }
 
-    void win_or_loss_decision(){
+    public void win_or_loss_decision(){
         bool p_loss = true;
         foreach(var a in PlayerInfoList){
             if(!a.PCatchFlag)p_loss = false;
