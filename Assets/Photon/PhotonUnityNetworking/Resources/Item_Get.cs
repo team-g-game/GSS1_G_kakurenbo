@@ -5,6 +5,11 @@ using UnityEngine;
 public class Item_Get : MonoBehaviour
 {
     private bool ItemTrriger = false;    //隠れることが可能な場所かどうか
+    public GameObject GameManager;  //Game_masterを入れる
+    private Game_cont ScriptGameCont;   //Game_contの関数使えるようにする
+    [SerializeField] private int TreasureChestNumber;
+    [SerializeField] private string ItemsInfo = "000";
+    private bool FirstChangeTreasureChestListFlag = false;
 
     void OnTriggerEnter(Collider other)
     {
@@ -25,13 +30,14 @@ public class Item_Get : MonoBehaviour
     }
     void Start()
     {
-
+        ScriptGameCont = GameManager.GetComponent<Game_cont>();
     }
 
     // Update is called once per frame
     void Update()
     {
         Pick_Up();
+        FirstChangeTreasureChestList();
     }
     void Pick_Up()     //プレイヤーがアイテムを拾う時
     {
@@ -41,6 +47,13 @@ public class Item_Get : MonoBehaviour
             {
                 Debug.Log("ok");//アイテムの挙動
             }
+        }
+    }
+
+    void FirstChangeTreasureChestList(){
+        if (ScriptGameCont.CreateTreasureChestListflag == true && FirstChangeTreasureChestListFlag == false){
+            ScriptGameCont.ChangeTreasureChestList(TreasureChestNumber, ItemsInfo);
+            FirstChangeTreasureChestListFlag = true;
         }
     }
 }

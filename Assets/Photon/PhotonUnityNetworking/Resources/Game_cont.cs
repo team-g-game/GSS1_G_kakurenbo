@@ -23,6 +23,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
     PlayerInfo Myself;  //入った本人の情報
     PlayerInfo Player2; //ほかのプレイヤーの情報を作るために作ったけど要らない気がしてきた
     List<PlayerInfo> PlayerInfoList = new List<PlayerInfo>();   //プレイヤーの全情報が入ってる
+    List<string> TreasureChest = new List<string>();
     public static bool JoinRoomFlag;    //ルームに参加したタイミングを判定
     public static bool DemonFlag;       //鬼側のフラグ
     public static bool CreatePlayerListFlag;    //プレイヤーリストを生成したタイミングを判定
@@ -35,6 +36,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
     public static bool DemonCatchStartFlag; //鬼が捕まえた判定をスタートする
     public static int decision;// 0なら鬼の勝ち
     public bool CatchPlayerFlag = false;
+    public bool CreateTreasureChestListflag = false;
 
     void Start()
     {
@@ -49,6 +51,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
         
         roomHash = new ExitGames.Client.Photon.Hashtable();
         PhotonNetwork.ConnectUsingSettings();
+        CreateTreasureChestList();
     }
     public override void OnConnectedToMaster(){
        // "room"という名前のルームに参加する（ルームが無ければ作成してから参加する）
@@ -116,6 +119,11 @@ public class Game_cont : MonoBehaviourPunCallbacks
         }
         if (Input.GetKeyDown(KeyCode.L)){
             win_or_loss_decision();
+        }
+        if (Input.GetKeyDown(KeyCode.P)){
+            for (int i = 0; i < 20; i++){
+                Debug.Log(TreasureChest[i]);
+            }
         }
         if (JoinRoomFlag == true){
             CurrentTime = PhotonNetwork.ServerTimestamp;
@@ -484,4 +492,14 @@ public class Game_cont : MonoBehaviourPunCallbacks
             return ValueObj;
         }
     }
+
+    void CreateTreasureChestList(){
+        for (int i = 0; i < 20; i++)TreasureChest.Add("000");
+        CreateTreasureChestListflag = true;
+    }
+
+    public void ChangeTreasureChestList(int index, string ItemInfo){
+        TreasureChest[index] = ItemInfo;
+    }
 }
+
