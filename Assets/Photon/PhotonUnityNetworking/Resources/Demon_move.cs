@@ -45,6 +45,8 @@ public class Demon_move : MonoBehaviour
     {
         var this_pos = transform.position;
 
+        
+
         if (view.IsMine){
             if (Game_cont.GameStartFlag == true){
                 if (Game_cont.GameEndFlag == false){
@@ -90,5 +92,27 @@ public class Demon_move : MonoBehaviour
         */
         cam_obj.transform.localPosition = new Vector3(0,ply_obj.transform.position.y + 0.8f,0);
     }
-    
+    private Vector3 move_key_Down(KeyCode get_key){
+        Vector3 move_pos = new Vector3(0,0,0);
+        switch(get_key){
+            case KeyCode.W:
+
+                break;
+            case KeyCode.A:
+
+                break;            
+
+            case KeyCode.S:
+
+                break;
+
+            case KeyCode.D:
+
+                break;
+
+            default:
+                break;
+        }
+        return move_pos;
+    }
 }

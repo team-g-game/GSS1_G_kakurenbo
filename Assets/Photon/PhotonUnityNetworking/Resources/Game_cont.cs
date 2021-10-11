@@ -25,7 +25,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
     List<PlayerInfo> PlayerInfoList = new List<PlayerInfo>();   //プレイヤーの全情報が入ってる
     List<string> TreasureChest = new List<string>();
     public static bool JoinRoomFlag;    //ルームに参加したタイミングを判定
-    public static bool DemonFlag;       //鬼側のフラグ
+    public bool DemonFlag;       //鬼側のフラグ
     public static bool CreatePlayerListFlag;    //プレイヤーリストを生成したタイミングを判定
     public int DemonJoinedTime = 0;     //鬼がルームに入ってきた時間
     public static bool GameStartFlag;   //ゲームスタートタイミング
@@ -37,6 +37,15 @@ public class Game_cont : MonoBehaviourPunCallbacks
     public static int decision;// 0なら鬼の勝ち
     public bool CatchPlayerFlag = false;
     public bool CreateTreasureChestListflag = false;
+    public static Status Game_Statue;
+    //ゲームの状態
+    public enum Status 
+    {
+        before = 0,
+        play = 1,
+        after = 2
+    }
+
 
     void Start()
     {
@@ -48,6 +57,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
         DemonJoinedFlag = false;
         DemonCatchStartFlag = false;
         decision = 0;
+        Game_Statue = Status.before;
         
         roomHash = new ExitGames.Client.Photon.Hashtable();
         PhotonNetwork.ConnectUsingSettings();
@@ -106,14 +116,27 @@ public class Game_cont : MonoBehaviourPunCallbacks
     }
     void Update()
     {
+        switch (Game_Statue){
+            case Status.before:{
+                if (Input.GetKeyDown(KeyCode.F)){   //無理やりスタート
+                    GameStartFlag = true;
+                }
+                if (Input.GetKeyDown(KeyCode.C)){   //プレイヤーのリストを作るタイミングで押す
+                    CreatePlayerList();
+                    Debug.Log(move.PlayerViewIdsList.Count);
+                }                
+                break;
+            }
+            case Status.play:{
+                break;
+            }
+            case Status.after:{
+                break;
+            }
+        }
+
         CheckMyViewId();
-        if (Input.GetKeyDown(KeyCode.F)){   //無理やりスタート
-            GameStartFlag = true;
-        }
-        if (Input.GetKeyDown(KeyCode.C)){   //プレイヤーのリストを作るタイミングで押す
-            CreatePlayerList();
-            Debug.Log(move.PlayerViewIdsList.Count);
-        }
+
         if (Input.GetKeyDown(KeyCode.G)){   //これもテスト
             Debug.Log(GetRoomProperty("DemonJoinedTime"));
         }
