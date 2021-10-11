@@ -24,7 +24,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
     PlayerInfo Player2; //ほかのプレイヤーの情報を作るために作ったけど要らない気がしてきた
     List<PlayerInfo> PlayerInfoList = new List<PlayerInfo>();   //プレイヤーの全情報が入ってる
     List<string> TreasureChest = new List<string>();
-    public static bool JoinRoomFlag;    //ルームに参加したタイミングを判定
+    public  bool JoinRoomFlag;    //ルームに参加したタイミングを判定
     public bool DemonFlag;       //鬼側のフラグ
     public static bool CreatePlayerListFlag;    //プレイヤーリストを生成したタイミングを判定
     public int DemonJoinedTime = 0;     //鬼がルームに入ってきた時間
@@ -32,7 +32,6 @@ public class Game_cont : MonoBehaviourPunCallbacks
     public static bool DemonJoinedFlag; //鬼が入ってきたかどうか判定
     
     /// <value>ゲームの状態で見るように書き換える</value>
-    public static bool DemonCatchStartFlag; //鬼が捕まえた判定をスタートする
     public static bool decision;// 0なら鬼の勝ち
     public bool CatchPlayerFlag = false;
     public bool CreateTreasureChestListflag = false;
@@ -57,7 +56,6 @@ public class Game_cont : MonoBehaviourPunCallbacks
         DemonFlag = false;
         CreatePlayerListFlag = false;
         DemonJoinedFlag = false;
-        DemonCatchStartFlag = false;
         decision = false;
         Game_Status = Status.before;
         
@@ -417,11 +415,6 @@ public class Game_cont : MonoBehaviourPunCallbacks
                     CreatePlayerList();
                     Debug.Log("ゲームスタート");
                 }
-            }
-            if (DemonCatchStartFlag == false){
-                if (CurrentTime - DemonJoinedTime > 62000){
-                    DemonCatchStartFlag = true;
-                }                
             }
         }
     }

@@ -12,6 +12,9 @@ public class Catch_player : MonoBehaviour
     Rect rect = new Rect(0, 0, 1, 1);
     public GameObject GameManager;  //Game_masterを入れる
     private Game_cont ScriptGameCont;   //Game_contの関数使えるようにする
+    private bool StartFlag= false ;
+    private float chach_int = 2000;
+    private float _timer=0;
     void Start()
     {
         var Col = this.GetComponent<SphereCollider>();
@@ -33,7 +36,11 @@ public class Catch_player : MonoBehaviour
                 break;
             }
             case Game_cont.Status.play:{
-                if (Game_cont.DemonCatchStartFlag == true){
+
+                if(_timer >= chach_int)StartFlag = true;
+                else _timer += Time.deltaTime;
+
+                if (StartFlag == true){
                     if (ScriptGameCont.DemonFlag == true && Game_cont.CreatePlayerListFlag == true){ //鬼である、かつ、プレイヤーリスト作った後
                         if (hako.gameObject.CompareTag("Player"))   //コライダーのtagがPlayerであるとき
                         {

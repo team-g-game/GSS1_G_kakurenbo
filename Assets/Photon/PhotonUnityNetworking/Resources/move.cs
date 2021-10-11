@@ -52,8 +52,6 @@ public class move : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-           
         kyara_Obj.transform.position = start_pos;
         GameManager = GameObject.Find("Game_master");
         ScriptGameCont = GameManager.GetComponent<Game_cont>();
@@ -69,6 +67,7 @@ public class move : MonoBehaviour
 
         switch (Game_cont.Game_Status){
             case Game_cont.Status.before:{         
+                CreatePlayerIdsList();
                 break;
             }
             case Game_cont.Status.play:{
@@ -101,10 +100,6 @@ public class move : MonoBehaviour
                 break;
             }
         }
-
-
-
-
 
         if (kyara_Obj.transform.localPosition.x == Vector3.zero.x &&kyara_Obj.transform.localPosition.z == Vector3.zero.x && view.IsMine){
             transform.position = pos;
@@ -168,10 +163,6 @@ public class move : MonoBehaviour
             rot.z = 0;
             kyara_Obj.transform.rotation = rot;            
 
-        }
-        
-        if (Game_cont.JoinRoomFlag == true){
-            CreatePlayerIdsList();
         }
         if (CheckMovePlayerViewId == false){
             MovePlayerViewId = GetComponent<PhotonView>().ViewID;
