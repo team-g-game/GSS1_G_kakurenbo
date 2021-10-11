@@ -176,8 +176,8 @@ public class Game_cont : MonoBehaviourPunCallbacks
         foreach(var a in PlayerInfoList){
             if(!a.PCatchFlag)p_loss = false;
         }
-        if(p_loss)decision = true;
-        else decision = false;
+        if(p_loss)decision = false;
+        else decision = true;
 
         move.PlayerViewIdsList.Clear();
         GameObject.FindWithTag("scene_mane").GetComponent<Scene_mane_Script>().scene_num = 2;
