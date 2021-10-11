@@ -127,11 +127,10 @@ public class Game_cont : MonoBehaviourPunCallbacks
                     Debug.Log(move.PlayerViewIdsList.Count);
                 }
                 GameStart();
-
                 Debug.Log("待機中");
-
                 break;
             }
+
             case Status.play:{
                 //プレイヤーのアイテム確認？
                 if (Input.GetKeyDown(KeyCode.P)){
@@ -140,18 +139,14 @@ public class Game_cont : MonoBehaviourPunCallbacks
                     }
                 }
                 if (Input.GetKeyDown(KeyCode.L))win_or_loss_decision();
+                if (Input.GetKeyDown(KeyCode.G))Debug.Log(GetRoomProperty("DemonJoinedTime"));
                 GameEnd();
-
                 break;
             }
             case Status.after:{
                 break;
             }
         }
-        if (Input.GetKeyDown(KeyCode.G)){   //これもテスト
-            Debug.Log(GetRoomProperty("DemonJoinedTime"));
-        }
-
         if (JoinRoomFlag == true){
             CurrentTime = PhotonNetwork.ServerTimestamp;
         }
