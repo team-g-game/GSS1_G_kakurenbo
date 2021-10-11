@@ -16,14 +16,31 @@ public class CountDownTimer : MonoBehaviour {
 	//　前回Update時の秒数
 	private float oldSeconds;
 	private Text timerText;
+	int stay_seconds;
 
 	void Start () {
 		totalTime = minute * 60 + seconds;
 		oldSeconds = 0f;
 		timerText = GetComponentInChildren<Text>();
+		stay_seconds = 60;
 	}
 
 	void Update () {
+		if (Game_cont.Game_Status == Game_cont.Status.before && GameObject.Find("Game_master").GetComponent<Game_cont>().DemonFlag){
+			//　一旦トータルの制限時間を計測；
+			seconds = stay_seconds - Time.deltaTime;
+			Debug.Log(totalTime);
+
+			//　タイマー表示用UIテキストに時間を表示する
+			if((int)seconds != (int)oldSeconds) {
+				timerText.text = "00:" + ((int) seconds).ToString("00");
+			}
+			oldSeconds = seconds;
+			//　制限時間以下になったらコンソールに『制限時間終了』という文字列を表示する
+			if(totalTime <= 0f) {
+				GameObject.Find("Game_master").GetComponent<Game_cont>().GameStart();
+			}
+		}
 		if (Game_cont.Game_Status == Game_cont.Status.play){
 			//　制限時間が0秒以下なら何もしない
 			if (totalTime <= 0f) {

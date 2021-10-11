@@ -13,7 +13,7 @@ public class Catch_player : MonoBehaviour
     public GameObject GameManager;  //Game_masterを入れる
     private Game_cont ScriptGameCont;   //Game_contの関数使えるようにする
     private bool start_flag= false ;
-    private float chach_int = 2000;
+    private float chach_int = 2;
     private float _timer = 0;
 
     void Start()

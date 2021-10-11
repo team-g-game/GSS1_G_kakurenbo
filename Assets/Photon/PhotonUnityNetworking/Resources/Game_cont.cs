@@ -402,7 +402,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
     /// <summary>
     /// ゲームスタート
     /// </summary>
-    void GameStart(){
+    public void GameStart(){
         if (DemonJoinedFlag == true){
             if (Game_Status == Status.before){
                 if (CurrentTime - DemonJoinedTime > 60000){
