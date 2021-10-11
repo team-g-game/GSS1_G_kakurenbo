@@ -36,8 +36,6 @@ public class Demon_move : MonoBehaviour
     void Start()
     {
         ply_obj.transform.position = start_pos;
-
-
     }
 
     // Update is called once per frame

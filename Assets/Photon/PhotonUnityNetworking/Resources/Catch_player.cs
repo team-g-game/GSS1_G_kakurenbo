@@ -28,10 +28,11 @@ public class Catch_player : MonoBehaviour
     {
         switch(Game_cont.Game_Status){
             case Game_cont.Status.before:{
+                this.GetComponent<SphereCollider>().enabled = false;
                 break;
             }
             case Game_cont.Status.play:{
-                if(_timer >= chach_int)StartFlag = true;
+                if(_timer >= chach_int)this.GetComponent<SphereCollider>().enabled = true;
                 else _timer += Time.deltaTime;
                 break;
             }
@@ -42,63 +43,50 @@ public class Catch_player : MonoBehaviour
 
     void OnTriggerStay(Collider hako)   //コライダーの中にいるとき呼び出される関数
     {
-        switch (Game_cont.Game_Status){
-            case Game_cont.Status.before:{         
-                break;
-            }
-            case Game_cont.Status.play:{
-                if (StartFlag == true){
-                    if (ScriptGameCont.DemonFlag == true && Game_cont.CreatePlayerListFlag == true){ //鬼である、かつ、プレイヤーリスト作った後
-                        if (hako.gameObject.CompareTag("Player"))   //コライダーのtagがPlayerであるとき
+        if (ScriptGameCont.DemonFlag == true && Game_cont.CreatePlayerListFlag == true){ //鬼である、かつ、プレイヤーリスト作った後
+            if (hako.gameObject.CompareTag("Player"))   //コライダーのtagがPlayerであるとき
+            {
+                GameObject Target = hako.gameObject;
+                var diff = Target.transform.position - demon_cam.transform.position;  //プレイヤーと鬼の距離を取得(Vector3)
+                var distance = diff.magnitude;  //Vector3の大きさ
+                var direction = diff.normalized;    //Vector3の向き
+                var viewportPos = demon_cam.WorldToViewportPoint(Target.transform.position);
+                var CameraToPlayer = demon_cam.transform.forward;
+                        
+                if (Vector3.Dot(CameraToPlayer,direction) >0){
+                    if(rect.Contains(viewportPos) && GetComponent<PhotonView>().IsMine)//自分が鬼なら見つけたlogを出す
+                    {
+                        if(Physics.Raycast(demon_cam.transform.position, direction, out hit, distance))   //RaycastをPlayer方向に飛ばす
                         {
-                            GameObject Target = hako.gameObject;
-                            var diff = Target.transform.position - demon_cam.transform.position;  //プレイヤーと鬼の距離を取得(Vector3)
-                            var distance = diff.magnitude;  //Vector3の大きさ
-                            var direction = diff.normalized;    //Vector3の向き
-                            var viewportPos = demon_cam.WorldToViewportPoint(Target.transform.position);
-                            var CameraToPlayer = demon_cam.transform.forward;
-                            
-                            if (Vector3.Dot(CameraToPlayer,direction) >0){
-                                if(rect.Contains(viewportPos) && GetComponent<PhotonView>().IsMine)//自分が鬼なら見つけたlogを出す
-                                {
-                                    if(Physics.Raycast(demon_cam.transform.position, direction, out hit, distance))   //RaycastをPlayer方向に飛ばす
-                                    {
-                                        if(hit.transform.gameObject == Target)  //軌道上にPlayerがいるとき
-                                        {
-                                            
-                                            PhotonView View = hako.transform.parent.gameObject.GetComponent<PhotonView>();
-                                            string CViewId = View.ViewID.ToString();
-                                            if ((string)ScriptGameCont.GetPlayerInfo(CViewId, "CatchFlag") == "False"){
-                                                int Index = ScriptGameCont.GetPlayerInfoIndexFromViewId(CViewId);
-                                                ScriptGameCont.UpdatePlayerInfoListByIndex(Index, "CatchFlag", "true");
-                                                ScriptGameCont.UpdatePlayerInfoListByIndex(Index, "HidePlace", "100");
-                                                ScriptGameCont.SendPlayerInfo(Index);
-                                                Debug.Log("見つけた");
-                                                ScriptGameCont.CatchPlayerFlag = true;
-                                            }
-                                            else {
-                                                Debug.Log("nannkaokasii");
-                                            }
-                                        }
-                                        else{
-                                            Debug.Log("見つけてない");
-                                        }                         
-                                    }
+                            if(hit.transform.gameObject == Target)  //軌道上にPlayerがいるとき
+                            {
+                                
+                                PhotonView View = hako.transform.parent.gameObject.GetComponent<PhotonView>();
+                                string CViewId = View.ViewID.ToString();
+                                if ((string)ScriptGameCont.GetPlayerInfo(CViewId, "CatchFlag") == "False"){
+                                    int Index = ScriptGameCont.GetPlayerInfoIndexFromViewId(CViewId);
+                                    ScriptGameCont.UpdatePlayerInfoListByIndex(Index, "CatchFlag", "true");
+                                    ScriptGameCont.UpdatePlayerInfoListByIndex(Index, "HidePlace", "100");
+                                    ScriptGameCont.SendPlayerInfo(Index);
+                                    Debug.Log("見つけた");
+                                    ScriptGameCont.CatchPlayerFlag = true;
                                 }
-                                else{
-                                    Debug.Log("画面外だよ");
+                                else {
+                                    Debug.Log("nannkaokasii");
                                 }
                             }
                             else{
-                                Debug.Log("画面外後ろ側");
-                            }
+                                Debug.Log("見つけてない");
+                            }                         
                         }
                     }
+                    else{
+                        Debug.Log("画面外だよ");
+                    }
                 }
-                break;
-            }
-            case Game_cont.Status.after:{
-                break;
+                else{
+                    Debug.Log("画面外後ろ側");
+                }
             }
         }
     }
