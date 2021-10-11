@@ -29,7 +29,7 @@ public class Catch_player : MonoBehaviour
     {
         switch(Game_cont.Game_Status){
             case Game_cont.Status.before:{
-                this.GetComponent<SphereCollider>().enabled = false;
+                
                 break;
             }
             case Game_cont.Status.play:{
