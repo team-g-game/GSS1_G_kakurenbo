@@ -22,7 +22,7 @@ public class AllPlayerCatch : MonoBehaviour
     void Update()
     {
         if (ScriptGameCont.DemonFlag == true){
-            if (Game_cont.GameEndFlag == true){
+            if (Game_cont.Game_Status == Game_cont.Status.after){
                 AllCatch.enabled = true;
             }
         }

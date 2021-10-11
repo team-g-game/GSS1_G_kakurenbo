@@ -28,21 +28,26 @@ public class Game_cont : MonoBehaviourPunCallbacks
     public bool DemonFlag;       //鬼側のフラグ
     public static bool CreatePlayerListFlag;    //プレイヤーリストを生成したタイミングを判定
     public int DemonJoinedTime = 0;     //鬼がルームに入ってきた時間
-    public static bool GameStartFlag;   //ゲームスタートタイミング
     public int CurrentTime;             //ルームの現在時刻
-    public static bool GameEndFlag;     //ゲーム終了フラグ
     private bool StartCount = false;    //CreatPlayerListを一回だけ実行するためにある
     public static bool DemonJoinedFlag; //鬼が入ってきたかどうか判定
+    
+    /// <value>ゲームの状態で見るように書き換える</value>
     public static bool DemonCatchStartFlag; //鬼が捕まえた判定をスタートする
-    public static int decision;// 0なら鬼の勝ち
+    public static bool decision;// 0なら鬼の勝ち
     public bool CatchPlayerFlag = false;
     public bool CreateTreasureChestListflag = false;
-    public static Status Game_Statue;
-    //ゲームの状態
+
+    /// <summary>ゲームの状態</summary>
+    public static Status Game_Status;
+    /// <summary>状態</summary>
     public enum Status 
     {
+        /// <value>ゲーム開始前</value>
         before = 0,
+        /// <value>ゲーム中</value>
         play = 1,
+        /// <value>ゲーム後</value>
         after = 2
     }
 
@@ -52,12 +57,10 @@ public class Game_cont : MonoBehaviourPunCallbacks
         JoinRoomFlag = false;
         DemonFlag = false;
         CreatePlayerListFlag = false;
-        GameStartFlag = false;
-        GameEndFlag = false;
         DemonJoinedFlag = false;
         DemonCatchStartFlag = false;
-        decision = 0;
-        Game_Statue = Status.before;
+        decision = false;
+        Game_Status = Status.before;
         
         roomHash = new ExitGames.Client.Photon.Hashtable();
         PhotonNetwork.ConnectUsingSettings();
@@ -65,8 +68,6 @@ public class Game_cont : MonoBehaviourPunCallbacks
     }
     public override void OnConnectedToMaster(){
        // "room"という名前のルームに参加する（ルームが無ければ作成してから参加する）
-
-
         PhotonNetwork.JoinOrCreateRoom("room", new RoomOptions(), TypedLobby.Default);
 
     }
@@ -116,57 +117,49 @@ public class Game_cont : MonoBehaviourPunCallbacks
     }
     void Update()
     {
-        switch (Game_Statue){
+        switch (Game_Status){
             case Status.before:{
+                CheckMyViewId();
+                if (StartCount == false){
+                    CreatePlayerList();
+                    StartCount = true;
+                }
                 if (Input.GetKeyDown(KeyCode.F)){   //無理やりスタート
-                    GameStartFlag = true;
+                    Game_Status = Status.play;
                 }
                 if (Input.GetKeyDown(KeyCode.C)){   //プレイヤーのリストを作るタイミングで押す
                     CreatePlayerList();
                     Debug.Log(move.PlayerViewIdsList.Count);
-                }                
+                }
+                GameStart();
+
+                Debug.Log("待機中");
+
                 break;
             }
             case Status.play:{
+                //プレイヤーのアイテム確認？
+                if (Input.GetKeyDown(KeyCode.P)){
+                    for (int i = 0; i < 20; i++){
+                        Debug.Log(TreasureChest[i]);
+                    }
+                }
+                if (Input.GetKeyDown(KeyCode.L) || CurrentTime > 18000)win_or_loss_decision();
+                GameEnd();
+
                 break;
             }
             case Status.after:{
                 break;
             }
         }
-
-        CheckMyViewId();
-
         if (Input.GetKeyDown(KeyCode.G)){   //これもテスト
             Debug.Log(GetRoomProperty("DemonJoinedTime"));
         }
-        if (Input.GetKeyDown(KeyCode.L)){
-            win_or_loss_decision();
-        }
-        if (Input.GetKeyDown(KeyCode.P)){
-            for (int i = 0; i < 20; i++){
-                Debug.Log(TreasureChest[i]);
-            }
-        }
+
         if (JoinRoomFlag == true){
             CurrentTime = PhotonNetwork.ServerTimestamp;
         }
-        if (DemonJoinedFlag == true){
-            if (CurrentTime - DemonJoinedTime > 240000){
-                win_or_loss_decision();
-            }
-        }
-        GameStart();
-        if (GameStartFlag == true){
-            if (StartCount == false){
-                CreatePlayerList();
-                StartCount = true;
-            }
-        }
-        else {
-            Debug.Log("待機中");
-        }
-        GameEnd();
     }
 
     void game_start_up(){
@@ -198,8 +191,9 @@ public class Game_cont : MonoBehaviourPunCallbacks
         foreach(var a in PlayerInfoList){
             if(!a.PCatchFlag)p_loss = false;
         }
-        if(p_loss)decision = 0;
-        else decision = 1;
+        if(p_loss)decision = true;
+        else decision = false;
+
         move.PlayerViewIdsList.Clear();
         GameObject.FindWithTag("scene_mane").GetComponent<Scene_mane_Script>().scene_num = 2;
         GameObject.FindWithTag("scene_mane").GetComponent<Scene_mane_Script>().scene_chanz = true;
@@ -425,11 +419,11 @@ public class Game_cont : MonoBehaviourPunCallbacks
     /// </summary>
     void GameStart(){
         if (DemonJoinedFlag == true){
-            if (GameStartFlag == false){
+            if (Game_Status == Status.before){
                 if (CurrentTime - DemonJoinedTime > 60000){
-                    GameStartFlag = true;
+                    Game_Status = Status.play;
                 }
-                if (GameStartFlag == true){
+                if (Game_Status == Status.play){
                     Debug.Log("ゲームスタート");
                 }
             }
@@ -445,7 +439,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
     /// ゲーム終了
     /// </summary>
     void GameEnd(){
-        if (GameEndFlag == false && CreatePlayerListFlag){
+        if (Game_Status != Status.after && CreatePlayerListFlag){
             for (int i = 0; i < PlayerInfoList.Count; ++i){
                 if (PlayerInfoList[i].PCatchFlag == true){
                     int PlayerCount = 0;
@@ -453,7 +447,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
                     if (PlayerCount == PlayerInfoList.Count){
                         Debug.Log("ゲーム終了");
                         
-                        GameEndFlag = true;                        
+                        Game_Status = Status.after;                       
                     }
                 }
             }

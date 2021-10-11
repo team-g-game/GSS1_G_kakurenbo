@@ -10,8 +10,8 @@ public class result_click : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(Game_cont.decision == 0) decisiontext.text = "母親の勝ち!";
-        else if (Game_cont.decision == 1) decisiontext.text = "ガキの勝ち!"; 
+        if(Game_cont.decision) decisiontext.text = "ガキの勝ち!";
+        else decisiontext.text = "母親の勝ち!"; 
     }
 
     // Update is called once per frame
