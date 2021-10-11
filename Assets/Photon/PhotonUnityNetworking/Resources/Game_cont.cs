@@ -29,7 +29,6 @@ public class Game_cont : MonoBehaviourPunCallbacks
     public static bool CreatePlayerListFlag;    //プレイヤーリストを生成したタイミングを判定
     public int DemonJoinedTime = 0;     //鬼がルームに入ってきた時間
     public int CurrentTime;             //ルームの現在時刻
-    private bool StartCount = false;    //CreatPlayerListを一回だけ実行するためにある
     public static bool DemonJoinedFlag; //鬼が入ってきたかどうか判定
     
     /// <value>ゲームの状態で見るように書き換える</value>
@@ -120,10 +119,6 @@ public class Game_cont : MonoBehaviourPunCallbacks
         switch (Game_Status){
             case Status.before:{
                 CheckMyViewId();
-                if (StartCount == false){
-                    CreatePlayerList();
-                    StartCount = true;
-                }
                 if (Input.GetKeyDown(KeyCode.F)){   //無理やりスタート
                     Game_Status = Status.play;
                 }
@@ -144,7 +139,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
                         Debug.Log(TreasureChest[i]);
                     }
                 }
-                if (Input.GetKeyDown(KeyCode.L) || CurrentTime > 18000)win_or_loss_decision();
+                if (Input.GetKeyDown(KeyCode.L))win_or_loss_decision();
                 GameEnd();
 
                 break;
@@ -424,6 +419,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
                     Game_Status = Status.play;
                 }
                 if (Game_Status == Status.play){
+                    CreatePlayerList();
                     Debug.Log("ゲームスタート");
                 }
             }
