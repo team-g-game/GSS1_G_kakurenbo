@@ -14,7 +14,7 @@ public class Catch_player : MonoBehaviour
     private Game_cont ScriptGameCont;   //Game_contの関数使えるようにする
     private bool StartFlag= false ;
     private float chach_int = 2000;
-    private float _timer=0;
+    private float _timer = 0;
     void Start()
     {
         var Col = this.GetComponent<SphereCollider>();
@@ -26,7 +26,18 @@ public class Catch_player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        switch(Game_cont.Game_Status){
+            case Game_cont.Status.before:{
+                break;
+            }
+            case Game_cont.Status.play:{
+                if(_timer >= chach_int)StartFlag = true;
+                else _timer += Time.deltaTime;
+                break;
+            }
+            default:
+                break;
+        }
     }
 
     void OnTriggerStay(Collider hako)   //コライダーの中にいるとき呼び出される関数
@@ -36,10 +47,6 @@ public class Catch_player : MonoBehaviour
                 break;
             }
             case Game_cont.Status.play:{
-
-                if(_timer >= chach_int)StartFlag = true;
-                else _timer += Time.deltaTime;
-
                 if (StartFlag == true){
                     if (ScriptGameCont.DemonFlag == true && Game_cont.CreatePlayerListFlag == true){ //鬼である、かつ、プレイヤーリスト作った後
                         if (hako.gameObject.CompareTag("Player"))   //コライダーのtagがPlayerであるとき
