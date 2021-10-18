@@ -405,9 +405,10 @@ public class Game_cont : MonoBehaviourPunCallbacks
     public void GameStart(){
         if (DemonJoinedFlag == true){
             if (Game_Status == Status.before){
+                /*
                 if (CurrentTime - DemonJoinedTime > 60000){
                     Game_Status = Status.play;
-                }
+                }*/
                 if (Game_Status == Status.play){
                     CreatePlayerList();
                     Debug.Log("ゲームスタート");
