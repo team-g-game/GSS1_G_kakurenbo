@@ -21,44 +21,64 @@ public class CountDownTimer : MonoBehaviour {
 		stop = 1
 	}
 	static float totalTime;
-	static float back_time;
-	static bool start_one;
-	static (int,int) _minsec;
+	float back_time;
+	bool start_one = true;
+	(int,int) _minsec;
 	void Start () {
 
 		timerText = GetComponentInChildren<Text>();
 		down_timer = timer.stop;
 		_minsec = (minute,seconds);
 		totalTime = 0;
-		start_one = true;
 		back_time = (float)PhotonNetwork.Time;
 		
 	}
 
 	void Update () {
-		timer_chack();
-
-		timerText.text = count_Down();
+		if(GameObject.Find("Game_master").GetComponent<Game_cont>().DemonFlag){
+			timer_chack();
+			timerText.text = count_Down();
+		}else{
+			if(totalTime <= 0)
+			{
+				timerText.text = "00:00";
+			}else timerText.text = ((int)totalTime/60).ToString("00") + ":" + ((int)totalTime%60).ToString("00");
+		}
+		switch (Game_cont.Game_Status){
+			case Game_cont.Status.before:{
+				if(totalTime <=0  && Game_cont.DemonJoinedFlag){
+					GameObject.Find("Game_master").GetComponent<Game_cont>().GameStart();
+				}
+				break;
+			}
+			case Game_cont.Status.play:{
+				if(totalTime <= 0 && Game_cont.DemonJoinedFlag){
+					if(totalTime <= 0)GameObject.Find("Game_master").GetComponent<Game_cont>().win_or_loss_decision();
+				}
+				break;
+			}
+			case Game_cont.Status.after:{
+				break;
+			}
+		}
 	}
 	int timer_chack(){
 		switch (Game_cont.Game_Status){
 			case Game_cont.Status.before:{
-				if(Game_cont.DemonJoinedFlag){
-					if(down_timer == timer.stop){
-						if(start_one&&totalTime == 0){
-							Debug.Log("aaa");
-							//　トータル制限時間
-							totalTime = 1 * 60 + 0;
-							down_timer = timer.start;
-							start_one = false;					
-						}else{
-							Game_cont.Game_Status = Game_cont.Status.play;
-							GameObject.Find("Game_master").GetComponent<Game_cont>().GameStart();
-						}
+				if(down_timer == timer.stop){
+					if(start_one&&totalTime == 0){
+						Debug.Log("待機カウントスタート");
+						//　トータル制限時間
+						totalTime = 1 * 60 + 0;
+						down_timer = timer.start;
+						start_one = false;					
+					}else{
+						Game_cont.Game_Status = Game_cont.Status.play;
 					}
 				}
 				break;
 			}
+			
 			case Game_cont.Status.play:{
 				if(down_timer == timer.stop){
 					if(start_one == false&&totalTime == 0){
@@ -67,8 +87,6 @@ public class CountDownTimer : MonoBehaviour {
 						Debug.Log("ここ定義:" + totalTime);
 						down_timer = timer.start;	
 						start_one = true;	
-					}else{
-						if(totalTime <= 0)GameObject.Find("Game_master").GetComponent<Game_cont>().win_or_loss_decision();
 					}
 				}
 				break;
