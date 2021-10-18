@@ -46,22 +46,6 @@ public class CountDownTimer : MonoBehaviour {
 			else timerText.text = ((int)totalTime/60).ToString("00") + ":" + ((int)totalTime%60).ToString("00");
 		}
 		Debug.Log(totalTime +":"+ Game_cont.Game_Status);
-
-		switch (Game_cont.Game_Status){
-			case Game_cont.Status.before:{
-				if(start_ok){
-					GameObject.Find("Game_master").GetComponent<Game_cont>().GameStart();
-				}
-				break;
-			}
-			case Game_cont.Status.play:{
-				if(end_ok)GameObject.Find("Game_master").GetComponent<Game_cont>().win_or_loss_decision();
-				break;
-			}
-			case Game_cont.Status.after:{
-				break;
-			}
-		}
 	}
 	int timer_chack(){
 		switch (Game_cont.Game_Status){
