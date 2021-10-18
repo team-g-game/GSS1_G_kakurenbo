@@ -12,7 +12,7 @@ public class CountDownTimer : MonoBehaviour {
 	[SerializeField]
 	private float seconds;
 	private Text timerText;
-	timer down_timer;
+	static timer down_timer = timer.stop;
 	
 	enum  timer
 	{
@@ -27,36 +27,43 @@ public class CountDownTimer : MonoBehaviour {
 	}
 
 	void Update () {
-		if (Game_cont.Game_Status == Game_cont.Status.before && GameObject.Find("Game_master").GetComponent<Game_cont>().DemonFlag){
-			if(down_timer != timer.start && start_one){
-				//　トータル制限時間
-				totalTime = 1 * 60 + 0;
-				down_timer = timer.start;
+		switch (Game_cont.Game_Status){
+			case Game_cont.Status.before:{
+				if(GameObject.Find("Game_master").GetComponent<Game_cont>().DemonFlag){
+					if(down_timer == timer.stop){
+						if(start_one){
+							Debug.Log("aaa");
+							//　トータル制限時間
+							totalTime = 1 * 60 + 0;
+							down_timer = timer.start;
+							start_one = false;					
+						}else{
+							Game_cont.Game_Status =Game_cont.Status.play;
+						}
+					}
+				}
+				break;
 			}
-			start_one = false;
-			
-			string retimer = count_Down();
-			if(down_timer == timer.stop){
-				retimer = "00:00";
-				GameObject.Find("Game_master").GetComponent<Game_cont>().GameStart();
+			case Game_cont.Status.play:{
+				if(down_timer == timer.stop){
+					if(start_one == false){
+						//　トータル制限時間
+						totalTime = minute * 60 + seconds;
+						Debug.Log("ここ定義:" + totalTime);
+						down_timer = timer.start;	
+						start_one = true;	
+					}else{
+						if(totalTime <= 0)GameObject.Find("Game_master").GetComponent<Game_cont>().win_or_loss_decision();
+					}
+				}
+				break;
 			}
-			timerText.text = retimer;
+			case Game_cont.Status.after:{
+				break;
+			}
 		}
-		if (Game_cont.Game_Status == Game_cont.Status.play){
-			if(down_timer != timer.start&& start_one == false){
-				//　トータル制限時間
-				totalTime = minute * 60 + seconds;
-				Debug.Log("ここ定義:" + totalTime);
-				down_timer = timer.start;	
-			}
-			start_one = true;			
-
-			string retimer = count_Down();
-			if(down_timer == timer.stop){
-				if(totalTime <= 0)GameObject.Find("Game_master").GetComponent<Game_cont>().win_or_loss_decision();
-			}
-			timerText.text = retimer;
-		}
+		string retimer = count_Down();
+		timerText.text = retimer;
 
 	}
 	string count_Down(){
@@ -72,10 +79,9 @@ public class CountDownTimer : MonoBehaviour {
 				else
 				{
 					totalTime -= Time.deltaTime;
-					Debug.Log(totalTime);
+					Debug.Log($"残り時間{totalTime}秒");
 					time_text = ((int)totalTime/60).ToString("00") + ":" + ((int)totalTime%60).ToString("00");
 				}
-
 				return time_text;
 			}
 			case timer.stop:
@@ -85,7 +91,6 @@ public class CountDownTimer : MonoBehaviour {
 				{
 					time_text = "00:00";
 					totalTime = 0;
-
 				}else time_text = ((int)totalTime/60).ToString("00") + ":" + ((int)totalTime%60).ToString("00");
 				return time_text;
 			}
