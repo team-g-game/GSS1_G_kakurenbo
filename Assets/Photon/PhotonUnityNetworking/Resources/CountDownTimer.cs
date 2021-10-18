@@ -21,6 +21,8 @@ public class CountDownTimer : MonoBehaviour {
 		stop = 1
 	}
 	static float totalTime;
+	static bool start_ok;
+	static bool end_ok;
 	float back_time;
 	bool start_one = true;
 	(int,int) _minsec;
@@ -30,6 +32,8 @@ public class CountDownTimer : MonoBehaviour {
 		down_timer = timer.stop;
 		_minsec = (minute,seconds);
 		back_time = (float)PhotonNetwork.Time;
+		start_ok = false;
+		end_ok = false;
 		
 	}
 
@@ -45,15 +49,13 @@ public class CountDownTimer : MonoBehaviour {
 
 		switch (Game_cont.Game_Status){
 			case Game_cont.Status.before:{
-				if(Game_cont.DemonJoinedFlag && down_timer == timer.stop&& totalTime <= 0){
+				if(start_ok){
 					GameObject.Find("Game_master").GetComponent<Game_cont>().GameStart();
 				}
 				break;
 			}
 			case Game_cont.Status.play:{
-				if(totalTime <= 0 && Game_cont.DemonJoinedFlag && down_timer == timer.stop){
-					if(totalTime <= 0)GameObject.Find("Game_master").GetComponent<Game_cont>().win_or_loss_decision();
-				}
+				if(end_ok)GameObject.Find("Game_master").GetComponent<Game_cont>().win_or_loss_decision();
 				break;
 			}
 			case Game_cont.Status.after:{
@@ -72,6 +74,7 @@ public class CountDownTimer : MonoBehaviour {
 						down_timer = timer.start;
 						start_one = false;					
 					}
+					if(totalTime <= 0)start_ok = true;
 				}
 				break;
 			}
@@ -85,6 +88,7 @@ public class CountDownTimer : MonoBehaviour {
 						down_timer = timer.start;	
 						start_one = true;	
 					}
+					if(totalTime <= 0)end_ok = true;
 				}
 				break;
 			}
