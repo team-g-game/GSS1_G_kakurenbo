@@ -37,14 +37,15 @@ public class CountDownTimer : MonoBehaviour {
 
 	void Update () {
 		timer_chack();
+
 		timerText.text = count_Down();
 	}
-	static int timer_chack(){
+	int timer_chack(){
 		switch (Game_cont.Game_Status){
 			case Game_cont.Status.before:{
 				if(Game_cont.DemonJoinedFlag){
 					if(down_timer == timer.stop){
-						if(start_one){
+						if(start_one&&totalTime == 0){
 							Debug.Log("aaa");
 							//　トータル制限時間
 							totalTime = 1 * 60 + 0;
@@ -60,7 +61,7 @@ public class CountDownTimer : MonoBehaviour {
 			}
 			case Game_cont.Status.play:{
 				if(down_timer == timer.stop){
-					if(start_one == false){
+					if(start_one == false&&totalTime == 0){
 						//　トータル制限時間
 						totalTime = _minsec.Item1 * 60 + _minsec.Item2;
 						Debug.Log("ここ定義:" + totalTime);
