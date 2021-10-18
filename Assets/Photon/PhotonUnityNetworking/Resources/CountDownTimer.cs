@@ -21,8 +21,8 @@ public class CountDownTimer : MonoBehaviour {
 		stop = 1
 	}
 	static float totalTime;
-	static bool start_ok;
-	static bool end_ok;
+	public static bool start_ok;
+	public static bool end_ok;
 	float back_time;
 	bool start_one = true;
 	(int,int) _minsec;
@@ -45,7 +45,7 @@ public class CountDownTimer : MonoBehaviour {
 			if(totalTime <= 0)timerText.text = "00:00";
 			else timerText.text = ((int)totalTime/60).ToString("00") + ":" + ((int)totalTime%60).ToString("00");
 		}
-		Debug.Log(totalTime);
+		Debug.Log(totalTime +":"+ Game_cont.Game_Status);
 
 		switch (Game_cont.Game_Status){
 			case Game_cont.Status.before:{
@@ -74,8 +74,8 @@ public class CountDownTimer : MonoBehaviour {
 						down_timer = timer.start;
 						start_one = false;					
 					}
-					if(totalTime <= 0)start_ok = true;
 				}
+				if(totalTime <= 0&&start_one == false)start_ok = true;
 				break;
 			}
 			
@@ -88,8 +88,8 @@ public class CountDownTimer : MonoBehaviour {
 						down_timer = timer.start;	
 						start_one = true;	
 					}
-					if(totalTime <= 0)end_ok = true;
 				}
+				if(totalTime <= 0 && start_one)end_ok = true;
 				break;
 			}
 			case Game_cont.Status.after:{
@@ -110,7 +110,6 @@ public class CountDownTimer : MonoBehaviour {
 				}
 				else
 				{
-					//totalTime -= Time.deltaTime;
 					totalTime -= (float)PhotonNetwork.Time - back_time;
 					//Debug.Log($"残り時間{totalTime}秒");
 					time_text = ((int)totalTime/60).ToString("00") + ":" + ((int)totalTime%60).ToString("00");

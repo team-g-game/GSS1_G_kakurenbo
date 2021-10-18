@@ -121,7 +121,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
                     CreatePlayerList();
                     Debug.Log(move.PlayerViewIdsList.Count);
                 }
-                GameStart();
+                if(CountDownTimer.start_ok)GameStart();
                 Debug.Log("待機中");
                 break;
             }
@@ -135,6 +135,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
                 }
                 if (Input.GetKeyDown(KeyCode.L))win_or_loss_decision();
                 if (Input.GetKeyDown(KeyCode.G))Debug.Log(GetRoomProperty("DemonJoinedTime"));
+                
                 GameEnd();
                 break;
             }
@@ -404,7 +405,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
     /// </summary>
     public void GameStart(){
         if (DemonJoinedFlag == true){
-            if (Game_Status == Status.before){
+            if (Game_Status == Status.before && CountDownTimer.start_ok){
                 Game_Status = Status.play;
                 CreatePlayerList();
                 Debug.Log("ゲームスタート");
@@ -422,7 +423,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
                 if (PlayerInfoList[i].PCatchFlag == true){
                     int PlayerCount = 0;
                     PlayerCount += 1;
-                    if (PlayerCount == PlayerInfoList.Count){
+                    if (PlayerCount == PlayerInfoList.Count || CountDownTimer.end_ok){
                         win_or_loss_decision();
                         Debug.Log("ゲーム終了");
                         
