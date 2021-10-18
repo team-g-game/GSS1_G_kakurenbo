@@ -777,6 +777,10 @@ PrefabInstance:
       propertyPath: HidePlaceNum
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1917545808651642577, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2454792193598081783, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_Name
       value: sigemi_collider(3)
