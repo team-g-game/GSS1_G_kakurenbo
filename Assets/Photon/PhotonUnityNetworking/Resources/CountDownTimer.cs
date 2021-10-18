@@ -10,7 +10,7 @@ public class CountDownTimer : MonoBehaviour {
 	private int minute;
 	//　制限時間（秒）
 	[SerializeField]
-	private float seconds;
+	private int seconds;
 	private Text timerText;
 	static timer down_timer = timer.stop;
 	
@@ -20,13 +20,19 @@ public class CountDownTimer : MonoBehaviour {
 		stop = 1
 	}
 	static float totalTime = 0;
-	bool start_one = true;
+	static bool start_one = true;
+	static (int,int) _minsec = (0,0);
 	void Start () {
 		Debug.Log("始まった");
 		timerText = GetComponentInChildren<Text>();
+		_minsec = (minute,seconds);
 	}
 
 	void Update () {
+		timer_chack();
+		timerText.text = count_Down();
+	}
+	static int timer_chack(){
 		switch (Game_cont.Game_Status){
 			case Game_cont.Status.before:{
 				if(GameObject.Find("Game_master").GetComponent<Game_cont>().DemonFlag){
@@ -48,7 +54,7 @@ public class CountDownTimer : MonoBehaviour {
 				if(down_timer == timer.stop){
 					if(start_one == false){
 						//　トータル制限時間
-						totalTime = minute * 60 + seconds;
+						totalTime = _minsec.Item1 * 60 + _minsec.Item2;
 						Debug.Log("ここ定義:" + totalTime);
 						down_timer = timer.start;	
 						start_one = true;	
@@ -62,11 +68,9 @@ public class CountDownTimer : MonoBehaviour {
 				break;
 			}
 		}
-		string retimer = count_Down();
-		timerText.text = retimer;
-
+		return 1;
 	}
-	string count_Down(){
+	static string count_Down(){
 		string time_text = "";
 		switch (down_timer){
 			case timer.start:
