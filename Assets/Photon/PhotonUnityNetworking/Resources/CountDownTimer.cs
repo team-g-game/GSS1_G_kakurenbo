@@ -36,7 +36,7 @@ public class CountDownTimer : MonoBehaviour {
 			start_one = false;
 			
 			string retimer = count_Down();
-			if(retimer == "stop"){
+			if(down_timer == timer.stop){
 				retimer = "00:00";
 				GameObject.Find("Game_master").GetComponent<Game_cont>().GameStart();
 			}
@@ -64,7 +64,11 @@ public class CountDownTimer : MonoBehaviour {
 		switch (down_timer){
 			case timer.start:
 			{
-				if(totalTime <=0)down_timer = timer.stop;
+				if(totalTime <=0)
+				{
+					down_timer = timer.stop;
+					time_text = "00:00";
+				}
 				else
 				{
 					totalTime -= Time.deltaTime;
