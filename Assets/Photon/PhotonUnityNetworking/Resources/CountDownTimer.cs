@@ -28,12 +28,12 @@ public class CountDownTimer : MonoBehaviour {
 
 	void Update () {
 		if (Game_cont.Game_Status == Game_cont.Status.before && GameObject.Find("Game_master").GetComponent<Game_cont>().DemonFlag){
-			if(down_timer != timer.start && start_one && totalTime ==0){
+			if(down_timer != timer.start && start_one){
 				//　トータル制限時間
 				totalTime = 1 * 60 + 0;
 				down_timer = timer.start;
-				start_one = false;
 			}
+			start_one = false;
 			
 			string retimer = count_Down();
 			if(retimer == "stop"){
@@ -43,13 +43,13 @@ public class CountDownTimer : MonoBehaviour {
 			timerText.text = retimer;
 		}
 		if (Game_cont.Game_Status == Game_cont.Status.play){
-			if(down_timer != timer.start&& start_one == false && totalTime ==0){
+			if(down_timer != timer.start&& start_one == false){
 				//　トータル制限時間
 				totalTime = minute * 60 + seconds;
 				Debug.Log("ここ定義:" + totalTime);
 				down_timer = timer.start;	
-				start_one = true;			
 			}
+			start_one = true;			
 
 			string retimer = count_Down();
 			if(down_timer == timer.stop){
