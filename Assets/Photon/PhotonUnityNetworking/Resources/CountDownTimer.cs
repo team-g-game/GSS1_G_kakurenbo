@@ -29,7 +29,6 @@ public class CountDownTimer : MonoBehaviour {
 		timerText = GetComponentInChildren<Text>();
 		down_timer = timer.stop;
 		_minsec = (minute,seconds);
-		totalTime = 0;
 		back_time = (float)PhotonNetwork.Time;
 		
 	}
@@ -48,7 +47,6 @@ public class CountDownTimer : MonoBehaviour {
 			case Game_cont.Status.before:{
 				if(totalTime <=0  && Game_cont.DemonJoinedFlag){
 					GameObject.Find("Game_master").GetComponent<Game_cont>().GameStart();
-					Game_cont.Game_Status = Game_cont.Status.play;
 				}
 				break;
 			}
