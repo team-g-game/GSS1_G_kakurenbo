@@ -52,9 +52,8 @@ public class CountDownTimer : MonoBehaviour {
 			}
 
 			string retimer = count_Down();
-			if(retimer == "stop"){
-				retimer = "00:00";
-				GameObject.Find("Game_master").GetComponent<Game_cont>().win_or_loss_decision();
+			if(down_timer == timer.stop){
+				if(totalTime <= 0)GameObject.Find("Game_master").GetComponent<Game_cont>().win_or_loss_decision();
 			}
 			timerText.text = retimer;
 		}
@@ -80,7 +79,7 @@ public class CountDownTimer : MonoBehaviour {
 				Debug.Log("ストップはいりました");
 				if(totalTime <= 0)
 				{
-					time_text = "stop";
+					time_text = "00:00";
 					totalTime = 0;
 
 				}else time_text = ((int)totalTime/60).ToString("00") + ":" + ((int)totalTime%60).ToString("00");
