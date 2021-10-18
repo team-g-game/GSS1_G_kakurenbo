@@ -20,7 +20,7 @@ public class CountDownTimer : MonoBehaviour {
 		start = 0,
 		stop = 1
 	}
-	static float totalTime;
+	public static float totalTime;
 	public static bool start_ok;
 	public static bool end_ok;
 	float back_time;
@@ -58,8 +58,9 @@ public class CountDownTimer : MonoBehaviour {
 						down_timer = timer.start;
 						start_one = false;					
 					}
+					if(totalTime <= 0)start_ok = true;
 				}
-				if(totalTime <= 0&&start_one == false)start_ok = true;
+				
 				break;
 			}
 			
@@ -72,8 +73,9 @@ public class CountDownTimer : MonoBehaviour {
 						down_timer = timer.start;	
 						start_one = true;	
 					}
+					if(totalTime <= 0)end_ok = true;
 				}
-				if(totalTime <= 0 && start_one)end_ok = true;
+				
 				break;
 			}
 			case Game_cont.Status.after:{
