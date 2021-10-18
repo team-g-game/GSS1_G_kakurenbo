@@ -12,20 +12,23 @@ public class CountDownTimer : MonoBehaviour {
 	[SerializeField]
 	private int seconds;
 	private Text timerText;
-	static timer down_timer = timer.stop;
+	static timer down_timer;
 	
 	enum  timer
 	{
 		start = 0,
 		stop = 1
 	}
-	static float totalTime = 0;
-	static bool start_one = true;
-	static (int,int) _minsec = (0,0);
+	static float totalTime;
+	static bool start_one;
+	static (int,int) _minsec;
 	void Start () {
-		Debug.Log("始まった");
+
 		timerText = GetComponentInChildren<Text>();
+		down_timer = timer.stop;
 		_minsec = (minute,seconds);
+		totalTime = 0;
+		start_one = true;
 	}
 
 	void Update () {
