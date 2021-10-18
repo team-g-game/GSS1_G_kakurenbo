@@ -626,52 +626,112 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1455351056313497, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_Anchor
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455351056313497, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_OffsetZ
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1455351056313497, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_FontSize
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
     - target: {fileID: 641136919629057400, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_OffsetZ
       value: 1
       objectReference: {fileID: 0}
+=======
+    - target: {fileID: 194559684450100751, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 194559684450100751, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 194559684450100751, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 194559684450100751, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 194559684450100751, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 641136919629057400, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_Anchor
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 641136919629057400, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_OffsetZ
+      value: -1
+      objectReference: {fileID: 0}
+>>>>>>> Stashed changes
     - target: {fileID: 641136919629057400, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_FontSize
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 667992954138467164, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_Text
       value: "\u96A0\u308C\u308B"
       objectReference: {fileID: 0}
     - target: {fileID: 667992954138467164, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+<<<<<<< Updated upstream
       propertyPath: m_OffsetZ
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 667992954138467164, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+=======
+      propertyPath: m_Anchor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 667992954138467164, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_OffsetZ
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 667992954138467164, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+>>>>>>> Stashed changes
       propertyPath: m_FontSize
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1037768682191410383, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_Text
       value: "\u96A0\u308C\u308B"
       objectReference: {fileID: 0}
     - target: {fileID: 1077376004450777978, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+<<<<<<< Updated upstream
+=======
+      propertyPath: m_Anchor
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1077376004450777978, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+>>>>>>> Stashed changes
       propertyPath: m_OffsetZ
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1077376004450777978, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_FontSize
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1403566773612219536, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+<<<<<<< Updated upstream
+=======
+      propertyPath: m_Anchor
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1403566773612219536, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+>>>>>>> Stashed changes
       propertyPath: m_OffsetZ
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1403566773612219536, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_FontSize
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1655568221039940302, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_LocalScale.z
@@ -686,12 +746,19 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1754276867486800944, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+<<<<<<< Updated upstream
+=======
+      propertyPath: m_Anchor
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1754276867486800944, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+>>>>>>> Stashed changes
       propertyPath: m_OffsetZ
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1754276867486800944, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_FontSize
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1771570614743238988, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_RootOrder
@@ -749,6 +816,7 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
     - target: {fileID: 1771570616453475057, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -761,6 +829,24 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+=======
+    - target: {fileID: 1771570615476167803, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771570616453475057, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771570616629838133, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771570616835139599, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+>>>>>>> Stashed changes
     - target: {fileID: 1796638181343592762, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: GameManager
       value: 
@@ -777,10 +863,13 @@ PrefabInstance:
       propertyPath: HidePlaceNum
       value: 7
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
     - target: {fileID: 1917545808651642577, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+=======
+>>>>>>> Stashed changes
     - target: {fileID: 2454792193598081783, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_Name
       value: sigemi_collider(3)
@@ -794,17 +883,35 @@ PrefabInstance:
       value: "\u96A0\u308C\u308B"
       objectReference: {fileID: 0}
     - target: {fileID: 2856683713927557656, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+<<<<<<< Updated upstream
       propertyPath: m_OffsetZ
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2856683713927557656, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+=======
+      propertyPath: m_Anchor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856683713927557656, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_OffsetZ
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856683713927557656, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+>>>>>>> Stashed changes
       propertyPath: m_FontSize
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2889372752689927481, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_Text
       value: "\u96A0\u308C\u308B"
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 2979850666413994093, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+>>>>>>> Stashed changes
     - target: {fileID: 3103171191174342747, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_Text
       value: "\u96A0\u308C\u308B"
@@ -821,21 +928,31 @@ PrefabInstance:
       propertyPath: m_Text
       value: "\u96A0\u308C\u308B"
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
     - target: {fileID: 3484966933766490318, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+=======
+>>>>>>> Stashed changes
     - target: {fileID: 3484966933766490319, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_Name
       value: Treehouse_Collide(2)
       objectReference: {fileID: 0}
     - target: {fileID: 3493630691304810676, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+<<<<<<< Updated upstream
+=======
+      propertyPath: m_Anchor
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493630691304810676, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+>>>>>>> Stashed changes
       propertyPath: m_OffsetZ
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3493630691304810676, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_FontSize
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3710824594597438663, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -850,12 +967,19 @@ PrefabInstance:
       value: 3.676
       objectReference: {fileID: 0}
     - target: {fileID: 3731259745834531266, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+<<<<<<< Updated upstream
+=======
+      propertyPath: m_Anchor
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3731259745834531266, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+>>>>>>> Stashed changes
       propertyPath: m_OffsetZ
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3731259745834531266, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_FontSize
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3961862802616007265, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: GameManager
@@ -865,13 +989,24 @@ PrefabInstance:
       propertyPath: HidePlaceNum
       value: 6
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 3969934681630426545, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4113735905220479306, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_Anchor
+      value: 4
+      objectReference: {fileID: 0}
+>>>>>>> Stashed changes
     - target: {fileID: 4113735905220479306, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_OffsetZ
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4113735905220479306, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_FontSize
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4155373873113046384, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_Name
@@ -882,13 +1017,27 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4339270757613951046, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+<<<<<<< Updated upstream
+=======
+      propertyPath: m_Anchor
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339270757613951046, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+>>>>>>> Stashed changes
       propertyPath: m_OffsetZ
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4339270757613951046, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_FontSize
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 4588412672248187480, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+>>>>>>> Stashed changes
     - target: {fileID: 4638852741795717706, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -922,13 +1071,31 @@ PrefabInstance:
       value: "\u96A0\u308C\u308B"
       objectReference: {fileID: 0}
     - target: {fileID: 4804941523435827281, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+<<<<<<< Updated upstream
       propertyPath: m_OffsetZ
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4804941523435827281, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
-      propertyPath: m_FontSize
-      value: 2
+=======
+      propertyPath: m_Anchor
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4804941523435827281, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_OffsetZ
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4804941523435827281, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+>>>>>>> Stashed changes
+      propertyPath: m_FontSize
+      value: 20
+      objectReference: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 4804941523435827281, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_Alignment
+      value: 0
+      objectReference: {fileID: 0}
+>>>>>>> Stashed changes
     - target: {fileID: 4872391099769094279, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_Name
       value: danbo_collider(2)
@@ -950,28 +1117,67 @@ PrefabInstance:
       value: "\u96A0\u308C\u308B"
       objectReference: {fileID: 0}
     - target: {fileID: 5727623794703259113, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+<<<<<<< Updated upstream
+=======
+      propertyPath: m_Anchor
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5727623794703259113, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+>>>>>>> Stashed changes
       propertyPath: m_OffsetZ
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5727623794703259113, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_FontSize
-      value: 2
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5784099542328077372, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_Anchor
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5784099542328077372, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_OffsetZ
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5784099542328077372, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_FontSize
-      value: 2
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832411007839815578, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832411007839815578, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832411007839815578, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832411007839815578, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832411007839815578, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832411007839815578, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854151291195367477, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_Anchor
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5854151291195367477, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_OffsetZ
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5854151291195367477, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_FontSize
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6185703622785288685, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_LocalScale.z
@@ -982,12 +1188,19 @@ PrefabInstance:
       value: 26.52245
       objectReference: {fileID: 0}
     - target: {fileID: 6452325768680501212, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+<<<<<<< Updated upstream
+=======
+      propertyPath: m_Anchor
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6452325768680501212, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+>>>>>>> Stashed changes
       propertyPath: m_OffsetZ
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6452325768680501212, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_FontSize
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6457520407871771201, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: GameManager
@@ -998,24 +1211,38 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6498977507234882355, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+<<<<<<< Updated upstream
+=======
+      propertyPath: m_Anchor
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6498977507234882355, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+>>>>>>> Stashed changes
       propertyPath: m_OffsetZ
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6498977507234882355, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_FontSize
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6536985444483666743, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_LocalScale.z
       value: 26.52245
       objectReference: {fileID: 0}
     - target: {fileID: 6557601942241959401, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+<<<<<<< Updated upstream
+=======
+      propertyPath: m_Anchor
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6557601942241959401, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+>>>>>>> Stashed changes
       propertyPath: m_OffsetZ
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6557601942241959401, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_FontSize
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7074765907278528665, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1053,6 +1280,13 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1.17
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 7522617920903562190, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+>>>>>>> Stashed changes
     - target: {fileID: 7704190015016398879, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.72
@@ -1070,12 +1304,19 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7760730936663810404, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+<<<<<<< Updated upstream
+=======
+      propertyPath: m_Anchor
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760730936663810404, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+>>>>>>> Stashed changes
       propertyPath: m_OffsetZ
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 7760730936663810404, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_FontSize
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7910132792387231325, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: GameManager
@@ -1094,12 +1335,23 @@ PrefabInstance:
       value: "\u96A0\u308C\u308B"
       objectReference: {fileID: 0}
     - target: {fileID: 8054050606440612592, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+<<<<<<< Updated upstream
       propertyPath: m_OffsetZ
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8054050606440612592, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+=======
+      propertyPath: m_Anchor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8054050606440612592, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_OffsetZ
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8054050606440612592, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+>>>>>>> Stashed changes
       propertyPath: m_FontSize
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8179442972534187349, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_LocalPosition.x
