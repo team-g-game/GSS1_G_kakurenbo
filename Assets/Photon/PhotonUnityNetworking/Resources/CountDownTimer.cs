@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using Photon.Pun;
 
 public class CountDownTimer : MonoBehaviour {
 
@@ -20,6 +21,7 @@ public class CountDownTimer : MonoBehaviour {
 		stop = 1
 	}
 	static float totalTime;
+	static float back_time;
 	static bool start_one;
 	static (int,int) _minsec;
 	void Start () {
@@ -29,6 +31,8 @@ public class CountDownTimer : MonoBehaviour {
 		_minsec = (minute,seconds);
 		totalTime = 0;
 		start_one = true;
+		back_time = (float)PhotonNetwork.Time;
+		
 	}
 
 	void Update () {
@@ -38,7 +42,7 @@ public class CountDownTimer : MonoBehaviour {
 	static int timer_chack(){
 		switch (Game_cont.Game_Status){
 			case Game_cont.Status.before:{
-				if(GameObject.Find("Game_master").GetComponent<Game_cont>().DemonFlag){
+				if(Game_cont.DemonJoinedFlag){
 					if(down_timer == timer.stop){
 						if(start_one){
 							Debug.Log("aaa");
@@ -47,7 +51,8 @@ public class CountDownTimer : MonoBehaviour {
 							down_timer = timer.start;
 							start_one = false;					
 						}else{
-							Game_cont.Game_Status =Game_cont.Status.play;
+							Game_cont.Game_Status = Game_cont.Status.play;
+							GameObject.Find("Game_master").GetComponent<Game_cont>().GameStart();
 						}
 					}
 				}
@@ -73,7 +78,7 @@ public class CountDownTimer : MonoBehaviour {
 		}
 		return 1;
 	}
-	static string count_Down(){
+	string count_Down(){
 		string time_text = "";
 		switch (down_timer){
 			case timer.start:
@@ -85,9 +90,11 @@ public class CountDownTimer : MonoBehaviour {
 				}
 				else
 				{
-					totalTime -= Time.deltaTime;
+					//totalTime -= Time.deltaTime;
+					totalTime -= (float)PhotonNetwork.Time - back_time;
 					Debug.Log($"残り時間{totalTime}秒");
 					time_text = ((int)totalTime/60).ToString("00") + ":" + ((int)totalTime%60).ToString("00");
+					back_time = (float)PhotonNetwork.Time;
 				}
 				return time_text;
 			}
