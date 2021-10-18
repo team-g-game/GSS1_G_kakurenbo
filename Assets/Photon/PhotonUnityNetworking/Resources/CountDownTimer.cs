@@ -39,15 +39,16 @@ public class CountDownTimer : MonoBehaviour {
 			timer_chack();
 			timerText.text = count_Down();
 		}else{
-			if(totalTime <= 0)
-			{
-				timerText.text = "00:00";
-			}else timerText.text = ((int)totalTime/60).ToString("00") + ":" + ((int)totalTime%60).ToString("00");
+			if(totalTime <= 0)timerText.text = "00:00";
+			else timerText.text = ((int)totalTime/60).ToString("00") + ":" + ((int)totalTime%60).ToString("00");
 		}
+		Debug.Log(totalTime);
+
 		switch (Game_cont.Game_Status){
 			case Game_cont.Status.before:{
 				if(totalTime <=0  && Game_cont.DemonJoinedFlag){
 					GameObject.Find("Game_master").GetComponent<Game_cont>().GameStart();
+					Game_cont.Game_Status = Game_cont.Status.play;
 				}
 				break;
 			}
@@ -66,14 +67,12 @@ public class CountDownTimer : MonoBehaviour {
 		switch (Game_cont.Game_Status){
 			case Game_cont.Status.before:{
 				if(down_timer == timer.stop){
-					if(start_one&&totalTime == 0){
+					if(start_one){
 						Debug.Log("待機カウントスタート");
 						//　トータル制限時間
 						totalTime = 1 * 60 + 0;
 						down_timer = timer.start;
 						start_one = false;					
-					}else{
-						Game_cont.Game_Status = Game_cont.Status.play;
 					}
 				}
 				break;
@@ -81,7 +80,7 @@ public class CountDownTimer : MonoBehaviour {
 			
 			case Game_cont.Status.play:{
 				if(down_timer == timer.stop){
-					if(start_one == false&&totalTime == 0){
+					if(start_one == false){
 						//　トータル制限時間
 						totalTime = _minsec.Item1 * 60 + _minsec.Item2;
 						Debug.Log("ここ定義:" + totalTime);
@@ -111,7 +110,7 @@ public class CountDownTimer : MonoBehaviour {
 				{
 					//totalTime -= Time.deltaTime;
 					totalTime -= (float)PhotonNetwork.Time - back_time;
-					Debug.Log($"残り時間{totalTime}秒");
+					//Debug.Log($"残り時間{totalTime}秒");
 					time_text = ((int)totalTime/60).ToString("00") + ":" + ((int)totalTime%60).ToString("00");
 					back_time = (float)PhotonNetwork.Time;
 				}
