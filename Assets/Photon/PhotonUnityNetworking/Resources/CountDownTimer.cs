@@ -45,13 +45,13 @@ public class CountDownTimer : MonoBehaviour {
 
 		switch (Game_cont.Game_Status){
 			case Game_cont.Status.before:{
-				if(totalTime <=0  && Game_cont.DemonJoinedFlag){
+				if(Game_cont.DemonJoinedFlag && down_timer == timer.stop&& totalTime <= 0){
 					GameObject.Find("Game_master").GetComponent<Game_cont>().GameStart();
 				}
 				break;
 			}
 			case Game_cont.Status.play:{
-				if(totalTime <= 0 && Game_cont.DemonJoinedFlag){
+				if(totalTime <= 0 && Game_cont.DemonJoinedFlag && down_timer == timer.stop){
 					if(totalTime <= 0)GameObject.Find("Game_master").GetComponent<Game_cont>().win_or_loss_decision();
 				}
 				break;
