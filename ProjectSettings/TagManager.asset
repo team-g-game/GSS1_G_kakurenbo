@@ -11,6 +11,7 @@ TagManager:
   - scene_mane
   - game_manegyr
   - treehouse
+  - clock
   layers:
   - Default
   - TransparentFX

@@ -4,28 +4,19 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class clock_cont : MonoBehaviour
+public class clock_cont : MonoBehaviourPunCallbacks
 {
-    /*
-    		clock_cont.num = 100;
-		clock_cont.stop = false;
-		clock_cont.clock_stat = clock_cont.stat.DOWN;
-		*/
     public static float num;
-    public static stat clock_stat;
-    public enum stat
-    {
-        DOWN = 0,
-        UP = 1
-    }
-    public static bool stop;
+    public float max_num;
+    public float add_num;
+    float start_time;
+    float end_time;
+    bool stop = true;
     float bef_time;
 
     // Start is called before the first frame update
     void Start()
     {
-        stop = false;
-        clock_stat = stat.DOWN;
         num = 0;
         bef_time = 0;
     }
@@ -37,19 +28,48 @@ public class clock_cont : MonoBehaviour
 
         }
         else{
-            switch(clock_stat){
-                case stat.DOWN:{
-                    num -= (float)PhotonNetwork.Time - bef_time;
-                    bef_time =  (float)PhotonNetwork.Time;
-                    break;
-                }
-                case stat.UP:{
-                    num += (float)PhotonNetwork.Time - bef_time;
-                    bef_time =  (float)PhotonNetwork.Time;
-                    break;
-                }
+            add_num += Time.deltaTime;
+            num = max_num - add_num;
+            /*
+            if(num > 0 && unchecked(PhotonNetwork.ServerTimestamp/1000 - end_time) > 0){
+                add_num += (float)PhotonNetwork.ServerTimestamp/1000 - bef_time;
+                num = max_num - add_num;
             }
+            else{
+                stop = true;
+            }
+            bef_time = (float)PhotonNetwork.ServerTimestamp/1000;
+            */
         }
+    }
+    public string timer_start(string times){
+        string ret_str = "正常に起動しました";
+        start_time = int.Parse(times.Split(',')[0])/1000;
+        end_time = int.Parse(times.Split(',')[1])/1000;
 
+        bef_time = (float)PhotonNetwork.ServerTimestamp/1000;
+        if((int)end_time <= bef_time){
+            stop = true;
+            ret_str = "時間が終了時間を過ぎています";
+            
+        }else{
+            stop = false;
+            max_num = end_time - start_time;
+        }
+        Debug.Log(ret_str);
+        return ret_str;
+    }
+    void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            //データの送信
+            stream.SendNext(num);
+        }
+        else
+        {
+            //データの受信
+            num = (int)(float)stream.ReceiveNext();
+        }
     }
 }

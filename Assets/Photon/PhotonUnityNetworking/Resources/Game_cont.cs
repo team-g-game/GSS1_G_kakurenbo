@@ -124,6 +124,8 @@ public class Game_cont : MonoBehaviourPunCallbacks
         else {
             DemonJoinedTime = int.Parse(DTime);
             DemonJoinedFlag = true;
+            int start_taik = 60000;
+            GameObject.FindWithTag("clock").GetComponent<clock_cont>().timer_start(PhotonNetwork.ServerTimestamp.ToString() + "," + (PhotonNetwork.ServerTimestamp + start_taik).ToString());
         }
         Debug.Log(SentHash);
     }
