@@ -20,6 +20,8 @@ public class hide_sc : MonoBehaviour
     private Game_cont ScriptGameCont;   //Game_contの関数使えるようにする
     private  Vector3 SetPosition;   //隠れたときのポジション
     
+    public float CurrentTime = 0f;
+    public float CheckTime = 1000f;
 
     void OnTriggerEnter(Collider other)
     {
@@ -67,8 +69,10 @@ public class hide_sc : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CurrentTime = clock_cont.num;
         switch (Game_cont.Game_Status){
             case Game_cont.Status.before:{         
+                CheckTime = 1000f;
                 break;
             }
             case Game_cont.Status.play:{
@@ -126,26 +130,33 @@ public class hide_sc : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))    //Eボタン押したとき
             {
-                for (int i = 0; i < ScriptGameCont.GetPlayerInfoListCount(); ++i){
-                    if (HidePlaceNum.ToString() == ScriptGameCont.GetPlayerInfoFromIndex(i, "HidePlace")){
-                        string PlayerViewId = ScriptGameCont.GetPlayerViewIdFromListByIndex(i).ToString();
-                        string Scape = ScriptGameCont.GetPlayerInfo(PlayerViewId, "ItemInfo");
-                        if (Scape[0] == '0'){
-                            ScriptGameCont.UpdatePlayerInfoAndHash(PlayerViewId,"CatchFlag", "true");
-                            ScriptGameCont.UpdatePlayerInfoAndHash(PlayerViewId,"HidePlace", "100");
-                            Debug.Log(ScriptGameCont.GetPlayerInfo(PlayerViewId,"CatchFlag"));
-                            Debug.Log(ScriptGameCont.GetPlayerInfo(PlayerViewId,"HidePlace"));
-                            Debug.Log("見つけた");
-                            ScriptGameCont.CatchPlayerFlag = true;
+                if (CheckTime - CurrentTime > 10){
+                    Debug.Log("チェックした");
+                    for (int i = 0; i < ScriptGameCont.GetPlayerInfoListCount(); ++i){
+                        if (HidePlaceNum.ToString() == ScriptGameCont.GetPlayerInfoFromIndex(i, "HidePlace")){
+                            string PlayerViewId = ScriptGameCont.GetPlayerViewIdFromListByIndex(i).ToString();
+                            string Scape = ScriptGameCont.GetPlayerInfo(PlayerViewId, "ItemInfo");
+                            if (Scape[0] == '0'){
+                                ScriptGameCont.UpdatePlayerInfoAndHash(PlayerViewId,"CatchFlag", "true");
+                                ScriptGameCont.UpdatePlayerInfoAndHash(PlayerViewId,"HidePlace", "100");
+                                Debug.Log(ScriptGameCont.GetPlayerInfo(PlayerViewId,"CatchFlag"));
+                                Debug.Log(ScriptGameCont.GetPlayerInfo(PlayerViewId,"HidePlace"));
+                                Debug.Log("見つけた");
+                                ScriptGameCont.CatchPlayerFlag = true;
+                            }
+                            else if (Scape[0] == '1'){
+                                ScriptGameCont.UpdatePlayerInfoAndHash(PlayerViewId, "ItemInfo", "000");
+                                Debug.Log("スケープゴートで見つからなかった");
+                            }
                         }
-                        else if (Scape[0] == '1'){
-                            ScriptGameCont.UpdatePlayerInfoAndHash(PlayerViewId, "ItemInfo", "000");
-                            Debug.Log("スケープゴートで見つからなかった");
+                        else{
+                            Debug.Log("いないよ人数分");
                         }
                     }
-                    else{
-                        Debug.Log("いないよ人数分");
-                    }
+                    CheckTime = CurrentTime;
+                }
+                else {
+                    Debug.Log("チェックできないよ");
                 }
             }
         }
