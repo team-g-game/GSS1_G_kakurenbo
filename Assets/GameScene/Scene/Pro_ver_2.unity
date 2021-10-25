@@ -633,6 +633,14 @@ PrefabInstance:
       propertyPath: m_FontSize
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 98454477875584461, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: ItemsInfo
+      value: 000
+      objectReference: {fileID: 0}
+    - target: {fileID: 98454477875584461, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: TreasureChestNumber
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 641136919629057400, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_OffsetZ
       value: 1
@@ -673,6 +681,22 @@ PrefabInstance:
       propertyPath: m_FontSize
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1445757949043796759, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: ItemsInfo
+      value: 000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445757949043796759, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: TreasureChestNumber
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1522239303289181645, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: ItemsInfo
+      value: 000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1522239303289181645, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: TreasureChestNumber
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 1655568221039940302, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_LocalScale.z
       value: 33.28846
@@ -684,6 +708,14 @@ PrefabInstance:
     - target: {fileID: 1693532266352270883, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: HidePlaceNum
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1705202570408110072, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: ItemsInfo
+      value: 000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1705202570408110072, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: TreasureChestNumber
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1754276867486800944, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_OffsetZ
@@ -781,6 +813,22 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2189984508352668696, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: ItemsInfo
+      value: 000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2189984508352668696, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: TreasureChestNumber
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2242585051060955153, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: ItemsInfo
+      value: 000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2242585051060955153, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: TreasureChestNumber
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2454792193598081783, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_Name
       value: sigemi_collider(3)
@@ -788,6 +836,14 @@ PrefabInstance:
     - target: {fileID: 2454792193598081783, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_Layer
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2707502333406079296, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: ItemsInfo
+      value: 000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2707502333406079296, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: TreasureChestNumber
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2856683713927557656, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_Text
@@ -909,6 +965,14 @@ PrefabInstance:
       propertyPath: m_Text
       value: "\u96A0\u308C\u308B"
       objectReference: {fileID: 0}
+    - target: {fileID: 4671015018880283486, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: ItemsInfo
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4671015018880283486, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: TreasureChestNumber
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 4761501709110016052, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_Name
       value: danbo_collider(3)
@@ -937,6 +1001,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5099370056113849692, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: ItemsInfo
+      value: 000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099370056113849692, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: TreasureChestNumber
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5164821517525037745, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_Name
       value: danbo_collider(4)
@@ -948,6 +1020,14 @@ PrefabInstance:
     - target: {fileID: 5252880044281562096, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_Text
       value: "\u96A0\u308C\u308B"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5630756343057147069, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: ItemsInfo
+      value: 000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5630756343057147069, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: TreasureChestNumber
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 5727623794703259113, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_OffsetZ
@@ -976,6 +1056,14 @@ PrefabInstance:
     - target: {fileID: 6185703622785288685, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_LocalScale.z
       value: 52.45875
+      objectReference: {fileID: 0}
+    - target: {fileID: 6231061217758319636, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: ItemsInfo
+      value: 000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6231061217758319636, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: TreasureChestNumber
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 6232750181124573099, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_LocalScale.z
@@ -1016,6 +1104,14 @@ PrefabInstance:
     - target: {fileID: 6557601942241959401, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_FontSize
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727010216211924148, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: ItemsInfo
+      value: 000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727010216211924148, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: TreasureChestNumber
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7074765907278528665, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1257,6 +1353,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180.353
       objectReference: {fileID: 0}
+    - target: {fileID: 8221729514076442722, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: ItemsInfo
+      value: 000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8221729514076442722, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: TreasureChestNumber
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8341869448434310136, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_Name
       value: sigemi_collider(1)
@@ -1285,6 +1389,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 29.02753
       objectReference: {fileID: 0}
+    - target: {fileID: 8590530181228200302, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: ItemsInfo
+      value: 000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590530181228200302, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: TreasureChestNumber
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 8605054144185187015, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_Name
       value: sigemi_collider(4)
@@ -1304,6 +1416,22 @@ PrefabInstance:
     - target: {fileID: 9057222047540998682, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_RootOrder
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 9072858058545213926, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: ItemsInfo
+      value: 000
+      objectReference: {fileID: 0}
+    - target: {fileID: 9072858058545213926, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: TreasureChestNumber
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9104732770586779792, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: ItemsInfo
+      value: 000
+      objectReference: {fileID: 0}
+    - target: {fileID: 9104732770586779792, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: TreasureChestNumber
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}

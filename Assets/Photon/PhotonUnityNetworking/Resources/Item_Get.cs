@@ -43,13 +43,13 @@ public class Item_Get : MonoBehaviour
                 break;
             }
             case Game_cont.Status.play:{
+                Pick_Up();
                 break;
             }
             case Game_cont.Status.after:{
                 break;
             }
         }
-        Pick_Up();
     }
     void Pick_Up()     //プレイヤーがアイテムを拾う時
     {
@@ -58,14 +58,26 @@ public class Item_Get : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F))//Fキーを押したときの判定
             {
                 Debug.Log("ok");//アイテムの挙動
+                UpdateTresureChestList();
             }
         }
     }
 
+    /// <summary>
+    /// 初期値をTreasureChestListに挿入。
+    /// </summary>
     void FirstChangeTreasureChestList(){
         if (ScriptGameCont.CreateTreasureChestListflag == true && FirstChangeTreasureChestListFlag == false){
             ScriptGameCont.ChangeTreasureChestList(TreasureChestNumber, ItemsInfo);
             FirstChangeTreasureChestListFlag = true;
         }
+    }
+
+    /// <summary>
+    /// TreasureChestListを更新して、ハッシュに送信。
+    /// </summary>
+    void UpdateTresureChestList(){
+        ScriptGameCont.ChangeTreasureChestList(TreasureChestNumber, "000");
+        ScriptGameCont.SendTreasureChestList(TreasureChestNumber, "000");
     }
 }

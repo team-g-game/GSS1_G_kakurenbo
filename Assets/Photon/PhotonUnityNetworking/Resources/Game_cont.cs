@@ -73,6 +73,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
         if (DemonFlag == true){
             DemonJoinedTime = PhotonNetwork.ServerTimestamp;
             Propeties_Hash_string("DemonJoinedTime", DemonJoinedTime.ToString());
+            CreateTreasureChestListHashtable();
         }
         if (DemonJoinedTime == 0){
             object DemonTime = GetRoomProperty("DemonJoinedTime");
@@ -100,6 +101,20 @@ public class Game_cont : MonoBehaviourPunCallbacks
             }
             Debug.Log("何回");
         }
+        for (int i = 0; i < TreasureChest.Count; i++){
+            string value = (string)SentHash[i.ToString()];
+            if (value == null){ //これないとエラー出るから気を付けて
+                Debug.Log("nullなんよそれ");
+            }
+            else if (value == TreasureChest[i]){
+                Debug.Log("同じやつ来てる");
+            }
+            else if (value != TreasureChest[i]){
+                ChangeTreasureChestList(i, value);
+                Debug.Log(TreasureChest[i] + "更新した");
+            }
+            Debug.Log("何回か");
+        }
         Debug.Log("nannkai");
         string DTime = (string)SentHash["DemonJoinedTime"];
         if (DTime == null){}
@@ -115,7 +130,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
             case Status.before:{
                 CheckMyViewId();
                 if (Input.GetKeyDown(KeyCode.F)){   //無理やりスタート
-                    Game_Status = Status.play;
+                    GameStart();
                 }
                 if (Input.GetKeyDown(KeyCode.C)){   //プレイヤーのリストを作るタイミングで押す
                     CreatePlayerList();
@@ -495,8 +510,32 @@ public class Game_cont : MonoBehaviourPunCallbacks
         CreateTreasureChestListflag = true;
     }
 
+    /// <summary>
+    /// TreasureChestListの内容を変更。
+    /// </summary>
+    /// <param name="index">変更したいTreasureChestの番号</param>
+    /// <param name="ItemInfo">変更したい内容</param>
     public void ChangeTreasureChestList(int index, string ItemInfo){
         TreasureChest[index] = ItemInfo;
+    }
+
+    /// <summary>
+    /// TresureChestListの内容変更をハッシュに送信。
+    /// </summary>
+    /// <param name="index">送信したいTreasureChestの番号</param>
+    /// <param name="ItemInfo">送信したい内容</param>
+    public void SendTreasureChestList(int index, string ItemInfo){
+        Propeties_Hash_string(index.ToString(), ItemInfo);
+    }
+
+    /// <summary>
+    /// TreasureChestListをハッシュにすべて送る。
+    /// </summary>
+    void CreateTreasureChestListHashtable(){
+        for (int i = 0; i < 20; i++){
+            string TreasureKey = i.ToString();
+            Propeties_Hash_string(TreasureKey, TreasureChest[i]);
+        }
     }
 }
 
