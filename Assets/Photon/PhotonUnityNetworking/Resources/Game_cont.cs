@@ -51,7 +51,12 @@ public class Game_cont : MonoBehaviourPunCallbacks
         /// <value>ゲーム後</value>
         after = 2
     }
-
+    [SerializeField]
+    int start_time;
+    [SerializeField]
+    int game_time_min;
+    [SerializeField]
+    int game_time_sec;
 
     void Start()
     {
@@ -124,8 +129,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
         else {
             DemonJoinedTime = int.Parse(DTime);
             DemonJoinedFlag = true;
-            int start_taik = 60000;
-            GameObject.FindWithTag("clock").GetComponent<clock_cont>().timer_start(PhotonNetwork.ServerTimestamp.ToString() + "," + (PhotonNetwork.ServerTimestamp + start_taik).ToString());
+            GameObject.FindWithTag("clock").GetComponent<clock_cont>().timer_start(PhotonNetwork.ServerTimestamp.ToString() + "," + (PhotonNetwork.ServerTimestamp + start_time).ToString());
         }
         Debug.Log(SentHash);
     }
@@ -141,6 +145,9 @@ public class Game_cont : MonoBehaviourPunCallbacks
                     CreatePlayerList();
                     Debug.Log(move.PlayerViewIdsList.Count);
                 }
+                if(clock_cont.num < 0){
+                    GameStart();
+                }
                 //if(CountDownTimer.start_ok)GameStart();
                 Debug.Log("待機中");
                 break;
@@ -155,7 +162,9 @@ public class Game_cont : MonoBehaviourPunCallbacks
                 }
                 if (Input.GetKeyDown(KeyCode.L))win_or_loss_decision();
                 if (Input.GetKeyDown(KeyCode.G))Debug.Log(GetRoomProperty("DemonJoinedTime"));
-                
+                if(clock_cont.num < 0){
+                    win_or_loss_decision();
+                }
                 GameEnd();
                 break;
             }
@@ -443,6 +452,10 @@ public class Game_cont : MonoBehaviourPunCallbacks
     public void GameStart(){
         if (DemonJoinedFlag == true){
             if (Game_Status == Status.before /*&& CountDownTimer.start_ok*/){
+                
+                int start_taik = ( game_time_min * 60 + game_time_sec )* 1000;
+                GameObject.FindWithTag("clock").GetComponent<clock_cont>().timer_start(PhotonNetwork.ServerTimestamp.ToString() + "," + (PhotonNetwork.ServerTimestamp + start_taik).ToString());
+        
                 Game_Status = Status.play;
                 CreatePlayerList();
                 Debug.Log("ゲームスタート");

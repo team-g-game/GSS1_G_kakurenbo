@@ -43,4 +43,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b71e60b882ed8c408f3627a36ce0c03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playu_list: []
+  JoinRoomFlag: 0
+  DemonFlag: 0
+  CreatePlayerListFlag: 0
+  DemonJoinedTime: 0
+  CurrentTime: 0
+  CatchPlayerFlag: 0
+  CreateTreasureChestListflag: 0
+  start_time: 30
+  game_time_min: 1
+  game_time_sec: 0

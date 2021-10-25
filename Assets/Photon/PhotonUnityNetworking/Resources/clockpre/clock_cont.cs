@@ -27,22 +27,12 @@ public class clock_cont : MonoBehaviourPunCallbacks
 
         }
         else{
-            if(max_num <= 0){
+            if(max_num <= 0 || num < 0){
                 stop = true;
             }else{
                 add_num += Time.deltaTime;
                 num = max_num - add_num;
             }
-            /*
-            if(num > 0 && unchecked(PhotonNetwork.ServerTimestamp/1000 - end_time) > 0){
-                add_num += (float)PhotonNetwork.ServerTimestamp/1000 - bef_time;
-                num = max_num - add_num;
-            }
-            else{
-                stop = true;
-            }
-            bef_time = (float)PhotonNetwork.ServerTimestamp/1000;
-            */
         }
         
     }
