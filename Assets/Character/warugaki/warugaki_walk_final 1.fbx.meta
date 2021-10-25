@@ -27,12 +27,18 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'warugaki_kari:LeftForeArm' has translation
+      animation that will be discarded.\n\t'warugaki_kari:RightForeArm' has translation
+      animation that will be discarded.\n\t'warugaki_kari:LeftLeg' has translation
+      animation that will be discarded.\n\t'warugaki_kari:RightLeg' has translation
+      animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -41,69 +47,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Take 001
-      takeName: Take 001
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 120
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
       name: warugaki run
       takeName: Take 001
       internalID: 0
       firstFrame: 0
       lastFrame: 29
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: warugaki idol
-      takeName: Take 001
-      internalID: 0
-      firstFrame: 86
-      lastFrame: 120
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -172,8 +120,470 @@ ModelImporter:
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
-    human: []
-    skeleton: []
+    human:
+    - boneName: warugaki_kari:hips
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: warugaki_kari:LeftUpLeg
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: warugaki_kari:RightUpLeg
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: warugaki_kari:LeftLeg
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: warugaki_kari:RightLeg
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: warugaki_kari:LeftFoot
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: warugaki_kari:RightFoot
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: warugaki_kari:spine1
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: warugaki_kari:spine2
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: warugaki_kari:Neck
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: warugaki_kari:Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: warugaki_kari:LeftShoulder
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: warugaki_kari:RightShoulder
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: warugaki_kari:LeftArm
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: warugaki_kari:RightArm
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: warugaki_kari:LeftForeArm
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: warugaki_kari:RightForeArm
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: warugaki_kari:LeftHand
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: warugaki_kari:RightHand
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: warugaki_kari:LeftToeBase
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: warugaki_kari:RightToeBase
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: warugaki_kari:LeftHandOya1
+      humanName: Left Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: warugaki_kari:LeftHandOya2
+      humanName: Left Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: warugaki_kari:LeftHandOya3
+      humanName: Left Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: warugaki_kari:LeftHandMiddle1
+      humanName: Left Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: warugaki_kari:LeftHandMiddle2
+      humanName: Left Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: warugaki_kari:LeftHandMiddle3
+      humanName: Left Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: warugaki_kari:RightHandOya1
+      humanName: Right Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: warugaki_kari:RightHandOya2
+      humanName: Right Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: warugaki_kari:RightHandOya3
+      humanName: Right Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: warugaki_kari:RightHandMiddle1
+      humanName: Right Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: warugaki_kari:RightHandMiddle2
+      humanName: Right Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: warugaki_kari:RightHandMiddle3
+      humanName: Right Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: warugaki_kari:spine3
+      humanName: UpperChest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: warugaki_walk_final 1(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: warugakifinal2
+      parentName: warugaki_walk_final 1(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: warugaki_kari:hips
+      parentName: warugaki_walk_final 1(Clone)
+      position: {x: 0, y: 0.45478526, z: 0.0003516376}
+      rotation: {x: -0.0000000029103826, y: 0.000000005820766, z: 0.0000000021827873, w: 1}
+      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: warugaki_kari:spine1
+      parentName: warugaki_kari:hips
+      position: {x: -0.0000000050628075, y: 0.048922036, z: -0.0016961233}
+      rotation: {x: -0.0000000029103844, y: -0.000000005820766, z: -0.000000003274181, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: warugaki_kari:spine2
+      parentName: warugaki_kari:spine1
+      position: {x: -0.00000000830176, y: 0.119667634, z: -0.0009912273}
+      rotation: {x: 0.000000005820767, y: -0.0000000014551915, z: 0.000000008913049, w: 1}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+    - name: warugaki_kari:spine3
+      parentName: warugaki_kari:spine2
+      position: {x: 0.0000000065088175, y: 0.070071, z: -0.00000001630033}
+      rotation: {x: -0, y: 0.0000000014551914, z: -0.000000013096725, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: warugaki_kari:Neck
+      parentName: warugaki_kari:spine3
+      position: {x: 0.000000008891569, y: 0.1859082, z: -0.011678548}
+      rotation: {x: 0.0000000014551911, y: 1.8189905e-10, z: 0.000000008202505, w: 1}
+      scale: {x: 1, y: 0.9999999, z: 1}
+    - name: warugaki_kari:Head
+      parentName: warugaki_kari:Neck
+      position: {x: 0.000000025315005, y: 0.04904972, z: -0.0011678605}
+      rotation: {x: -0.0000000014551911, y: -1.8189894e-10, z: -0.0000000040188297, w: 1}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: warugaki_kari:LeftShoulder
+      parentName: warugaki_kari:spine3
+      position: {x: -0.044008255, y: 0.12356314, z: -0.0037409908}
+      rotation: {x: 2.4392505e-11, y: -0.0000000014549867, z: 0.016762393, w: 0.9998595}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: warugaki_kari:LeftArm
+      parentName: warugaki_kari:LeftShoulder
+      position: {x: -0.03722539, y: -0.011180657, z: 0.0000000030403449}
+      rotation: {x: -6.785555e-10, y: 0.000000024730433, z: 0.014421731, w: 0.99989605}
+      scale: {x: 0.9999998, y: 1.0000001, z: 1.0000001}
+    - name: warugaki_kari:LeftForeArm
+      parentName: warugaki_kari:LeftArm
+      position: {x: -0.17788307, y: 0.012910053, z: -0.0000010599011}
+      rotation: {x: -0.000000010506742, y: -0.000000018577321, z: -0.027728572, w: 0.99961555}
+      scale: {x: 1.0000001, y: 0.9999999, z: 1.0000001}
+    - name: warugaki_kari:LeftHand
+      parentName: warugaki_kari:LeftForeArm
+      position: {x: -0.16731113, y: -0.000000092567944, z: 0.00000007842784}
+      rotation: {x: 0.000000011641532, y: -0.0000000036379801, z: -2.3678732e-16, w: 1}
+      scale: {x: 1.0000001, y: 1.0000005, z: 1.0000002}
+    - name: warugaki_kari:LeftHandMiddle1
+      parentName: warugaki_kari:LeftHand
+      position: {x: -0.027214289, y: 0.00060291705, z: 0.0049596056}
+      rotation: {x: 0.0010279721, y: 0.034497328, z: 0.05021011, w: 0.99814224}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: warugaki_kari:LeftHandMiddle2
+      parentName: warugaki_kari:LeftHandMiddle1
+      position: {x: -0.03835335, y: -0.000000025525585, z: -0.0000000089662455}
+      rotation: {x: -0.003475358, y: -0.032815307, z: -0.025226882, w: 0.999137}
+      scale: {x: 1, y: 1.0000001, z: 0.99999994}
+    - name: warugaki_kari:LeftHandMiddle3
+      parentName: warugaki_kari:LeftHandMiddle2
+      position: {x: -0.038101867, y: -0.000000038108606, z: -0.000000009331696}
+      rotation: {x: 0.0000000062864274, y: -0.000000007450581, z: -0.000000005980837, w: 1}
+      scale: {x: 1.0000004, y: 0.9999997, z: 1}
+    - name: warugaki_kari:LeftHandOya1
+      parentName: warugaki_kari:LeftHand
+      position: {x: -0.021543803, y: -0.0015307663, z: 0.027343746}
+      rotation: {x: 0.70882547, y: 0.098283716, z: -0.11852392, w: 0.68837416}
+      scale: {x: 1.0000004, y: 1.0000001, z: 1.0000001}
+    - name: warugaki_kari:LeftHandOya2
+      parentName: warugaki_kari:LeftHandOya1
+      position: {x: -0.024953324, y: 0.000000006746681, z: -0.00000002430247}
+      rotation: {x: 0.051962953, y: -0.007133284, z: 0.03355105, w: 0.99805975}
+      scale: {x: 1.0000005, y: 1, z: 1.0000007}
+    - name: warugaki_kari:LeftHandOya3
+      parentName: warugaki_kari:LeftHandOya2
+      position: {x: -0.020349454, y: 0.000000017130722, z: 0.00000006719444}
+      rotation: {x: -0.000000100582824, y: -0.000000052154057, z: 0.000000080326565, w: 1}
+      scale: {x: 0.99999994, y: 1.0000001, z: 0.9999997}
+    - name: warugaki_kari:RightShoulder
+      parentName: warugaki_kari:spine3
+      position: {x: 0.044008195, y: 0.123562686, z: -0.0037409563}
+      rotation: {x: 0.9998595, y: -0.016762435, z: 0.000000011639897, w: 1.9513985e-10}
+      scale: {x: 0.9999999, y: 1.0000002, z: 1.0000001}
+    - name: warugaki_kari:RightArm
+      parentName: warugaki_kari:RightShoulder
+      position: {x: 0.037225373, y: 0.011180405, z: 0.000000016169025}
+      rotation: {x: -8.394528e-11, y: -0.000000017460483, z: 0.01442167, w: 0.99989605}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000004}
+    - name: warugaki_kari:RightForeArm
+      parentName: warugaki_kari:RightArm
+      position: {x: 0.17788321, y: -0.012911968, z: -0.0000024250342}
+      rotation: {x: 1.6140055e-10, y: 0.000000017455585, z: -0.027728528, w: 0.99961555}
+      scale: {x: 1.0000001, y: 1, z: 0.9999999}
+    - name: warugaki_kari:RightHand
+      parentName: warugaki_kari:RightForeArm
+      position: {x: 0.167311, y: -0.00000046991204, z: -0.000000015484025}
+      rotation: {x: 0.00000002910383, y: -0.0000000058207688, z: -0.00000001117587, w: 1}
+      scale: {x: 1.0000002, y: 1.0000005, z: 1.0000002}
+    - name: warugaki_kari:RightHandMiddle1
+      parentName: warugaki_kari:RightHand
+      position: {x: 0.02721447, y: -0.0006029278, z: -0.004959609}
+      rotation: {x: 0.001027604, y: 0.03449992, z: 0.0502066, w: 0.99814224}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.9999998}
+    - name: warugaki_kari:RightHandMiddle2
+      parentName: warugaki_kari:RightHandMiddle1
+      position: {x: 0.038353186, y: 0.0000005715573, z: -0.00000002429997}
+      rotation: {x: -0.0034753955, y: -0.032812208, z: -0.025224013, w: 0.9991372}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1}
+    - name: warugaki_kari:RightHandMiddle3
+      parentName: warugaki_kari:RightHandMiddle2
+      position: {x: 0.038101587, y: 0.00000011251704, z: 0.000000002448545}
+      rotation: {x: 0.000000017695127, y: 0.0000000037252899, z: -0.0000000029103826, w: 1}
+      scale: {x: 1.0000001, y: 0.9999998, z: 1}
+    - name: warugaki_kari:RightHandOya1
+      parentName: warugaki_kari:RightHand
+      position: {x: 0.021543067, y: 0.0015312316, z: -0.027343694}
+      rotation: {x: -0.70882785, y: -0.09827964, z: 0.11853095, w: -0.68837094}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: warugaki_kari:RightHandOya2
+      parentName: warugaki_kari:RightHandOya1
+      position: {x: 0.024953375, y: 0.000000028690573, z: -0.00000044344836}
+      rotation: {x: 0.051961463, y: -0.007124612, z: 0.03354257, w: 0.9980603}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1.0000001}
+    - name: warugaki_kari:RightHandOya3
+      parentName: warugaki_kari:RightHandOya2
+      position: {x: 0.020349797, y: 0.00000031294385, z: -0.00000006793311}
+      rotation: {x: 0.000000026077029, y: -0.00000001117587, z: -0.00000007031485, w: 1}
+      scale: {x: 1, y: 0.9999998, z: 0.9999998}
+    - name: warugaki_kari:LeftUpLeg
+      parentName: warugaki_kari:hips
+      position: {x: -0.04638825, y: -0.03315241, z: -0.00035165143}
+      rotation: {x: 0.000000026193447, y: -0.000000008731149, z: -0.0000000036379788, w: 1}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: warugaki_kari:LeftLeg
+      parentName: warugaki_kari:LeftUpLeg
+      position: {x: -0.0025997001, y: -0.22561736, z: -0.0035161858}
+      rotation: {x: -0.000000023283064, y: 0.000000002910383, z: 0.0000000014551916, w: 1}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: warugaki_kari:LeftFoot
+      parentName: warugaki_kari:LeftLeg
+      position: {x: -0.0063828835, y: -0.16504896, z: -0.012846438}
+      rotation: {x: 0.000000002910383, y: -0, z: 1.818989e-10, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: warugaki_kari:LeftToeBase
+      parentName: warugaki_kari:LeftFoot
+      position: {x: 0.0000000019660256, y: -0.018685594, z: 0.06656745}
+      rotation: {x: -0.0000000043655746, y: -0.000000005820765, z: 1.8189905e-10, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: warugaki_kari:joint11
+      parentName: warugaki_kari:LeftToeBase
+      position: {x: 1.7763568e-17, y: 6.1509196e-18, z: 1.0951637e-17}
+      rotation: {x: -0, y: -0, z: 2.3445905e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: warugaki_kari:RightUpLeg
+      parentName: warugaki_kari:hips
+      position: {x: 0.04638827, y: -0.033152778, z: -0.0003516101}
+      rotation: {x: 1, y: 0.000000002910383, z: -0.000000017462298, w: -0.000000002910383}
+      scale: {x: 1, y: 1.0000002, z: 1.0000004}
+    - name: warugaki_kari:RightLeg
+      parentName: warugaki_kari:RightUpLeg
+      position: {x: 0.0025970174, y: 0.22561742, z: 0.0035025938}
+      rotation: {x: -0.000000023283064, y: 0.000000020372681, z: 0.000000010913936, w: 1}
+      scale: {x: 1, y: 1.0000006, z: 1.0000004}
+    - name: warugaki_kari:RightFoot
+      parentName: warugaki_kari:RightLeg
+      position: {x: 0.006382895, y: 0.16504894, z: 0.012846332}
+      rotation: {x: 0.000000046566125, y: 0.000000002910383, z: -0.0000000029103817, w: 1}
+      scale: {x: 1, y: 1.0000004, z: 1.0000004}
+    - name: warugaki_kari:RightToeBase
+      parentName: warugaki_kari:RightFoot
+      position: {x: 0.000000003837872, y: 0.018685622, z: -0.06656743}
+      rotation: {x: -0, y: -0, z: 8.6519347e-17, w: 1}
+      scale: {x: 1, y: 1.0000004, z: 1.0000004}
+    - name: warugaki_kari:joint11 1
+      parentName: warugaki_kari:RightToeBase
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1.0000004, z: 1.0000004}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -184,13 +594,13 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 2
+  animationType: 3
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 
