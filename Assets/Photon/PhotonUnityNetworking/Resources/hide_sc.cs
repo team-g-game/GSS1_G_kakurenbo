@@ -126,23 +126,25 @@ public class hide_sc : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))    //Eボタン押したとき
             {
-                if (Scapegoat_bool == true){ //スケープゴート持ってるなら
-                    Debug.Log("いないよスケープ");
-                }
-                else {
-                    for (int i = 0; i < ScriptGameCont.GetPlayerInfoListCount(); ++i){
-                        if (HidePlaceNum.ToString() == ScriptGameCont.GetPlayerInfoFromIndex(i, "HidePlace")){
-                            Debug.Log("見つけた");
-                            string PlayerViewId = ScriptGameCont.GetPlayerViewIdFromListByIndex(i).ToString();
+                for (int i = 0; i < ScriptGameCont.GetPlayerInfoListCount(); ++i){
+                    if (HidePlaceNum.ToString() == ScriptGameCont.GetPlayerInfoFromIndex(i, "HidePlace")){
+                        string PlayerViewId = ScriptGameCont.GetPlayerViewIdFromListByIndex(i).ToString();
+                        string Scape = ScriptGameCont.GetPlayerInfo(PlayerViewId, "ItemInfo");
+                        if (Scape[0] == '0'){
                             ScriptGameCont.UpdatePlayerInfoAndHash(PlayerViewId,"CatchFlag", "true");
                             ScriptGameCont.UpdatePlayerInfoAndHash(PlayerViewId,"HidePlace", "100");
                             Debug.Log(ScriptGameCont.GetPlayerInfo(PlayerViewId,"CatchFlag"));
                             Debug.Log(ScriptGameCont.GetPlayerInfo(PlayerViewId,"HidePlace"));
+                            Debug.Log("見つけた");
                             ScriptGameCont.CatchPlayerFlag = true;
                         }
-                        else{
-                            Debug.Log("いないよ人数分");
+                        else if (Scape[0] == '1'){
+                            ScriptGameCont.UpdatePlayerInfoAndHash(PlayerViewId, "ItemInfo", "000");
+                            Debug.Log("スケープゴートで見つからなかった");
                         }
+                    }
+                    else{
+                        Debug.Log("いないよ人数分");
                     }
                 }
             }

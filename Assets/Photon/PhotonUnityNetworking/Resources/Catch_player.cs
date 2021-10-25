@@ -66,20 +66,12 @@ public class Catch_player : MonoBehaviour
                                 PhotonView View = hako.transform.parent.gameObject.GetComponent<PhotonView>();
                                 string CViewId = View.ViewID.ToString();
                                 if ((string)ScriptGameCont.GetPlayerInfo(CViewId, "CatchFlag") == "False"){
-                                    string scape = ScriptGameCont.GetPlayerInfo(CViewId, "ItemInfo");
                                     int Index = ScriptGameCont.GetPlayerInfoIndexFromViewId(CViewId);
-                                    if (scape[0] == '0'){
-                                        ScriptGameCont.UpdatePlayerInfoListByIndex(Index, "CatchFlag", "true");
-                                        ScriptGameCont.UpdatePlayerInfoListByIndex(Index, "HidePlace", "100");
-                                        ScriptGameCont.SendPlayerInfo(Index);
-                                        Debug.Log("見つけた");
-                                        ScriptGameCont.CatchPlayerFlag = true;
-                                    }
-                                    else if (scape[0] == '1'){
-                                        ScriptGameCont.UpdatePlayerInfoListByIndex(Index, "ItemInfo", "000");
-                                        ScriptGameCont.SendPlayerInfo(Index);
-                                        Debug.Log("スケープゴートで助かった");
-                                    }
+                                    ScriptGameCont.UpdatePlayerInfoListByIndex(Index, "CatchFlag", "true");
+                                    ScriptGameCont.UpdatePlayerInfoListByIndex(Index, "HidePlace", "100");
+                                    ScriptGameCont.SendPlayerInfo(Index);
+                                    Debug.Log("見つけた");
+                                    ScriptGameCont.CatchPlayerFlag = true;
                                 }
                                 else {
                                     Debug.Log("nannkaokasii");
