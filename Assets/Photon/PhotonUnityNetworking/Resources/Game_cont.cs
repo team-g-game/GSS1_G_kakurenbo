@@ -12,11 +12,14 @@ public class Game_cont : MonoBehaviourPunCallbacks
         public int PViewId;
         public int PHidePlace;
         public bool PCatchFlag;
+        public string ItemInfo;
 
-        public PlayerInfo(int PlayerViewId, int HidePlace, bool CatchFlag){
+        public PlayerInfo(int PlayerViewId, int HidePlace, bool CatchFlag, string ItemInfomation){
             PViewId = PlayerViewId;
             PHidePlace = HidePlace;
             PCatchFlag = CatchFlag;
+            ItemInfo = ItemInfomation;
+            
         }
     }
     private bool CheckCreatId = false;  //一回だけ自分の情報を作って送るためにある
@@ -209,7 +212,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
         if (CheckCreatId == false && DemonFlag == false){
             if (move.MyPlayerViewId != 0){
                 CheckCreatId = true;
-                Myself = new PlayerInfo(move.MyPlayerViewId, 0, false);
+                Myself = new PlayerInfo(move.MyPlayerViewId, 0, false, "000");
                 PlayerInfoList.Add(Myself);
                 SendPlayerInfo(0);
             }
@@ -242,6 +245,9 @@ public class Game_cont : MonoBehaviourPunCallbacks
         else if(ChangeElement == "HidePlace"){
             example.PHidePlace = int.Parse(ChangeContent);
         }
+        else if(ChangeElement == "ItemInfo"){
+            example.ItemInfo = ChangeContent;
+        }
         else {
             Debug.Log("naiyo" + PlayerNum);
         }
@@ -257,6 +263,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
         string[] part = SentValue.Split(',');
         ChangePlayerList(PlayerNum, "HidePlace", part[0]);
         ChangePlayerList(PlayerNum, "CatchFlag", part[1]);
+        ChangePlayerList(PlayerNum, "ItemInfo", part[2]);
     }
 
     /// <summary>
@@ -265,13 +272,13 @@ public class Game_cont : MonoBehaviourPunCallbacks
     void CreatePlayerList(){
         if (DemonFlag == false){
             for (int i = 1; i < move.PlayerViewIdsList.Count; ++i){
-            Player2 = new PlayerInfo(move.PlayerViewIdsList[i], 0, false);
+            Player2 = new PlayerInfo(move.PlayerViewIdsList[i], 0, false, "000");
             PlayerInfoList.Add(Player2);
             }
         }
         else {
             for (int i = 0; i < move.PlayerViewIdsList.Count; ++i){
-            Player2 = new PlayerInfo(move.PlayerViewIdsList[i], 0, false);
+            Player2 = new PlayerInfo(move.PlayerViewIdsList[i], 0, false, "000");
             PlayerInfoList.Add(Player2);
             } 
         }
@@ -317,7 +324,8 @@ public class Game_cont : MonoBehaviourPunCallbacks
     string CreatePlayerValue(int PlayerNum){
         string PlayerValue = "";
         PlayerValue += PlayerInfoList[PlayerNum].PHidePlace + ",";
-        PlayerValue += PlayerInfoList[PlayerNum].PCatchFlag;
+        PlayerValue += PlayerInfoList[PlayerNum].PCatchFlag + ",";
+        PlayerValue += PlayerInfoList[PlayerNum].ItemInfo;
         return PlayerValue;
     }
 
@@ -335,6 +343,9 @@ public class Game_cont : MonoBehaviourPunCallbacks
         }
         else if(GetElement == "HidePlace"){
             Content = PlayerInfoList[Index].PHidePlace.ToString();
+        }
+        else if (GetElement == "ItemInfo"){
+            Content = PlayerInfoList[Index].ItemInfo;
         }
         else {
             Debug.Log("naiyo" + PlayerViewId);
@@ -355,6 +366,9 @@ public class Game_cont : MonoBehaviourPunCallbacks
         }
         else if(GetElement == "HidePlace"){
             Content = PlayerInfoList[PlayerInfoListIndex].PHidePlace.ToString();
+        }
+        else if (GetElement == "ItemInfo"){
+            Content = PlayerInfoList[PlayerInfoListIndex].ItemInfo;
         }
         else {
             Debug.Log("naiyo" + PlayerInfoListIndex + GetElement);
@@ -391,6 +405,9 @@ public class Game_cont : MonoBehaviourPunCallbacks
         else if (UpdateElement == "CatchFlag"){
             ChangePlayerList(Index, "CatchFlag", UpdateContent);
         }
+        else if (UpdateElement == "ItemInfo"){
+            ChangePlayerList(Index, "ItemInfo", UpdateContent);
+        }
         else {
             Debug.Log("更新できてない" + PlayerViewId + UpdateElement);
         }
@@ -409,6 +426,9 @@ public class Game_cont : MonoBehaviourPunCallbacks
         }
         else if (UpdateElement == "CatchFlag"){
             ChangePlayerList(PlayerInfoListIndex, "CatchFlag", UpdateContent);
+        }
+        else if (UpdateElement == "ItemInfo"){
+            ChangePlayerList(PlayerInfoListIndex, "ItemInfo", UpdateContent);
         }
         else {
             Debug.Log("更新できてない" + PlayerInfoListIndex + UpdateElement);
