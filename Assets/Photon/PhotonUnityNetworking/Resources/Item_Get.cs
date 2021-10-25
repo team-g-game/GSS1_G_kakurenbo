@@ -59,6 +59,7 @@ public class Item_Get : MonoBehaviour
             {
                 Debug.Log("ok");//アイテムの挙動
                 UpdateTresureChestList();
+                ScriptGameCont.ChangePlayerList(0, "ItemInfo", ItemsInfo);
             }
         }
     }
