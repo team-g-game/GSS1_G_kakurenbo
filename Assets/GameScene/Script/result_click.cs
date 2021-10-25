@@ -22,5 +22,7 @@ public class result_click : MonoBehaviour
 
     public void exit(){
       SceneManager.LoadScene ("title");
+      Game_cont.Game_Status = Game_cont.Status.before;
+      Destroy(GameObject.FindWithTag("game_manegyr").gameObject,0f);
     }
 }

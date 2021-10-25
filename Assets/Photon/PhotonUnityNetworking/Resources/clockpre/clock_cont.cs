@@ -27,9 +27,10 @@ public class clock_cont : MonoBehaviourPunCallbacks
 
         }
         else{
-            if(max_num <= 0 || num < 0){
+            if(max_num <= 0){
                 stop = true;
             }else{
+                
                 add_num += Time.deltaTime;
                 num = max_num - add_num;
             }
@@ -50,6 +51,8 @@ public class clock_cont : MonoBehaviourPunCallbacks
             stop = false;
             max_num = end_time - start_time;
         }
+        add_num = Time.deltaTime;
+        num = max_num - add_num;
         Debug.Log(ret_str+":"+max_num);
         return ret_str;
     }

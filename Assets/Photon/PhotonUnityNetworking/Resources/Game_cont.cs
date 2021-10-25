@@ -129,7 +129,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
         else {
             DemonJoinedTime = int.Parse(DTime);
             DemonJoinedFlag = true;
-            GameObject.FindWithTag("clock").GetComponent<clock_cont>().timer_start(PhotonNetwork.ServerTimestamp.ToString() + "," + (PhotonNetwork.ServerTimestamp + start_time).ToString());
+            GameObject.FindWithTag("clock").GetComponent<clock_cont>().timer_start(PhotonNetwork.ServerTimestamp.ToString() + "," + (PhotonNetwork.ServerTimestamp + start_time * 1000).ToString());
         }
         Debug.Log(SentHash);
     }
