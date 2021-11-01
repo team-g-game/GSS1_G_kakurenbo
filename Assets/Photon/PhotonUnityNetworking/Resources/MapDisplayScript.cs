@@ -66,6 +66,10 @@ public class MapDisplayScript : MonoBehaviour
     void ScapeGoatDisplay(){
         string scape = ScriptGameCont.GetPlayerInfoFromIndex(0, "ItemInfo");
         if (scape[0] == '1'){
+            this.gameObject.transform.GetChild(2).gameObject.SetActive(true);
+        }
+        else{
+            this.gameObject.transform.GetChild(2).gameObject.SetActive(false);
         }
     }
 }
