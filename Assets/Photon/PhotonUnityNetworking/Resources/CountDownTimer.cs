@@ -11,7 +11,7 @@ public class CountDownTimer : MonoBehaviour {
 		timerText = GetComponentInChildren<Text>();
 	}
 	void Update(){
-		Debug.Log(clock_cont.num);
+		//Debug.Log(clock_cont.num);
 		timerText.text = ((int)clock_cont.num/60).ToString("00") + ":" + ((int)clock_cont.num%60).ToString("00");
 	}
 }
