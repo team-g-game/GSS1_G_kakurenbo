@@ -157,7 +157,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
             }
 
             case Status.play:{
-                Destroy(load_cam.gameObject);
+                if(load_cam != null)Destroy(load_cam.gameObject,0f);
                 //プレイヤーのアイテム確認？
                 if (Input.GetKeyDown(KeyCode.P)){
                     for (int i = 0; i < 20; i++){
