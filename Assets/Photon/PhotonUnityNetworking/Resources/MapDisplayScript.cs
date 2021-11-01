@@ -6,7 +6,7 @@ using UnityEngine.UI; 　
 
 public class MapDisplayScript : MonoBehaviour
 {
-    bool MapDisplayed = false;
+    bool MapDisplayed = true;
     bool SousaDisplayed = true;
     public GameObject GameManager;  //Game_masterを入れる
     private Game_cont ScriptGameCont;   //Game_contの関数使えるようにする
@@ -16,6 +16,8 @@ public class MapDisplayScript : MonoBehaviour
     {
         GameManager = GameObject.Find("Game_master");
         ScriptGameCont = GameManager.GetComponent<Game_cont>();
+        MapDisplayed = false;
+        SousaDisplayed = false;
     }
     void Update()
     {
@@ -27,7 +29,9 @@ public class MapDisplayScript : MonoBehaviour
             case Game_cont.Status.play:{
                 SousaGamen();
                 MapDisplay();
-                ScapeGoatDisplay();
+                if (ScriptGameCont.DemonFlag == false){
+                    ScapeGoatDisplay();
+                }
                 break;
             }
             case Game_cont.Status.after:{
@@ -39,6 +43,7 @@ public class MapDisplayScript : MonoBehaviour
 
     void MapDisplay(){
         if (Input.GetKeyDown(KeyCode.M)){
+            MapDisplayed = this.gameObject.transform.GetChild(0).gameObject.activeSelf;
             if (MapDisplayed == true){
                 MapDisplayed = false;
                 this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
@@ -52,6 +57,7 @@ public class MapDisplayScript : MonoBehaviour
 
     void SousaGamen(){
         if (Input.GetKeyDown(KeyCode.H)){
+            SousaDisplayed = this.gameObject.transform.GetChild(1).gameObject.activeSelf;
             if (SousaDisplayed == true){
                 SousaDisplayed = false;
                 this.gameObject.transform.GetChild(1).gameObject.SetActive(false);

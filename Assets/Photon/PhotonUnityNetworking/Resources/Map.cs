@@ -12,6 +12,7 @@ public class Map : MonoBehaviour
     {
 
         button.SetActive(false);
+        Debug.Log("押した");
 
     }
 }
