@@ -23,7 +23,7 @@ public class MapDisplayScript : MonoBehaviour
     {
         switch (Game_cont.Game_Status){
             case Game_cont.Status.before:{
-                MapDisplay(); 
+                //MapDisplay(); 
                 break;
             }
             case Game_cont.Status.play:{
