@@ -6,47 +6,30 @@ public class Animation_move : MonoBehaviour {
 
 	// Animator コンポーネント
 	private Animator animator;
-
+	private CharacterController characterController;
 	// 設定したフラグの名前
 	//private const string key_isRun = "Walk";
-    private float speed = 1.0f;
+    private float sp = 1.0f;
 
 	// 初期化メソッド
 	void Start () {
 		// 自分に設定されているAnimatorコンポーネントを習得する
-		this.animator = GetComponent<Animator>();
+		animator = GetComponent<Animator>();
+		characterController = GetComponent<CharacterController>();
+
 	}
 	
 	void Update () {
 
-
-		if (Input.GetKey(KeyCode.UpArrow))
+		if (Input.GetKey("up"))
         {
-			this.animator.SetBool("Walk", true);
+			animator.SetFloat("Speed", sp);
+			transform.position += transform.forward * sp * Time.deltaTime;
 
-
+		}else{
+			animator.SetFloat("Speed", 0f);
 		}
 
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            transform.position -= transform.forward * speed * Time.deltaTime;
-        }
-
-
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.position += transform.right * speed * Time.deltaTime;
-        }
-
-
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            transform.position -= transform.right * speed * Time.deltaTime;
-        }
-		
-		else {
-			this.animator.SetBool("Walk", false);
-        }
 
 	}
 }
