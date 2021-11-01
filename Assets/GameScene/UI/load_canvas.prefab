@@ -123,6 +123,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c2687f169ba3fa44a9a64bcd8c42210e, type: 3}
   - {fileID: 21300000, guid: ea4117053ebea864594f4b0aac490bce, type: 3}
   - {fileID: 21300000, guid: 2f21d63ef9ea60c4b9807779b8b41ad0, type: 3}
+  - {fileID: 21300000, guid: b34b4820f735ae14086c059eede09cf0, type: 3}
   load_img_num: 0
   img_show: {fileID: 7128874316712930138}
   load_img_interval: 5000

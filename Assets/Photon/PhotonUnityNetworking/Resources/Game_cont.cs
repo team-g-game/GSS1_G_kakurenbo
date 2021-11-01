@@ -57,6 +57,8 @@ public class Game_cont : MonoBehaviourPunCallbacks
     int game_time_min;
     [SerializeField]
     int game_time_sec;
+    [SerializeField]
+    Camera load_cam;
 
     void Start()
     {
@@ -137,6 +139,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
     {
         switch (Game_Status){
             case Status.before:{
+
                 CheckMyViewId();
                 if (Input.GetKeyDown(KeyCode.F)){   //無理やりスタート
                     GameStart();
@@ -154,6 +157,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
             }
 
             case Status.play:{
+                Destroy(load_cam.gameObject);
                 //プレイヤーのアイテム確認？
                 if (Input.GetKeyDown(KeyCode.P)){
                     for (int i = 0; i < 20; i++){
