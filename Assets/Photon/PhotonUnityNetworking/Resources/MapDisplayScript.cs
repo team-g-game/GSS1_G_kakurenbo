@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; 　
+using Photon.Pun;
+using Photon;
+using Photon.Realtime;
 
 
 public class MapDisplayScript : MonoBehaviour
@@ -10,19 +13,19 @@ public class MapDisplayScript : MonoBehaviour
     bool SousaDisplayed = true;
     public GameObject GameManager;  //Game_masterを入れる
     private Game_cont ScriptGameCont;   //Game_contの関数使えるようにする
+
     GameObject[] DisplayUi = new GameObject[4];
+    [SerializeField] private GameObject PhotonHontai;
+    private PhotonView view = null;
 
     // Start is called before the first frame update
     void Start()
     {
+        view = PhotonHontai.GetComponent<PhotonView>();
         GameManager = GameObject.Find("Game_master");
         ScriptGameCont = GameManager.GetComponent<Game_cont>();
         MapDisplayed = false;
         SousaDisplayed = false;
-        for (int i = 0; i < 4; i++){
-            DisplayUi[i] = this.gameObject.transform.GetChild(i).gameObject;
-            this.gameObject.transform.GetChild(i).gameObject.SetActive(false);
-        }
     }
     void Update()
     {
@@ -32,11 +35,13 @@ public class MapDisplayScript : MonoBehaviour
                 break;
             }
             case Game_cont.Status.play:{
-                SousaGamen();
-                MapDisplay();
-                if (ScriptGameCont.DemonFlag == false){
-                    CatchGaki();
-                    ScapeGoatDisplay();
+                if(view.IsMine){
+                    SousaGamen();
+                    MapDisplay();
+                    if (ScriptGameCont.DemonFlag == false){
+                        CatchGaki();
+                        ScapeGoatDisplay();
+                    }
                 }
                 break;
             }
@@ -52,7 +57,8 @@ public class MapDisplayScript : MonoBehaviour
     /// </summary>
     void MapDisplay(){
         if (Input.GetKeyDown(KeyCode.M)){
-            MapDisplayed = this.gameObject.transform.GetChild(0).gameObject.activeSelf;
+            DisplayUi[0] = this.gameObject.transform.GetChild(0).gameObject;
+            MapDisplayed = DisplayUi[0].activeSelf;
             if (MapDisplayed == true){
                 MapDisplayed = false;
                 DisplayUi[0].SetActive(false);
@@ -69,7 +75,8 @@ public class MapDisplayScript : MonoBehaviour
     /// </summary>
     void SousaGamen(){
         if (Input.GetKeyDown(KeyCode.H)){
-            SousaDisplayed = this.gameObject.transform.GetChild(1).gameObject.activeSelf;
+            DisplayUi[1] = this.gameObject.transform.GetChild(1).gameObject;
+            SousaDisplayed = DisplayUi[1].activeSelf;
             if (SousaDisplayed == true){
                 SousaDisplayed = false;
                 DisplayUi[1].SetActive(false);
@@ -87,6 +94,7 @@ public class MapDisplayScript : MonoBehaviour
     /// </summary>
     void ScapeGoatDisplay(){
         string Scape = ScriptGameCont.GetPlayerInfoFromIndex(0, "ItemInfo");
+        DisplayUi[2] = this.gameObject.transform.GetChild(2).gameObject;
         if (Scape[0] == '1'){
             DisplayUi[2].SetActive(true);
         }
@@ -100,6 +108,7 @@ public class MapDisplayScript : MonoBehaviour
     /// </summary>
     void CatchGaki(){
         string Catch = ScriptGameCont.GetPlayerInfoFromIndex(0, "CatchFlag");
+        DisplayUi[3] = this.gameObject.transform.GetChild(3).gameObject;
         if (Catch == "True"){
             DisplayUi[3].SetActive(true);
         }

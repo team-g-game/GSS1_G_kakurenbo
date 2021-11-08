@@ -526,6 +526,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameManager: {fileID: 0}
+  Map: {fileID: 0}
+  Sousa: {fileID: 0}
+  Scape: {fileID: 0}
+  Mitsukatta: {fileID: 0}
+  PhotonHontai: {fileID: 3118343517766385410}
 --- !u!1 &1627131409245270955
 GameObject:
   m_ObjectHideFlags: 0
@@ -756,7 +761,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7561922925432026730
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1207,7 +1212,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4504327951343227893
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1769,7 +1774,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2475492492640320904
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2057,7 +2062,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &109232524497552525
 RectTransform:
   m_ObjectHideFlags: 0

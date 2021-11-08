@@ -950,6 +950,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameManager: {fileID: 0}
+  PhotonHontai: {fileID: 819629142894818576}
 --- !u!1 &7996411740957948212
 GameObject:
   m_ObjectHideFlags: 0
