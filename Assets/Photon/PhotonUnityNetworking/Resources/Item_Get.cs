@@ -36,12 +36,6 @@ public class Item_Get : MonoBehaviour
         GameManager = GameObject.Find("Game_master");
         ScriptGameCont = GameManager.GetComponent<Game_cont>();
         TreasureChestObject = this.gameObject.transform.GetChild(0).gameObject;
-                        Color color = TreasureChestObject.GetComponent<Renderer>().materials[0].color;
-                Color color2 = TreasureChestObject.GetComponent<Renderer>().materials[1].color;
-                color.a = 1;
-                color2.a = 1;
-                TreasureChestObject.GetComponent<Renderer>().materials[0].color = new Color32(0,0,0,0);
-                TreasureChestObject.GetComponent<Renderer>().materials[1].color = new Color32(0,0,0,0);
     }
 
     // Update is called once per frame
