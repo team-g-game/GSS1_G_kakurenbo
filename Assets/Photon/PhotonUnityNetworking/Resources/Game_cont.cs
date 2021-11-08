@@ -557,6 +557,17 @@ public class Game_cont : MonoBehaviourPunCallbacks
     }
 
     /// <summary>
+    /// TreasureChestListのインデックスから情報をとる
+    /// </summary>
+    /// <param name="index">TresureChestListのインデックス</param>
+    /// <returns></returns>
+    public string GetTreasureChestInfoFromIndex(int index){
+        string TreasureChestInfo = "";
+        TreasureChestInfo = TreasureChest[index];
+        return TreasureChestInfo;
+    }
+
+    /// <summary>
     /// TreasureChestListの内容を変更。
     /// </summary>
     /// <param name="index">変更したいTreasureChestの番号</param>

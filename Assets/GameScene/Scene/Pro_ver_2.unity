@@ -1268,6 +1268,10 @@ PrefabInstance:
       propertyPath: m_Text
       value: "\u96A0\u308C\u308B"
       objectReference: {fileID: 0}
+    - target: {fileID: 4664548569024380149, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4671015018880283486, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: ItemsInfo
       value: 100

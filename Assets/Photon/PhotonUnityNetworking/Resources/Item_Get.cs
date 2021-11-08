@@ -10,6 +10,9 @@ public class Item_Get : MonoBehaviour
     [SerializeField] private int TreasureChestNumber;
     [SerializeField] private string ItemsInfo = "000";
     private bool FirstChangeTreasureChestListFlag = false;
+    GameObject TreasureChestObject;
+    private bool OpenFlag = false;
+    private float TimeCnt = 0.0f;
 
     void OnTriggerEnter(Collider other)
     {
@@ -32,6 +35,13 @@ public class Item_Get : MonoBehaviour
     {
         GameManager = GameObject.Find("Game_master");
         ScriptGameCont = GameManager.GetComponent<Game_cont>();
+        TreasureChestObject = this.gameObject.transform.GetChild(0).gameObject;
+                        Color color = TreasureChestObject.GetComponent<Renderer>().materials[0].color;
+                Color color2 = TreasureChestObject.GetComponent<Renderer>().materials[1].color;
+                color.a = 1;
+                color2.a = 1;
+                TreasureChestObject.GetComponent<Renderer>().materials[0].color = new Color32(0,0,0,0);
+                TreasureChestObject.GetComponent<Renderer>().materials[1].color = new Color32(0,0,0,0);
     }
 
     // Update is called once per frame
@@ -44,6 +54,7 @@ public class Item_Get : MonoBehaviour
             }
             case Game_cont.Status.play:{
                 Pick_Up();
+                //TreasureChestOpened();
                 break;
             }
             case Game_cont.Status.after:{
@@ -57,9 +68,11 @@ public class Item_Get : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F))//Fキーを押したときの判定
             {
-                Debug.Log("ok");//アイテムの挙動
+                Debug.Log("ItemGet");//アイテムの挙動
                 UpdateTresureChestList();
                 ScriptGameCont.ChangePlayerList(0, "ItemInfo", ItemsInfo);
+
+                OpenFlag = true;
             }
         }
     }
@@ -80,5 +93,20 @@ public class Item_Get : MonoBehaviour
     void UpdateTresureChestList(){
         ScriptGameCont.ChangeTreasureChestList(TreasureChestNumber, "000");
         ScriptGameCont.SendTreasureChestList(TreasureChestNumber, "000");
+    }
+
+    void TreasureChestOpened(){
+/*         string Infomation = ScriptGameCont.GetTreasureChestInfoFromIndex(TreasureChestNumber);
+        if (Infomation[2] == '1'){
+        } */
+        if (OpenFlag == true){
+            Color color = TreasureChestObject.GetComponent<Renderer>().materials[0].color;
+            TimeCnt += Time.deltaTime;
+            if (TimeCnt > 1.0f){
+                TimeCnt = 1.0f;
+            }
+            color.a = TimeCnt;
+            TreasureChestObject.GetComponent<Renderer>().materials[0].color = color;
+        }
     }
 }
