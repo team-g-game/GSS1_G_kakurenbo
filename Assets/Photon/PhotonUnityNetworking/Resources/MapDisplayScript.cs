@@ -29,8 +29,8 @@ public class MapDisplayScript : MonoBehaviour
             case Game_cont.Status.play:{
                 SousaGamen();
                 MapDisplay();
-                CatchGaki();
                 if (ScriptGameCont.DemonFlag == false){
+                    CatchGaki();
                     ScapeGoatDisplay();
                 }
                 break;
