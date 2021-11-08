@@ -118,12 +118,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b5a2feb9aa35c234b803f36400af4ee3, type: 3}
   - {fileID: 21300000, guid: 2375d529ea5788649a80dba73178dbbb, type: 3}
   - {fileID: 21300000, guid: e4e76d48206dae5419a32e548eae6ba2, type: 3}
+  - {fileID: 21300000, guid: b34b4820f735ae14086c059eede09cf0, type: 3}
   - {fileID: 21300000, guid: 5a7911e35cd31f448b918be1b29531e4, type: 3}
   - {fileID: 21300000, guid: ac2258e31d26be041ae4b81f875db572, type: 3}
   - {fileID: 21300000, guid: c2687f169ba3fa44a9a64bcd8c42210e, type: 3}
   - {fileID: 21300000, guid: ea4117053ebea864594f4b0aac490bce, type: 3}
   - {fileID: 21300000, guid: 2f21d63ef9ea60c4b9807779b8b41ad0, type: 3}
-  - {fileID: 21300000, guid: b34b4820f735ae14086c059eede09cf0, type: 3}
   load_img_num: 0
   img_show: {fileID: 7128874316712930138}
   load_img_interval: 5000
