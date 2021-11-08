@@ -985,6 +985,10 @@ PrefabInstance:
       propertyPath: m_Text
       value: "\u24BA\u96A0\u308C\u308B"
       objectReference: {fileID: 0}
+    - target: {fileID: 1037768682191410383, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_Anchor
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1077376004450777978, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_Text
       value: "\u24BB\u958B\u3051\u308B"
@@ -1225,6 +1229,10 @@ PrefabInstance:
       propertyPath: m_Text
       value: "\u24BA\u96A0\u308C\u308B"
       objectReference: {fileID: 0}
+    - target: {fileID: 2889372752689927481, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_Anchor
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2979850666413994093, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -1232,6 +1240,10 @@ PrefabInstance:
     - target: {fileID: 3103171191174342747, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_Text
       value: "\u24BA\u96A0\u308C\u308B"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3103171191174342747, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_Anchor
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3484966933766490312, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: GameManager
