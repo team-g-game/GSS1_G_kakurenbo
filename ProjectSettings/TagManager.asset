@@ -12,6 +12,7 @@ TagManager:
   - game_manegyr
   - treehouse
   - clock
+  - Demo
   layers:
   - Default
   - TransparentFX
