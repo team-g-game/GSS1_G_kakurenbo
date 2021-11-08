@@ -896,11 +896,11 @@ PrefabInstance:
       objectReference: {fileID: 333131509}
     - target: {fileID: 3646246187881194864, guid: 92fbceea1728d8949ba5d67bccb17e6d, type: 3}
       propertyPath: start_time
-      value: 30
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 3646246187881194864, guid: 92fbceea1728d8949ba5d67bccb17e6d, type: 3}
       propertyPath: game_time_min
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7997567491265549792, guid: 92fbceea1728d8949ba5d67bccb17e6d, type: 3}
       propertyPath: m_Name
