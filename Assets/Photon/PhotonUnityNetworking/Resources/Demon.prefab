@@ -224,7 +224,7 @@ MonoBehaviour:
   start_pos: {x: 5, y: 10, z: 0}
   cam_obj: {fileID: 2659302811045990020}
   ply_obj: {fileID: 8258624850119386637}
-  move_speed: 25
+  move_speed: 18
   DPS: 2
   Player_name: 
   Player_id: 
