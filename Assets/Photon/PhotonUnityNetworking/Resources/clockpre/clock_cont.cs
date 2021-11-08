@@ -35,6 +35,7 @@ public class clock_cont : MonoBehaviourPunCallbacks
                 num = max_num - add_num;
             }
         }
+        Debug.Log("時間:" + num.ToString());
         
     }
     public string timer_start(string times){

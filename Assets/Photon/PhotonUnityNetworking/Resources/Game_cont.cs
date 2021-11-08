@@ -126,13 +126,16 @@ public class Game_cont : MonoBehaviourPunCallbacks
             Debug.Log("何回か");
         }
         Debug.Log("nannkai");
-        string DTime = (string)SentHash["DemonJoinedTime"];
-        if (DTime == null){}
-        else {
-            DemonJoinedTime = int.Parse(DTime);
-            DemonJoinedFlag = true;
-            GameObject.FindWithTag("clock").GetComponent<clock_cont>().timer_start(PhotonNetwork.ServerTimestamp.ToString() + "," + (PhotonNetwork.ServerTimestamp + start_time * 1000).ToString());
+        if (Game_Status == Status.before){
+            string DTime = (string)SentHash["DemonJoinedTime"];
+            if (DTime == null){}
+            else {
+                DemonJoinedTime = int.Parse(DTime);
+                DemonJoinedFlag = true;
+                GameObject.FindWithTag("clock").GetComponent<clock_cont>().timer_start(PhotonNetwork.ServerTimestamp.ToString() + "," + (PhotonNetwork.ServerTimestamp + start_time * 1000).ToString());
+            }
         }
+
         Debug.Log(SentHash);
     }
     void Update()
