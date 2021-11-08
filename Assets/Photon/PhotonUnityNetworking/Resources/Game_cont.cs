@@ -85,7 +85,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
             Propeties_Hash_string("DemonJoinedTime", DemonJoinedTime.ToString());
             CreateTreasureChestListHashtable();
         }
-        if (DemonJoinedTime == 0){
+        else {
             object DemonTime = GetRoomProperty("DemonJoinedTime");
             if (DemonTime == null){}
             else {
@@ -286,13 +286,13 @@ public class Game_cont : MonoBehaviourPunCallbacks
     /// </summary>
     void CreatePlayerList(){
         if (DemonFlag == false){
-            for (int i = 1; i < move.PlayerViewIdsList.Count; ++i){
+            for (int i = 1; i < move.PlayerViewIdsList.Count; i++){
             Player2 = new PlayerInfo(move.PlayerViewIdsList[i], 0, false, "000");
             PlayerInfoList.Add(Player2);
             }
         }
         else {
-            for (int i = 0; i < move.PlayerViewIdsList.Count; ++i){
+            for (int i = 0; i < move.PlayerViewIdsList.Count; i++){
             Player2 = new PlayerInfo(move.PlayerViewIdsList[i], 0, false, "000");
             PlayerInfoList.Add(Player2);
             } 
@@ -372,7 +372,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
     /// プレイヤー情報をインデックス指定で持ってくる
     /// </summary>
     /// <param name="PlayerInfoListIndex">持ってきたいプレイヤーのインデックス</param>
-    /// <param name="GetElement">持ってきたい要素、HidePlace,CatchFlag</param>
+    /// <param name="GetElement">持ってきたい要素、HidePlace,CatchFlag,ItemInfo</param>
     /// <returns></returns>
     public string GetPlayerInfoFromIndex(int PlayerInfoListIndex, string GetElement){
         string Content = "";
@@ -410,7 +410,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
     /// プレイヤーのViewIdを指定して、情報の更新と送信をする
     /// </summary>
     /// <param name="PlayerViewId">プレイヤーのViewId</param>
-    /// <param name="UpdateElement">更新したい要素、HidePlace,CatchFlag</param>
+    /// <param name="UpdateElement">更新したい要素、HidePlace,CatchFlag,ItemInfo</param>
     /// <param name="UpdateContent">更新内容</param>
     public void UpdatePlayerInfoAndHash(string PlayerViewId, string UpdateElement, string UpdateContent){
         int Index = GetPlayerInfoIndexFromViewId(PlayerViewId);
@@ -433,7 +433,7 @@ public class Game_cont : MonoBehaviourPunCallbacks
     /// PlayerInfoListのIndex指定して、情報の更新だけする。
     /// </summary>
     /// <param name="PlayerInfoListIndex">プレイヤーのインデックス</param>
-    /// <param name="UpdateElement">更新したい要素、HidePlace,CatchFlag</param>
+    /// <param name="UpdateElement">更新したい要素、HidePlace,CatchFlag,ItemInfo</param>
     /// <param name="UpdateContent">更新内容</param>
     public void UpdatePlayerInfoListByIndex(int PlayerInfoListIndex, string UpdateElement, string UpdateContent){
         if (UpdateElement == "HidePlace"){
@@ -460,9 +460,9 @@ public class Game_cont : MonoBehaviourPunCallbacks
                 int start_taik = ( game_time_min * 60 + game_time_sec )* 1000;
                 GameObject.FindWithTag("clock").GetComponent<clock_cont>().timer_start(PhotonNetwork.ServerTimestamp.ToString() + "," + (PhotonNetwork.ServerTimestamp + start_taik).ToString());
         
-                Game_Status = Status.play;
                 CreatePlayerList();
                 Debug.Log("ゲームスタート");
+                Game_Status = Status.play;
                 
             }
         }
@@ -544,6 +544,10 @@ public class Game_cont : MonoBehaviourPunCallbacks
         }
     }
 
+
+    /// <summary>
+    /// 宝箱の情報リストを作製
+    /// </summary>
     void CreateTreasureChestList(){
         for (int i = 0; i < 20; i++)TreasureChest.Add("000");
         CreateTreasureChestListflag = true;

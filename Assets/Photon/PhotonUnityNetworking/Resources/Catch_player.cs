@@ -67,7 +67,7 @@ public class Catch_player : MonoBehaviour
                                 string CViewId = View.ViewID.ToString();
                                 if ((string)ScriptGameCont.GetPlayerInfo(CViewId, "CatchFlag") == "False"){
                                     int Index = ScriptGameCont.GetPlayerInfoIndexFromViewId(CViewId);
-                                    ScriptGameCont.UpdatePlayerInfoListByIndex(Index, "CatchFlag", "true");
+                                    ScriptGameCont.UpdatePlayerInfoListByIndex(Index, "CatchFlag", "True");
                                     ScriptGameCont.UpdatePlayerInfoListByIndex(Index, "HidePlace", "100");
                                     ScriptGameCont.SendPlayerInfo(Index);
                                     Debug.Log("見つけた");

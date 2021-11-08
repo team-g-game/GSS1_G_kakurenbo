@@ -29,6 +29,7 @@ public class MapDisplayScript : MonoBehaviour
             case Game_cont.Status.play:{
                 SousaGamen();
                 MapDisplay();
+                CatchGaki();
                 if (ScriptGameCont.DemonFlag == false){
                     ScapeGoatDisplay();
                 }
@@ -41,6 +42,9 @@ public class MapDisplayScript : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// マップ表示
+    /// </summary>
     void MapDisplay(){
         if (Input.GetKeyDown(KeyCode.M)){
             MapDisplayed = this.gameObject.transform.GetChild(0).gameObject.activeSelf;
@@ -55,6 +59,9 @@ public class MapDisplayScript : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 操作説明の画像を表示
+    /// </summary>
     void SousaGamen(){
         if (Input.GetKeyDown(KeyCode.H)){
             SousaDisplayed = this.gameObject.transform.GetChild(1).gameObject.activeSelf;
@@ -69,13 +76,30 @@ public class MapDisplayScript : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// スケープゴートで見つからなかったことを表示する
+    /// </summary>
     void ScapeGoatDisplay(){
-        string scape = ScriptGameCont.GetPlayerInfoFromIndex(0, "ItemInfo");
-        if (scape[0] == '1'){
+        string Scape = ScriptGameCont.GetPlayerInfoFromIndex(0, "ItemInfo");
+        if (Scape[0] == '1'){
             this.gameObject.transform.GetChild(2).gameObject.SetActive(true);
         }
         else{
             this.gameObject.transform.GetChild(2).gameObject.SetActive(false);
+        }
+    }
+    
+    /// <summary>
+    /// 見つかったということの表示
+    /// </summary>
+    void CatchGaki(){
+        string Catch = ScriptGameCont.GetPlayerInfoFromIndex(0, "CatchFlag");
+        if (Catch == "True"){
+            this.gameObject.transform.GetChild(3).gameObject.SetActive(true);
+        }
+        else {
+            this.gameObject.transform.GetChild(3).gameObject.SetActive(false);
         }
     }
 }
