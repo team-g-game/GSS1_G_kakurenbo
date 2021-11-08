@@ -699,13 +699,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 908238150}
-  m_LocalRotation: {x: -0.316767, y: 0.3083897, z: -0.6346293, w: 0.6338771}
-  m_LocalPosition: {x: 0.0427, y: -0.00202, z: 0.056}
+  m_LocalRotation: {x: -0.35156745, y: 0.34324506, z: -0.6164749, w: 0.6152577}
+  m_LocalPosition: {x: 0.037, y: -0.00204, z: 0.0481}
   m_LocalScale: {x: 0.001237797, y: 0.014460767, z: 0.008358424}
   m_Children: []
   m_Father: {fileID: 1179564180}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -0.582, y: 52.473, z: -90.355}
+  m_LocalEulerAnglesHint: {x: -0.539, y: 58.856, z: -90.417}
 --- !u!65 &908238152
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -993,8 +993,20 @@ PrefabInstance:
       value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1655568221039940302, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 64.72396
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655568221039940302, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: m_LocalScale.z
       value: 33.28846
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655568221039940302, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655568221039940302, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.36
       objectReference: {fileID: 0}
     - target: {fileID: 1693532266352270883, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
       propertyPath: GameManager
@@ -1744,7 +1756,8 @@ PrefabInstance:
       propertyPath: TreasureChestNumber
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8179442973724432223, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 15dc2a251c3821443928882e449f1b1b, type: 3}
 --- !u!1 &8179442972942788944 stripped
 GameObject:
