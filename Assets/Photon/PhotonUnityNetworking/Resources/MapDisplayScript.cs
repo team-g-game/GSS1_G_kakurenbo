@@ -10,6 +10,7 @@ public class MapDisplayScript : MonoBehaviour
     bool SousaDisplayed = true;
     public GameObject GameManager;  //Game_masterを入れる
     private Game_cont ScriptGameCont;   //Game_contの関数使えるようにする
+    GameObject[] DisplayUi = new GameObject[4];
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,10 @@ public class MapDisplayScript : MonoBehaviour
         ScriptGameCont = GameManager.GetComponent<Game_cont>();
         MapDisplayed = false;
         SousaDisplayed = false;
+        for (int i = 0; i < 4; i++){
+            DisplayUi[i] = this.gameObject.transform.GetChild(i).gameObject;
+            this.gameObject.transform.GetChild(i).gameObject.SetActive(false);
+        }
     }
     void Update()
     {
@@ -50,11 +55,11 @@ public class MapDisplayScript : MonoBehaviour
             MapDisplayed = this.gameObject.transform.GetChild(0).gameObject.activeSelf;
             if (MapDisplayed == true){
                 MapDisplayed = false;
-                this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                DisplayUi[0].SetActive(false);
             }
             else{
                 MapDisplayed = true;
-                this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                DisplayUi[0].SetActive(true);
             }
         }
     }
@@ -67,11 +72,11 @@ public class MapDisplayScript : MonoBehaviour
             SousaDisplayed = this.gameObject.transform.GetChild(1).gameObject.activeSelf;
             if (SousaDisplayed == true){
                 SousaDisplayed = false;
-                this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+                DisplayUi[1].SetActive(false);
             }
             else{
                 SousaDisplayed = true;
-                this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                DisplayUi[1].SetActive(true);
             }
         }
     }
@@ -83,10 +88,10 @@ public class MapDisplayScript : MonoBehaviour
     void ScapeGoatDisplay(){
         string Scape = ScriptGameCont.GetPlayerInfoFromIndex(0, "ItemInfo");
         if (Scape[0] == '1'){
-            this.gameObject.transform.GetChild(2).gameObject.SetActive(true);
+            DisplayUi[2].SetActive(true);
         }
         else{
-            this.gameObject.transform.GetChild(2).gameObject.SetActive(false);
+            DisplayUi[2].SetActive(false);
         }
     }
     
@@ -96,10 +101,10 @@ public class MapDisplayScript : MonoBehaviour
     void CatchGaki(){
         string Catch = ScriptGameCont.GetPlayerInfoFromIndex(0, "CatchFlag");
         if (Catch == "True"){
-            this.gameObject.transform.GetChild(3).gameObject.SetActive(true);
+            DisplayUi[3].SetActive(true);
         }
-        else {
-            this.gameObject.transform.GetChild(3).gameObject.SetActive(false);
+        else if (Catch == "False"){
+            DisplayUi[3].SetActive(false);
         }
     }
 }
