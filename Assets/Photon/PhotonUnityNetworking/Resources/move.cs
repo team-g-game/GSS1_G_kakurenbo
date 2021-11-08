@@ -155,8 +155,6 @@ public class move : MonoBehaviour
             }
             Cam_Obj.transform.LookAt(kyara_Obj.transform);
 
-            //Debug.Log(direction);
-            
 
             kyara_Obj.transform.rotation = new Quaternion(0,0,0,0);
             var rot = Cam_Obj.transform.rotation;
@@ -165,7 +163,7 @@ public class move : MonoBehaviour
             kyara_Obj.transform.rotation = rot;            
 
         }
-        if (ScriptGameCont.GetPlayerInfo(MyPlayerViewId.ToString(), "CatchFlag") == "True")Cam_Obj.transform.LookAt(GameObject.FindWithTag("Demo").transform);
+        if (Game_cont.Game_Status == Game_cont.Status.play && ScriptGameCont.GetPlayerInfo(MyPlayerViewId.ToString(), "CatchFlag") == "True")Cam_Obj.transform.LookAt(GameObject.FindWithTag("Demo").transform);
         if (CheckMovePlayerViewId == false){
             MovePlayerViewId = GetComponent<PhotonView>().ViewID;
         }
