@@ -526,10 +526,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameManager: {fileID: 0}
-  Map: {fileID: 0}
-  Sousa: {fileID: 0}
-  Scape: {fileID: 0}
-  Mitsukatta: {fileID: 0}
   PhotonHontai: {fileID: 3118343517766385410}
 --- !u!1 &1627131409245270955
 GameObject:
@@ -868,6 +864,7 @@ RectTransform:
   - {fileID: 1740408208482950448}
   - {fileID: 1714389687535361493}
   - {fileID: 5071078241702980890}
+  - {fileID: 8456657384564024967}
   m_Father: {fileID: 6941046367483727324}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1412,6 +1409,85 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!1 &4921896091326107645
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8456657384564024967}
+  - component: {fileID: 3951589714866987880}
+  - component: {fileID: 5898213908208473518}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8456657384564024967
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4921896091326107645}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4121066776774806118}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -864, y: -435.3}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &3951589714866987880
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4921896091326107645}
+  m_CullTransparentMesh: 1
+--- !u!114 &5898213908208473518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4921896091326107645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 50
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 50
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: "\u24BA\uFF1A\u96A0\u308C\u308B\n\u24BB\uFF1A\u62FE\u3046"
 --- !u!1 &5722604594771196639
 GameObject:
   m_ObjectHideFlags: 0
@@ -2672,13 +2748,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7acbadadbad1fdc46ab9c4e6184a8e0a, type: 3}
---- !u!1 &7474432324161303309 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 394533533181168972, guid: 7acbadadbad1fdc46ab9c4e6184a8e0a, type: 3}
-  m_PrefabInstance: {fileID: 7116583171812671041}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &7894027795373353110 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1102843990293829335, guid: 7acbadadbad1fdc46ab9c4e6184a8e0a, type: 3}
+  m_PrefabInstance: {fileID: 7116583171812671041}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7474432324161303309 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 394533533181168972, guid: 7acbadadbad1fdc46ab9c4e6184a8e0a, type: 3}
   m_PrefabInstance: {fileID: 7116583171812671041}
   m_PrefabAsset: {fileID: 0}
