@@ -40,7 +40,7 @@ public class hide_sc : MonoBehaviour
         }
         if (other.gameObject.name == "Cylinder")
         {
-            this.GetComponent<TextMesh> ().text = "Watch";  //text meshのテキストを変更
+            this.GetComponent<TextMesh> ().text = "Ⓔ隠れる";  //text meshのテキストを変更
             WatchTrriger = true;
             this.GetComponent<MeshRenderer>().enabled=true;//メッシュレンダーの表示
         }
