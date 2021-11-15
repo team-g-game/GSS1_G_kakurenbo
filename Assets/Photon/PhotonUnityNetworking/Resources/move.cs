@@ -83,9 +83,10 @@ public class move : MonoBehaviour
                                         if(i != MyPlayerViewId) camera_chac.Add(PhotonView.Find(i).gameObject);
                                     }   
                                 }
-                                if(!look_demo){
+                                if(look_demo == false){
                                     look_demo = true;
-                                    look_end_num = clock_cont.num - 2f;
+                                    look_end_num = clock_cont.num - 4.0f;
+                                    Debug.Log(clock_cont.num.ToString() + look_end_num.ToString());
                                 }
                                 if(clock_cont.num <= look_end_num && look_demo){
                                     Cam_Obj.GetComponent<Camera>().enabled = false;
@@ -172,7 +173,7 @@ public class move : MonoBehaviour
             kyara_Obj.transform.rotation = rot;            
 
         }
-        if (Game_cont.Game_Status == Game_cont.Status.play && ScriptGameCont.GetPlayerInfo(MyPlayerViewId.ToString(), "CatchFlag") == "True" && !look_demo)Cam_Obj.transform.LookAt(GameObject.FindWithTag("Demo").transform);
+        if (Game_cont.Game_Status == Game_cont.Status.play && ScriptGameCont.GetPlayerInfo(MyPlayerViewId.ToString(), "CatchFlag") == "True" && look_demo == false)Cam_Obj.transform.LookAt(GameObject.FindWithTag("Demo").transform);
         if (CheckMovePlayerViewId == false){
             MovePlayerViewId = GetComponent<PhotonView>().ViewID;
         }
