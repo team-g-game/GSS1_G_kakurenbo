@@ -163,8 +163,8 @@ public class Game_cont : MonoBehaviourPunCallbacks
                 if(load_cam != null)Destroy(load_cam.gameObject,0f);
                 //プレイヤーのアイテム確認？
                 if (Input.GetKeyDown(KeyCode.P)){
-                    for (int i = 0; i < 20; i++){
-                        Debug.Log(TreasureChest[i]);
+                    for (int i = 0; i < PlayerInfoList.Count; i++){
+                        Debug.Log(PlayerInfoList[i].PCatchFlag);
                     }
                 }
                 if (Input.GetKeyDown(KeyCode.L))win_or_loss_decision();
@@ -476,9 +476,9 @@ public class Game_cont : MonoBehaviourPunCallbacks
     /// </summary>
     void GameEnd(){
         if (Game_Status != Status.after && CreatePlayerListFlag){
+            int PlayerCount = 0;
             for (int i = 0; i < PlayerInfoList.Count; ++i){
                 if (PlayerInfoList[i].PCatchFlag == true){
-                    int PlayerCount = 0;
                     PlayerCount += 1;
                     if (PlayerCount == PlayerInfoList.Count /*|| CountDownTimer.end_ok*/){
                         win_or_loss_decision();
