@@ -5,13 +5,12 @@ using UnityEngine.UI;
 
 public class CatchText : MonoBehaviour
 {    
-    private float totalTime;
-    [SerializeField] private int DisplayTimeMinute;
-	[SerializeField] private float DisplayTimeSeconds;
-    private int Minute;
-    private float Seconds;
+    private float totalTime;    //経過全体時間
+    [SerializeField] private int DisplayTimeMinute;     //表示したい時間分
+	[SerializeField] private float DisplayTimeSeconds;  //表示したい時間秒
+    private int Minute;                     //経過全体時間分
+    private float Seconds;                  //経過全体時間秒
 	//　前回Update時の秒数
-	private float oldSeconds;
     private Text Catch;
     public GameObject GameManager;  //Game_masterを入れる
     private Game_cont ScriptGameCont;   //Game_contの関数使えるようにする
@@ -21,12 +20,11 @@ public class CatchText : MonoBehaviour
     void Start()
     {
         totalTime = DisplayTimeMinute * 60 + DisplayTimeSeconds;
-		oldSeconds = 0f;
+        Minute = DisplayTimeMinute;
+        Seconds = DisplayTimeSeconds;
         Catch = GetComponentInChildren<Text>();
         GameManager = GameObject.Find("Game_master");
         ScriptGameCont = GameManager.GetComponent<Game_cont>();
-        Minute = DisplayTimeMinute;
-        Seconds = DisplayTimeSeconds;
     }
 
     // Update is called once per frame

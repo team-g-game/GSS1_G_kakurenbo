@@ -50,8 +50,10 @@ public class hide_sc : MonoBehaviour
     {
         if (pay.gameObject.name == "Play_1")
         {
-            HideTrriger = false;
-            this.GetComponent<MeshRenderer>().enabled=false;//メッシュレンダーの非表示
+            if (View.IsMine){
+                HideTrriger = false;
+                this.GetComponent<MeshRenderer>().enabled=false;//メッシュレンダーの非表示
+            }
         }
         if (pay.gameObject.name == "Cylinder")
         {

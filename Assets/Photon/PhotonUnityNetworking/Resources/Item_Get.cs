@@ -1,24 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class Item_Get : MonoBehaviour
 {
     private bool ItemTrriger = false;    //隠れることが可能な場所かどうか
     public GameObject GameManager;  //Game_masterを入れる
     private Game_cont ScriptGameCont;   //Game_contの関数使えるようにする
-    [SerializeField] private int TreasureChestNumber;
-    [SerializeField] private string ItemsInfo;
-    private bool FirstChangeTreasureChestListFlag = false;
+    GameObject Player_obj;              //プレイヤーの子オブジェクト
+    GameObject Parent_Player_obj;       //プレイヤーの親オブジェクト
+    private PhotonView View = null;
+    [SerializeField] private int TreasureChestNumber;       //宝箱の番号
+    [SerializeField] private string ItemsInfo;              //入ってるアイテム情報
+    private bool FirstChangeTreasureChestListFlag = false;  //
     GameObject TreasureChestObject;
     private bool OpenFlag = false;
+    private GameObject MapDisplay;              //MapDisplayのGameobject
+    private MapDisplayScript ScriptMapDiaplay;  //MapDisplayのスクリプト
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "Play_1")
         {
-            ItemTrriger = true;
-            this.GetComponent<MeshRenderer>().enabled=true;//メッシュレンダーの表示
+            Player_obj = other.gameObject;                                  //Play_1
+            Parent_Player_obj = other.transform.parent.gameObject;          //Play_1の親
+            View = Parent_Player_obj.GetComponent<PhotonView>();
+            MapDisplay = Parent_Player_obj.transform.GetChild(2).gameObject.transform.GetChild(0).gameObject;
+            ScriptMapDiaplay = MapDisplay.GetComponent<MapDisplayScript>();
+            if (View.IsMine){           //自分のときだけ実行するようにしないといけない
+                ItemTrriger = true;
+                this.GetComponent<MeshRenderer>().enabled=true;     //メッシュレンダーの表示
+            }
         }
     }
 
@@ -26,8 +39,10 @@ public class Item_Get : MonoBehaviour
     {
         if (pay.gameObject.name == "Play_1")
         {
-            ItemTrriger = false;
-            this.GetComponent<MeshRenderer>().enabled=false;//メッシュレンダーの非表示
+            if(View.IsMine){
+                ItemTrriger = false;
+                this.GetComponent<MeshRenderer>().enabled=false;    //メッシュレンダーの非表示
+            }
         }
     }
     void Start()
@@ -62,6 +77,9 @@ public class Item_Get : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F))//Fキーを押したときの判定
             {
                 Debug.Log("ItemGet");//アイテムの挙動
+                if(ItemsInfo == "000"){
+                    ScriptMapDiaplay.GetNoItem();
+                }
                 string Items = ScriptGameCont.GetPlayerInfoFromIndex(0, "ItemInfo");
                 if (Items[0] == '0'){
                     ScriptGameCont.ChangePlayerList(0, "ItemInfo", ItemsInfo);
@@ -71,6 +89,7 @@ public class Item_Get : MonoBehaviour
                 TreasureChestObject.GetComponent<MeshRenderer>().enabled = false;
                 TreasureChestObject.SetActive(false);
                 this.GetComponent<BoxCollider>().enabled = false;
+                this.GetComponent<MeshRenderer>().enabled = false;
                 OpenFlag = true;
             }
         }
@@ -101,6 +120,7 @@ public class Item_Get : MonoBehaviour
                 TreasureChestObject.GetComponent<MeshRenderer>().enabled = false;
                 TreasureChestObject.SetActive(false);
                 this.GetComponent<BoxCollider>().enabled = false;
+                this.GetComponent<MeshRenderer>().enabled = false;
             }
         }
     }

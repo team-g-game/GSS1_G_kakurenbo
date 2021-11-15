@@ -14,9 +14,15 @@ public class MapDisplayScript : MonoBehaviour
     public GameObject GameManager;  //Game_masterを入れる
     private Game_cont ScriptGameCont;   //Game_contの関数使えるようにする
 
-    GameObject[] DisplayUi = new GameObject[4];
+    GameObject[] DisplayUi = new GameObject[5];
     [SerializeField] private GameObject PhotonHontai;
     private PhotonView view = null;
+    private float totalTime;    //経過全体時間
+    private int DisplayTimeMinute = 0;     //表示したい時間分
+	private float DisplayTimeSeconds = 1;  //表示したい時間秒
+    private int Minute;                     //経過全体時間分
+    private float Seconds;                  //経過全体時間秒
+    bool DisplayNoItemFlag = false;                     //アイテムがないという表示をしたかどうか
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +32,9 @@ public class MapDisplayScript : MonoBehaviour
         ScriptGameCont = GameManager.GetComponent<Game_cont>();
         MapDisplayed = false;
         SousaDisplayed = false;
+        totalTime = DisplayTimeMinute * 60 + DisplayTimeSeconds;
+        Minute = DisplayTimeMinute;
+        Seconds = DisplayTimeSeconds;
     }
     void Update()
     {
@@ -41,6 +50,7 @@ public class MapDisplayScript : MonoBehaviour
                     if (ScriptGameCont.DemonFlag == false){
                         CatchGaki();
                         ScapeGoatDisplay();
+                        DisplayNoItem();
                     }
                 }
                 break;
@@ -114,6 +124,37 @@ public class MapDisplayScript : MonoBehaviour
         }
         else if (Catch == "False"){
             DisplayUi[3].SetActive(false);
+        }
+    }
+
+    /// <summary>
+    /// アイテムがない宝箱を開けたときに表示する関数
+    /// </summary>
+    public void GetNoItem(){
+        if (ScriptGameCont.DemonFlag == false){
+            DisplayUi[4] = this.gameObject.transform.GetChild(4).gameObject;
+            DisplayUi[4].SetActive(true);
+            DisplayNoItemFlag = true;
+        }
+    }
+
+    /// <summary>
+    /// アイテムがないことを表示した後に秒数指定して消す
+    /// </summary>
+    void DisplayNoItem(){
+        if (DisplayNoItemFlag == true){
+            totalTime = Minute * 60 + Seconds;
+            totalTime -= Time.deltaTime;
+
+            Minute = (int)totalTime / 60;
+            Seconds = totalTime - Minute * 60;
+            if (totalTime <= 0f){       //設定した時間がたったら
+                DisplayUi[4].SetActive(false);
+                Debug.Log("kitenai");
+                DisplayNoItemFlag = false;
+                Minute = DisplayTimeMinute;
+                Seconds = DisplayTimeSeconds;
+            }
         }
     }
 }
