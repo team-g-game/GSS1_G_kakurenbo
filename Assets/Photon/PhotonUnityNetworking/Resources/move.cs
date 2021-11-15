@@ -32,6 +32,8 @@ public class move : MonoBehaviour
 
     public Canvas main_canvas;
 
+    private bool look_demo = false;
+    private float look_end_num = 0;
 
     void Awake(){
         view = GetComponent<PhotonView>();
@@ -81,10 +83,17 @@ public class move : MonoBehaviour
                                         if(i != MyPlayerViewId) camera_chac.Add(PhotonView.Find(i).gameObject);
                                     }   
                                 }
-                                    Cam_Obj.transform.LookAt(GameObject.FindWithTag("Demo").transform);
-                                    //Cam_Obj.GetComponent<Camera>().enabled = false;
+                                if(!look_demo){
+                                    look_demo = true;
+                                    look_end_num = clock_cont.num - 2f;
+                                }
+                                if(clock_cont.num <= look_end_num && look_demo){
+                                    Cam_Obj.GetComponent<Camera>().enabled = false;
                                     foreach(var _ in camera_chac)_.GetComponent<move>().Cam_Obj.GetComponent<Camera>().enabled =false;
                                     camera_chac[play_num].GetComponent<move>().Cam_Obj.GetComponent<Camera>().enabled = true;                
+                                }else{
+                                    Cam_Obj.transform.LookAt(GameObject.FindWithTag("Demo").transform);
+                                }
                             }
                             else {
                                 if(Input.GetKey(KeyCode.W)) pos += kyara_Obj.transform.forward * Time.deltaTime * move_speed;
@@ -163,7 +172,7 @@ public class move : MonoBehaviour
             kyara_Obj.transform.rotation = rot;            
 
         }
-        if (Game_cont.Game_Status == Game_cont.Status.play && ScriptGameCont.GetPlayerInfo(MyPlayerViewId.ToString(), "CatchFlag") == "True")Cam_Obj.transform.LookAt(GameObject.FindWithTag("Demo").transform);
+        if (Game_cont.Game_Status == Game_cont.Status.play && ScriptGameCont.GetPlayerInfo(MyPlayerViewId.ToString(), "CatchFlag") == "True" && !look_demo)Cam_Obj.transform.LookAt(GameObject.FindWithTag("Demo").transform);
         if (CheckMovePlayerViewId == false){
             MovePlayerViewId = GetComponent<PhotonView>().ViewID;
         }
