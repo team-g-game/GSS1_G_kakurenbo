@@ -77,23 +77,14 @@ public class move : MonoBehaviour
                     if (ScriptGameCont.GetPlayerInfoFromIndex(0, "HidePlace") == "0"){
                         if (ScriptGameCont.CreatePlayerListFlag){
                             if (ScriptGameCont.GetPlayerInfo(MyPlayerViewId.ToString(), "CatchFlag") == "True"){     
-                                //sinndaato.SetActive(true);
-                                if(camera_chac.Count == 0){
-                                    foreach(int i in PlayerViewIdsList){
-                                        if(i != MyPlayerViewId) camera_chac.Add(PhotonView.Find(i).gameObject);
-                                    }   
-                                }
-                                Debug.Log("見つかった");
                                 if(look_demo == false){
                                     look_demo = true;
                                     look_end_num = clock_cont.num - 4.0f;
                                     Debug.Log("時間" + clock_cont.num.ToString() + look_end_num.ToString());
                                 }
-                                if(clock_cont.num <= look_end_num && look_demo){
-                                    GameObject.FindWithTag("game_manegyr").GetComponent<Game_cont>().win_or_loss_decision();
-                                    //Cam_Obj.GetComponent<Camera>().enabled = false;
-                                    //foreach(var _ in camera_chac)_.GetComponent<move>().Cam_Obj.GetComponent<Camera>().enabled =false;
-                                    //camera_chac[play_num].GetComponent<move>().Cam_Obj.GetComponent<Camera>().enabled = true;                
+                                Debug.Log("次に見るよ");
+                                if(clock_cont.num <= look_end_num){
+                                    GameObject.FindWithTag("game_manegyr").GetComponent<Game_cont>().win_or_loss_decision();      
                                 }else{
                                     Cam_Obj.transform.LookAt(GameObject.FindWithTag("Demo").transform);
                                 }
