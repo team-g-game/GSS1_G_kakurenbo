@@ -18,6 +18,8 @@ public class Item_Get : MonoBehaviour
     private bool OpenFlag = false;
     private GameObject MapDisplay;              //MapDisplayのGameobject
     private MapDisplayScript ScriptMapDiaplay;  //MapDisplayのスクリプト
+    public AudioClip sound1;
+    AudioSource audioSource;
 
     void OnTriggerEnter(Collider other)
     {
@@ -50,6 +52,7 @@ public class Item_Get : MonoBehaviour
         GameManager = GameObject.Find("Game_master");
         ScriptGameCont = GameManager.GetComponent<Game_cont>();
         TreasureChestObject = this.gameObject.transform.GetChild(0).gameObject;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -90,6 +93,7 @@ public class Item_Get : MonoBehaviour
                 TreasureChestObject.SetActive(false);
                 this.GetComponent<BoxCollider>().enabled = false;
                 this.GetComponent<MeshRenderer>().enabled = false;
+                audioSource.PlayOneShot(sound1);
                 OpenFlag = true;
             }
         }

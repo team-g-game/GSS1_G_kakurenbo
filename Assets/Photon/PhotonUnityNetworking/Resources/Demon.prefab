@@ -299,6 +299,7 @@ MonoBehaviour:
   demon_cam: {fileID: 3518512768837173240}
   rad: 30
   GameManager: {fileID: 7997567491265549792, guid: 92fbceea1728d8949ba5d67bccb17e6d, type: 3}
+  sound1: {fileID: 8300000, guid: c2bd54f2c00a9914fa303ceb0d748a8a, type: 3}
 --- !u!82 &-2891497456730109997
 AudioSource:
   m_ObjectHideFlags: 0

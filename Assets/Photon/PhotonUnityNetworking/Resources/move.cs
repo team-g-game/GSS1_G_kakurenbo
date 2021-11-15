@@ -34,6 +34,8 @@ public class move : MonoBehaviour
 
     private bool look_demo = false;
     private float look_end_num = 0;
+    private AudioClip sound1;
+    AudioSource audioSource;
 
     void Awake(){
         view = GetComponent<PhotonView>();
@@ -58,6 +60,7 @@ public class move : MonoBehaviour
         GameManager = GameObject.Find("Game_master");
         ScriptGameCont = GameManager.GetComponent<Game_cont>();
         StartPosSetting();
+        audioSource.GetComponent<AudioSource>();
     }
 
 
@@ -77,6 +80,7 @@ public class move : MonoBehaviour
                     if (ScriptGameCont.GetPlayerInfoFromIndex(0, "HidePlace") == "0"){
                         if (ScriptGameCont.CreatePlayerListFlag){
                             if (ScriptGameCont.GetPlayerInfo(MyPlayerViewId.ToString(), "CatchFlag") == "True"){     
+                                audioSource.PlayOneShot(sound1);    //捕まったときに鳴らす音
                                 if(look_demo == false){
                                     look_demo = true;
                                     look_end_num = clock_cont.num - 4.0f;

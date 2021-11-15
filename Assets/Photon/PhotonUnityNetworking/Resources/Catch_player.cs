@@ -15,6 +15,8 @@ public class Catch_player : MonoBehaviour
     private bool start_flag= false ;
     private float chach_int = 2;
     private float _timer = 0;
+    public AudioClip sound1;
+    AudioSource audioSource;
 
     void Start()
     {
@@ -22,6 +24,7 @@ public class Catch_player : MonoBehaviour
         Col.radius = rad;
         GameManager = GameObject.Find("Game_master");
         ScriptGameCont = GameManager.GetComponent<Game_cont>();
+        audioSource.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -72,6 +75,8 @@ public class Catch_player : MonoBehaviour
                                     ScriptGameCont.SendPlayerInfo(Index);
                                     Debug.Log("見つけた");
                                     ScriptGameCont.CatchPlayerFlag = true;
+                                    audioSource.PlayOneShot(sound1);    //捕まえたときに鳴らす音
+
                                 }
                                 else {
                                     Debug.Log("nannkaokasii");
