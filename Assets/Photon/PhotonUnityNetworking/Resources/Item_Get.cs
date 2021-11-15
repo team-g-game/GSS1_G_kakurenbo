@@ -52,7 +52,7 @@ public class Item_Get : MonoBehaviour
         GameManager = GameObject.Find("Game_master");
         ScriptGameCont = GameManager.GetComponent<Game_cont>();
         TreasureChestObject = this.gameObject.transform.GetChild(0).gameObject;
-        audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();      //オーディオソースをゲット
     }
 
     // Update is called once per frame

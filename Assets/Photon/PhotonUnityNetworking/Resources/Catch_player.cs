@@ -24,7 +24,7 @@ public class Catch_player : MonoBehaviour
         Col.radius = rad;
         GameManager = GameObject.Find("Game_master");
         ScriptGameCont = GameManager.GetComponent<Game_cont>();
-        audioSource.GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();      //オーディオソースをゲット
     }
 
     // Update is called once per frame
