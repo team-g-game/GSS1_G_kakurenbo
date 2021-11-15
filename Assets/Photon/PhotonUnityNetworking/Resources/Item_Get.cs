@@ -69,6 +69,8 @@ public class Item_Get : MonoBehaviour
                 }
                 UpdateTresureChestList();
                 TreasureChestObject.GetComponent<MeshRenderer>().enabled = false;
+                TreasureChestObject.SetActive(false);
+                this.GetComponent<BoxCollider>().enabled = false;
                 OpenFlag = true;
             }
         }
@@ -97,6 +99,8 @@ public class Item_Get : MonoBehaviour
             string Infomation = ScriptGameCont.GetTreasureChestInfoFromIndex(TreasureChestNumber);
             if (Infomation[2] == '1'){
                 TreasureChestObject.GetComponent<MeshRenderer>().enabled = false;
+                TreasureChestObject.SetActive(false);
+                this.GetComponent<BoxCollider>().enabled = false;
             }
         }
     }
