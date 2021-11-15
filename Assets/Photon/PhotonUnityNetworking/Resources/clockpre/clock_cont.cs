@@ -7,7 +7,7 @@ using Photon.Realtime;
 public class clock_cont : MonoBehaviourPunCallbacks
 {
     public static float num;
-    public float max_num;
+    public static float max_num;
     public float add_num = 0;
     float start_time;
     float end_time;
@@ -63,11 +63,14 @@ public class clock_cont : MonoBehaviourPunCallbacks
         {
             //データの送信
             stream.SendNext(num);
+            stream.SendNext(max_num);
         }
         else
         {
             //データの受信
             num = (float)stream.ReceiveNext();
+            max_num = (float)stream.ReceiveNext();
+            stop = false;
         }
     }
 }
